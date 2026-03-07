@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Brand – Aart Sense | Partnerships &amp; Press</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="shared.css"/>
+  <style>
+    /* ── Brand story ── */
+    .brand-story { padding: 80px 40px; }
+    .brand-story-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 72px; align-items: start;
+    }
+    .bs-text h2 { font-size: 48px; font-weight: 800; letter-spacing: -1.8px; line-height: 1.08; margin-bottom: 20px; }
+    .bs-text p { font-size: 14.5px; color: #555; line-height: 1.75; margin-bottom: 16px; }
+
+    /* Brand values */
+    .values-grid { display: flex; flex-direction: column; gap: 16px; }
+    .value-item {
+      display: flex; gap: 16px; align-items: flex-start;
+      border: 1px solid #e8e8e8; border-radius: 8px; padding: 18px;
+    }
+    .value-icon { font-size: 22px; flex-shrink: 0; }
+    .value-title { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+    .value-desc { font-size: 13px; color: #555; line-height: 1.6; }
+
+    /* ── Client brands (dark) ── */
+    .clients-section { background: #0a0a0a; padding: 72px 40px; }
+    .clients-inner { max-width: 1200px; margin: 0 auto; }
+    .clients-section h2 { font-size: 44px; font-weight: 800; letter-spacing: -1.5px; color: #fff; margin-bottom: 8px; }
+    .clients-section > .clients-inner > p { font-size: 14px; color: rgba(255,255,255,.5); margin-bottom: 48px; }
+    .clients-grid {
+      display: grid; grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+    .client-badge {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 6px; padding: 16px 12px;
+      text-align: center; transition: background .2s, border-color .2s;
+      cursor: default;
+    }
+    .client-badge:hover {
+      background: rgba(255,255,255,.1);
+      border-color: rgba(255,255,255,.2);
+    }
+    .client-badge-name {
+      font-size: 12px; font-weight: 800;
+      color: rgba(255,255,255,.7);
+      letter-spacing: .5px; text-transform: uppercase;
+    }
+    .client-badge-type {
+      font-size: 10px; color: rgba(255,255,255,.35);
+      margin-top: 3px; font-weight: 500;
+    }
+
+    /* ── Films section ── */
+    .films-section { padding: 80px 40px; background: #fafafa; border-top: 1px solid #e8e8e8; }
+    .films-inner { max-width: 1200px; margin: 0 auto; }
+    .films-section h2 { font-size: 44px; font-weight: 800; letter-spacing: -1.5px; margin-bottom: 8px; }
+    .films-section > .films-inner > p { font-size: 14px; color: #555; margin-bottom: 48px; }
+    .films-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
+    .film-card {
+      border-radius: 8px; overflow: hidden;
+      position: relative; aspect-ratio: 2/3;
+      cursor: pointer;
+    }
+    .film-card .fc-bg { width: 100%; height: 100%; transition: transform .4s; }
+    .film-card:hover .fc-bg { transform: scale(1.04); }
+    .film-card-info {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(0deg, rgba(0,0,0,.8) 0%, transparent 100%);
+      padding: 16px 14px 12px;
+    }
+    .fc-title { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+    .fc-role { font-size: 10px; color: rgba(255,255,255,.55); }
+
+    /* ── Press section ── */
+    .press-section { padding: 80px 40px; }
+    .press-inner { max-width: 1200px; margin: 0 auto; }
+    .press-section h2 { font-size: 44px; font-weight: 800; letter-spacing: -1.5px; margin-bottom: 8px; }
+    .press-section > .press-inner > p { font-size: 14px; color: #555; margin-bottom: 48px; }
+    .press-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .press-card {
+      background: #fff; border: 1px solid #e8e8e8;
+      border-radius: 10px; padding: 24px;
+      transition: box-shadow .2s; cursor: pointer;
+    }
+    .press-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,.07); }
+    .press-pub { font-size: 11px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: #888; margin-bottom: 10px; }
+    .press-headline { font-size: 16px; font-weight: 700; line-height: 1.35; margin-bottom: 10px; }
+    .press-excerpt { font-size: 13px; color: #555; line-height: 1.65; }
+
+    /* ── Press kit ── */
+    .presskit-section { background: #0a0a0a; padding: 72px 40px; }
+    .presskit-inner { max-width: 800px; margin: 0 auto; text-align: center; }
+    .presskit-section h2 { font-size: 44px; font-weight: 800; letter-spacing: -1.5px; color: #fff; margin-bottom: 14px; }
+    .presskit-section p { font-size: 15px; color: rgba(255,255,255,.55); line-height: 1.7; margin-bottom: 32px; }
+    .pk-items { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-bottom: 32px; }
+    .pk-item {
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+      border-radius: 8px; padding: 16px; text-align: center;
+    }
+    .pk-icon { font-size: 24px; margin-bottom: 8px; }
+    .pk-name { font-size: 12px; font-weight: 600; color: rgba(255,255,255,.7); }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      .brand-story-inner { grid-template-columns: 1fr; gap: 40px; }
+      .clients-grid { grid-template-columns: repeat(3,1fr); }
+      .films-grid { grid-template-columns: repeat(2,1fr); }
+      .press-grid, .pk-items { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .brand-story, .films-section, .press-section, .presskit-section { padding: 48px 16px; }
+      .clients-section { padding: 48px 16px; }
+      .clients-grid { grid-template-columns: repeat(2,1fr); }
+      .films-grid { grid-template-columns: 1fr 1fr; }
+      .press-grid, .pk-items { grid-template-columns: 1fr; }
+      .bs-text h2, .clients-section h2, .films-section h2, .press-section h2 { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="top-bar-left">
+    <a href="index.html"><span class="brand">AART SENSE</span></a>
+    <span class="sep">|</span><a href="#">RECORDS</a>
+    <span class="sep">|</span><a href="#">ACADEMY</a>
+  </div>
+  <div class="top-bar-right">
+    <a href="contact.html">Contact Us</a>
+    <a href="mailto:mail@aartsense.co.uk">mail@aartsense.co.uk</a>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="logo"><a href="index.html">AART SENSE</a></div>
+  <div class="nav-links">
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="brand.html" class="active">Brand</a>
+    <a href="faqs.html">FAQs</a>
+    <a href="investors.html">Investors</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="nav-right">
+    <span class="nav-login">Listen</span>
+    <button class="btn-cta">Book Now</button>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <p class="section-label">Brand &amp; Partnerships</p>
+    <h1>The sound of authentic India — crafted for a global audience.</h1>
+    <p>Aart Sense has provided the musical backbone for some of the world's most recognisable brands. Explore our client roster, film credits, press coverage, and brand assets.</p>
+    <button class="btn-outline-white" onclick="location.href='contact.html'">Brand Enquiry</button>
+  </div>
+</div>
+
+<!-- BRAND STORY -->
+<section class="brand-story">
+  <div class="brand-story-inner">
+    <div class="bs-text">
+      <p class="section-label">Our Identity</p>
+      <h2>Where Hindustani tradition meets contemporary vision.</h2>
+      <p>The Aart Sense brand is built on a singular promise: music that is rooted in authenticity and crafted with intention. Every composition — whether a 30-second jingle or a two-hour film score — carries the same DNA of emotional depth and musical excellence.</p>
+      <p>With a 20-year track record across Indian advertising and cinema, and a growing international footprint from London, Aart Sense is the bridge between India's extraordinary musical heritage and the contemporary global stage.</p>
+    </div>
+    <div class="values-grid">
+      <div class="value-item">
+        <span class="value-icon">🌿</span>
+        <div>
+          <div class="value-title">Authenticity</div>
+          <div class="value-desc">Rooted in 2,500 years of Hindustani classical tradition. Every composition honours its musical lineage while breathing fresh life into it.</div>
+        </div>
+      </div>
+      <div class="value-item">
+        <span class="value-icon">⚡</span>
+        <div>
+          <div class="value-title">Innovation</div>
+          <div class="value-desc">Classical foundations, contemporary execution. Arjuna's music is defined by its ability to feel both timeless and urgently modern.</div>
+        </div>
+      </div>
+      <div class="value-item">
+        <span class="value-icon">🎭</span>
+        <div>
+          <div class="value-title">Emotion</div>
+          <div class="value-desc">Music that moves. The measure of every composition is the feeling it leaves behind — not just the notes it contains.</div>
+        </div>
+      </div>
+      <div class="value-item">
+        <span class="value-icon">🔨</span>
+        <div>
+          <div class="value-title">Craftsmanship</div>
+          <div class="value-desc">20+ years of mastery. Meticulous attention to every arrangement, recording, and mix — because your production deserves nothing less.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENT BRANDS -->
+<section class="clients-section">
+  <div class="clients-inner">
+    <h2>40+ Global Brand Clients</h2>
+    <p>From India's most iconic advertising jingles to global multinational campaigns — the Aart Sense sound has defined brands across industries.</p>
+    <div class="clients-grid">
+      <div class="client-badge"><div class="client-badge-name">Dettol</div><div class="client-badge-type">Consumer Health</div></div>
+      <div class="client-badge"><div class="client-badge-name">Amazon</div><div class="client-badge-type">E-commerce</div></div>
+      <div class="client-badge"><div class="client-badge-name">Cadbury</div><div class="client-badge-type">FMCG</div></div>
+      <div class="client-badge"><div class="client-badge-name">Google</div><div class="client-badge-type">Technology</div></div>
+      <div class="client-badge"><div class="client-badge-name">Jio</div><div class="client-badge-type">Telecom</div></div>
+      <div class="client-badge"><div class="client-badge-name">Axis Bank</div><div class="client-badge-type">Finance</div></div>
+      <div class="client-badge"><div class="client-badge-name">Coca-Cola</div><div class="client-badge-type">FMCG</div></div>
+      <div class="client-badge"><div class="client-badge-name">Samsung</div><div class="client-badge-type">Technology</div></div>
+      <div class="client-badge"><div class="client-badge-name">Nestlé</div><div class="client-badge-type">FMCG</div></div>
+      <div class="client-badge"><div class="client-badge-name">OnePlus</div><div class="client-badge-type">Technology</div></div>
+      <div class="client-badge"><div class="client-badge-name">Flipkart</div><div class="client-badge-type">E-commerce</div></div>
+      <div class="client-badge"><div class="client-badge-name">Tanishq</div><div class="client-badge-type">Jewellery</div></div>
+      <div class="client-badge"><div class="client-badge-name">Sony</div><div class="client-badge-type">Technology</div></div>
+      <div class="client-badge"><div class="client-badge-name">Ambuja</div><div class="client-badge-type">Infrastructure</div></div>
+      <div class="client-badge"><div class="client-badge-name">Make My Trip</div><div class="client-badge-type">Travel</div></div>
+      <div class="client-badge"><div class="client-badge-name">TVS</div><div class="client-badge-type">Automotive</div></div>
+      <div class="client-badge"><div class="client-badge-name">Godrej</div><div class="client-badge-type">Consumer</div></div>
+      <div class="client-badge"><div class="client-badge-name">Cinthol</div><div class="client-badge-type">Personal Care</div></div>
+      <div class="client-badge"><div class="client-badge-name">Hike</div><div class="client-badge-type">Technology</div></div>
+      <div class="client-badge"><div class="client-badge-name">+ Many More</div><div class="client-badge-type">40+ Clients Total</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FILMS & TV -->
+<section class="films-section">
+  <div class="films-inner">
+    <h2>Film &amp; Television Credits</h2>
+    <p>A distinguished portfolio of feature films and episodic television — all original compositions and background scores.</p>
+    <div class="films-grid">
+      <div class="film-card">
+        <div class="fc-bg" style="background:linear-gradient(180deg,#1a1230 0%,#0d0820 100%)"></div>
+        <div class="film-card-info">
+          <div class="fc-title">P.O.W. – Bandi Yuddh Ke</div>
+          <div class="fc-role">Original Score &amp; Songs · ABBY Gold</div>
+        </div>
+      </div>
+      <div class="film-card">
+        <div class="fc-bg" style="background:linear-gradient(180deg,#2a0a08 0%,#3d1008 100%)"></div>
+        <div class="film-card-info">
+          <div class="fc-title">Lucknow Central</div>
+          <div class="fc-role">Songs · dir. Ranjit Tiwari</div>
+        </div>
+      </div>
+      <div class="film-card">
+        <div class="fc-bg" style="background:linear-gradient(180deg,#0a1a2a 0%,#0d2030 100%)"></div>
+        <div class="film-card-info">
+          <div class="fc-title">Guddu Engineer</div>
+          <div class="fc-role">Background Score · MAMI Award</div>
+        </div>
+      </div>
+      <div class="film-card">
+        <div class="fc-bg" style="background:linear-gradient(180deg,#1a1a1a 0%,#282828 100%)"></div>
+        <div class="film-card-info">
+          <div class="fc-title">Kapoor &amp; Sons</div>
+          <div class="fc-role">Background Score</div>
+        </div>
+      </div>
+      <div class="film-card">
+        <div class="fc-bg" style="background:linear-gradient(180deg,#1e2a1e 0%,#0a1a0a 100%)"></div>
+        <div class="film-card-info">
+          <div class="fc-title">Hero</div>
+          <div class="fc-role">Songs &amp; Score</div>
+        </div>
+      </div>
+      <div class="film-card">
+        <div class="fc-bg" style="background:linear-gradient(180deg,#2a1e2e 0%,#1a0a1a 100%)"></div>
+        <div class="film-card-info">
+          <div class="fc-title">Judgementall Hai Kya</div>
+          <div class="fc-role">Additional Score</div>
+        </div>
+      </div>
+      <div class="film-card">
+        <div class="fc-bg" style="background:linear-gradient(180deg,#2e1a0a 0%,#1a0a00 100%)"></div>
+        <div class="film-card-info">
+          <div class="fc-title">Keh Nahi Paunga</div>
+          <div class="fc-role">Original Score · Short Film</div>
+        </div>
+      </div>
+      <div class="film-card">
+        <div class="fc-bg" style="background:linear-gradient(180deg,#1a2a2e 0%,#0a1a20 100%)"></div>
+        <div class="film-card-info">
+          <div class="fc-title">And More…</div>
+          <div class="fc-role">12+ Feature Films Total</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRESS -->
+<section class="press-section">
+  <div class="press-inner">
+    <h2>In The Press</h2>
+    <p>Coverage from India's leading music and entertainment publications and international South Asian media.</p>
+    <div class="press-grid">
+      <div class="press-card">
+        <div class="press-pub">Rolling Stone India</div>
+        <div class="press-headline">"A composer who defies borders — the Arjuna Harjai story"</div>
+        <div class="press-excerpt">A deep-dive into the career of one of India's most versatile composers, now making waves from his London studio.</div>
+      </div>
+      <div class="press-card">
+        <div class="press-pub">BBC Asian Network</div>
+        <div class="press-headline">Introducing Artist of the Week — Arjuna Harjai</div>
+        <div class="press-excerpt">BBC Asian Network shines a light on the London-based composer whose debut single "Winter Ayun Waliye" charted on Spotify Viral 50 in India and Pakistan.</div>
+      </div>
+      <div class="press-card">
+        <div class="press-pub">Times of India</div>
+        <div class="press-headline">"Arjuna Harjai: The mind behind iconic advertising music"</div>
+        <div class="press-excerpt">From 'Dettol Dettol Ho' to Bollywood — Times of India profiles the composer whose jingles have become part of India's cultural fabric.</div>
+      </div>
+      <div class="press-card">
+        <div class="press-pub">Eastern Eye</div>
+        <div class="press-headline">London's South Asian music scene gains a powerful new voice</div>
+        <div class="press-excerpt">Eastern Eye's feature on Arjuna Harjai — a Bollywood veteran rewriting his story on UK soil.</div>
+      </div>
+      <div class="press-card">
+        <div class="press-pub">Good Ads Matter</div>
+        <div class="press-headline">"Dettol Dettol Ho — one of India's most recognisable jingles"</div>
+        <div class="press-excerpt">A tribute to the composition that defined a brand for a generation — and the composer behind it, Arjuna Harjai.</div>
+      </div>
+      <div class="press-card">
+        <div class="press-pub">Bold Outline</div>
+        <div class="press-headline">The One Minute Composer — Arjuna Harjai's most ambitious project yet</div>
+        <div class="press-excerpt">Bold Outline covers the launch of Arjuna's daily composition series, charting its reception on Spotify and across South Asian music communities.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRESS KIT -->
+<section class="presskit-section">
+  <div class="presskit-inner">
+    <h2>Press Kit</h2>
+    <p>Everything media professionals need — high-resolution assets, official biography, logos, and award documentation.</p>
+    <div class="pk-items">
+      <div class="pk-item"><div class="pk-icon">🖼️</div><div class="pk-name">Hi-Res Press Photos</div></div>
+      <div class="pk-item"><div class="pk-icon">📝</div><div class="pk-name">Official Biography</div></div>
+      <div class="pk-item"><div class="pk-icon">🏆</div><div class="pk-name">Award Documentation</div></div>
+      <div class="pk-item"><div class="pk-icon">🎨</div><div class="pk-name">Logo &amp; Brand Assets</div></div>
+      <div class="pk-item"><div class="pk-icon">🎵</div><div class="pk-name">Music Samples</div></div>
+      <div class="pk-item"><div class="pk-icon">📊</div><div class="pk-name">Fact Sheet</div></div>
+    </div>
+    <button class="btn-outline-white" onclick="location.href='contact.html'">Request Press Kit</button>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-strip">
+  <h2>Ready to add the Aart Sense sound to your brand?</h2>
+  <p>Get in touch to discuss a campaign, licensing deal, or brand partnership — all enquiries receive a personal response.</p>
+  <div class="cta-strip-btns">
+    <button class="btn-outline-white" onclick="location.href='contact.html'">Start a Conversation</button>
+    <button class="btn-white" onclick="location.href='services.html'">Our Services</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-cta">
+      <div class="footer-logo">AART SENSE</div>
+      <p class="footer-tagline">Award-winning composer, producer &amp; studio.<br>London, United Kingdom.</p>
+      <a href="contact.html" class="btn-white" style="display:inline-block;margin-top:16px;">Get in Touch</a>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="brand.html">Brand</a></li>
+        <li><a href="investors.html">Investors</a></li>
+        <li><a href="faqs.html">FAQs</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="services.html">Film &amp; TV Scoring</a></li>
+        <li><a href="services.html">Advertising Music</a></li>
+        <li><a href="services.html">Sync &amp; Clearances</a></li>
+        <li><a href="services.html">Original Songs</a></li>
+        <li><a href="services.html">Custom Composition</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Help &amp; Contact</h4>
+      <ul>
+        <li><a href="contact.html">Booking Enquiry</a></li>
+        <li><a href="faqs.html">FAQ</a></li>
+        <li><a href="brand.html">Press &amp; Media</a></li>
+        <li><a href="investors.html">Investors</a></li>
+        <li class="tel"><a href="mailto:mail@aartsense.co.uk">mail@aartsense.co.uk</a></li>
+      </ul>
+      <div class="fm-brands" style="margin-top:24px">
+        <div class="fm-brand">
+          <div class="fm-brand-name">AART SENSE</div>
+          <div class="fm-brand-tagline">Music for films &amp; advertising</div>
+        </div>
+        <div class="fm-brand">
+          <div class="fm-brand-name">RECORDS</div>
+          <div class="fm-brand-tagline">Original releases &amp; licensing</div>
+        </div>
+        <div class="fm-brand">
+          <div class="fm-brand-name">ACADEMY</div>
+          <div class="fm-brand-tagline">Performing arts education</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-links">
+      <span>©2026 Aart Sense Studios Ltd.</span>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="contact.html">Contact</a>
+      <span>London, United Kingdom</span>
+    </div>
+    <div class="socials">
+      <div class="social-btn" title="Twitter / X">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
+      </div>
+      <div class="social-btn" title="Facebook">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </div>
+      <div class="social-btn" title="Instagram">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </div>
+      <div class="social-btn" title="LinkedIn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="chat-bubble">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+</div>
+
+<script src="animations.js" defer></script>
+</body>
+</html>

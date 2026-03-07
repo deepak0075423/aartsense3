@@ -214,11 +214,22 @@
       max-width: 130px;
     }
     .brand-logos {
+      overflow: hidden;
+      margin-bottom: 44px;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%);
+    }
+    .brand-logos-track {
       display: flex;
       align-items: center;
-      gap: 32px;
-      margin-bottom: 44px;
-      flex-wrap: wrap;
+      gap: 48px;
+      width: max-content;
+      animation: brandMarquee 22s linear infinite;
+    }
+    .brand-logos-track:hover { animation-play-state: paused; }
+    @keyframes brandMarquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
     }
     .brand-logo {
       font-size: 13px;
@@ -226,7 +237,11 @@
       color: #b0b0b0;
       letter-spacing: .8px;
       text-transform: uppercase;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: color .2s;
     }
+    .brand-logo:hover { color: #fff; }
     .brand-logo.small { font-size: 11px; }
     .brand-logo svg { fill: #b0b0b0; }
     /* Xbox custom */
@@ -462,62 +477,278 @@
     ───────────────────────────────────────── */
     /* App mockup */
     .app-mockup {
-      background: #1a1a2e;
-      border-radius: 10px;
+      background: #13132a;
+      border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 24px 64px rgba(0,0,0,.18);
+      box-shadow: 0 32px 80px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.06);
     }
     .app-titlebar {
-      background: #111;
+      background: #0d0d1e;
       padding: 10px 14px;
       display: flex;
       align-items: center;
       gap: 6px;
     }
-    .dot { width: 9px; height: 9px; border-radius: 50%; }
+    .app-titlebar-label {
+      font-size: 10px;
+      font-weight: 600;
+      color: rgba(255,255,255,.3);
+      margin-left: auto;
+      letter-spacing: .4px;
+    }
+    .dot { width: 9px; height: 9px; border-radius: 50%; cursor: default; }
     .dot-r { background: #ff5f57; }
     .dot-y { background: #febc2e; }
     .dot-g { background: #28c840; }
-    .app-body { padding: 12px; }
+    .app-body { padding: 12px 12px 0; }
     .app-search-bar {
-      background: #0d0d1a;
+      background: #0a0a1a;
       border-radius: 6px;
-      padding: 8px 12px;
+      padding: 7px 10px;
       display: flex;
       align-items: center;
       gap: 8px;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
+      border: 1px solid rgba(255,255,255,.06);
     }
     .app-search-bar span {
-      font-size: 11px;
-      color: rgba(255,255,255,.4);
+      font-size: 10.5px;
+      color: rgba(255,255,255,.35);
     }
-    .app-search-icon { font-size: 12px; color: rgba(255,255,255,.3); }
-    .app-tracks {
+    .app-search-icon { font-size: 11px; }
+    /* Tag pills */
+    .app-tags {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .app-tag {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .4px;
+      color: rgba(255,255,255,.55);
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 20px;
+      padding: 3px 8px;
+      cursor: pointer;
+      transition: background .15s, color .15s;
+      white-space: nowrap;
+    }
+    .app-tag:hover, .app-tag.active { background: #7c6ef0; color: #fff; border-color: #7c6ef0; }
+    /* Tracks list */
+    /* Spotify embed wrapper */
+    .spotify-wrap {
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+    .spotify-wrap iframe { display: block; }
+    .app-track-list {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 2px;
     }
+    .spotify-footer {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 4px 4px;
+      font-size: 10px;
+      font-weight: 600;
+      color: rgba(255,255,255,.3);
+      letter-spacing: .3px;
+    }
+    /* Legacy selector kept for compat */
+    .app-tracks { display: flex; flex-direction: column; gap: 2px; }
     .app-track {
       display: grid;
-      grid-template-columns: 28px 1fr auto;
+      grid-template-columns: 32px 1fr auto;
       align-items: center;
       gap: 8px;
-      padding: 6px 8px;
-      border-radius: 4px;
-      background: rgba(255,255,255,.03);
+      padding: 6px 6px;
+      border-radius: 5px;
+      cursor: pointer;
+      background: transparent;
+      transition: background .15s;
+      position: relative;
     }
-    .app-track:hover { background: rgba(255,255,255,.07); }
-    .app-track-thumb {
-      width: 28px;
-      height: 28px;
-      border-radius: 3px;
+    .app-track:hover { background: rgba(255,255,255,.06); }
+    .app-track.active { background: rgba(124,110,240,.12); }
+    .app-track.active .app-track-name { color: #a89ef8; }
+    /* Play icon revealed on hover */
+    .app-track-play {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px; height: 20px;
+      background: rgba(255,255,255,.12);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0;
+      transition: opacity .15s;
+      pointer-events: none;
+    }
+    .app-track:hover .app-track-play { opacity: 1; }
+    .app-track.active .app-track-play { opacity: 0; } /* EQ shows instead when active */
+    /* Thumb wrapper — EQ overlay */
+    .app-track-thumb-wrap {
+      position: relative;
+      width: 32px;
+      height: 32px;
       flex-shrink: 0;
     }
+    .app-track-thumb {
+      width: 32px;
+      height: 32px;
+      border-radius: 4px;
+      position: absolute;
+      inset: 0;
+    }
+    .app-eq {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 2px;
+      padding: 5px 4px;
+      background: rgba(0,0,0,.55);
+      border-radius: 4px;
+      opacity: 0;
+      transition: opacity .2s;
+    }
+    .app-track.active .app-eq { opacity: 1; }
+    .app-eq-bar {
+      width: 3px;
+      border-radius: 1px;
+      background: #a89ef8;
+      height: 4px;
+      animation: eqBounce .75s ease-in-out infinite alternate;
+    }
+    .app-eq-bar:nth-child(2) { animation-delay: .18s; animation-duration: .6s; }
+    .app-eq-bar:nth-child(3) { animation-delay: .07s; animation-duration: .9s; }
+    .app-eq-bar:nth-child(4) { animation-delay: .33s; animation-duration: .68s; }
+    @keyframes eqBounce {
+      from { height: 2px; }
+      to   { height: 14px; }
+    }
     .app-track-info { min-width: 0; }
-    .app-track-name { font-size: 10.5px; color: rgba(255,255,255,.8); font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .app-track-artist { font-size: 9.5px; color: rgba(255,255,255,.4); }
-    .app-track-dur { font-size: 10px; color: rgba(255,255,255,.4); }
+    .app-track-name { font-size: 10.5px; color: rgba(255,255,255,.82); font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .app-track-artist { font-size: 9px; color: rgba(255,255,255,.38); margin-top: 1px; }
+    /* Mini waveform */
+    .app-track-wf {
+      display: flex;
+      align-items: center;
+      gap: 1.5px;
+      height: 18px;
+    }
+    .app-track-wf div {
+      width: 2px;
+      border-radius: 1px;
+      background: rgba(255,255,255,.18);
+      flex-shrink: 0;
+    }
+    .app-track.active .app-track-wf div { background: rgba(168,158,248,.45); }
+    .app-track-dur { font-size: 9.5px; color: rgba(255,255,255,.32); text-align: right; }
+    /* Bottom player bar */
+    .app-player {
+      background: #0d0d1e;
+      border-top: 1px solid rgba(255,255,255,.07);
+      padding: 10px 12px 12px;
+      margin-top: 8px;
+    }
+    .app-player-main {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .app-player-thumb {
+      width: 30px;
+      height: 30px;
+      border-radius: 4px;
+      flex-shrink: 0;
+      transition: background .3s;
+    }
+    .app-player-info { flex: 1; min-width: 0; }
+    .app-player-title {
+      font-size: 10px;
+      font-weight: 700;
+      color: rgba(255,255,255,.88);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .app-player-artist { font-size: 9px; color: rgba(255,255,255,.38); margin-top: 1px; }
+    .app-player-controls { display: flex; align-items: center; gap: 10px; }
+    .app-ctrl-btn {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      color: rgba(255,255,255,.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color .15s;
+    }
+    .app-ctrl-btn:hover { color: rgba(255,255,255,.8); }
+    .app-ctrl-btn.play-btn {
+      width: 26px;
+      height: 26px;
+      background: #fff;
+      border-radius: 50%;
+      color: #000;
+    }
+    .app-ctrl-btn.play-btn:hover { background: #e8e8e8; }
+    .app-progress-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .app-progress-time { font-size: 8.5px; color: rgba(255,255,255,.28); min-width: 22px; }
+    .app-progress-bar {
+      flex: 1;
+      height: 3px;
+      background: rgba(255,255,255,.1);
+      border-radius: 2px;
+      cursor: pointer;
+      position: relative;
+    }
+    .app-progress-fill {
+      height: 100%;
+      background: #7c6ef0;
+      border-radius: 2px;
+      width: 28%;
+      transition: width .1s linear;
+      position: relative;
+    }
+    .app-progress-fill::after {
+      content: '';
+      position: absolute;
+      right: -3px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 7px;
+      height: 7px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 1px 4px rgba(0,0,0,.4);
+    }
+    .app-vol {
+      display: flex;
+      align-items: flex-end;
+      gap: 2px;
+      height: 12px;
+    }
+    .app-vol span {
+      width: 2.5px;
+      border-radius: 1px;
+      background: rgba(255,255,255,.25);
+    }
 
     /* ─────────────────────────────────────────
        SECTION 6 — NEW MUSIC DAILY (split)
@@ -919,13 +1150,51 @@
     ───────────────────────────────────────── */
     .brand-grid-section {
       background: #000;
-      padding: 8px;
+      padding: 8px 8px 0;
+    }
+    .brand-grid-viewport {
+      overflow: hidden;
+      /* height set by JS — shows exactly 2 rows */
     }
     .brand-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 6px;
+      transition: transform .52s cubic-bezier(.22,.68,0,1.1);
+      will-change: transform;
     }
+    /* Pagination nav */
+    .bg-nav-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 10px 0 8px;
+    }
+    .bg-nav-btn {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      color: rgba(255,255,255,.65);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: background .15s, color .15s;
+      flex-shrink: 0;
+    }
+    .bg-nav-btn:hover { background: rgba(255,255,255,.18); color: #fff; }
+    .bg-nav-btn[disabled] { opacity: .22; cursor: default; pointer-events: none; }
+    .bg-page-dots { display: flex; gap: 7px; align-items: center; }
+    .bg-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.2);
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: background .22s, transform .22s;
+    }
+    .bg-dot.active { background: #fff; transform: scale(1.5); }
     .bg-cell {
       position: relative;
       border-radius: 6px;
@@ -995,12 +1264,19 @@
     }
     .artists-sub h3 { font-size: 28px; font-weight: 800; letter-spacing: -.8px; }
     .artists-sub span { font-size: 10.5px; font-weight: 700; letter-spacing: 1.1px; text-transform: uppercase; color: #999; }
-    .artists-row {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
+    .artists-scroll-wrap {
+      position: relative;
     }
+    .artists-row {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+    }
+    .artists-row::-webkit-scrollbar { display: none; }
     .artist-tile {
+      flex: 0 0 calc(25% - 6px);
       border-radius: 6px;
       overflow: hidden;
       aspect-ratio: 3/4;
@@ -1013,6 +1289,26 @@
       transition: transform .4s;
     }
     .artist-tile:hover .at-bg { transform: scale(1.04); }
+    .artists-scroll-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      box-shadow: 0 2px 10px rgba(0,0,0,.1);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      z-index: 2;
+      font-size: 15px;
+      color: #111;
+      transition: background .15s, box-shadow .15s;
+    }
+    .artists-scroll-btn:hover { background: #f5f5f5; box-shadow: 0 4px 16px rgba(0,0,0,.14); }
+    .artists-scroll-btn[disabled] { opacity: 0; pointer-events: none; }
+    .artists-scroll-btn.asc-prev { left: -18px; }
+    .artists-scroll-btn.asc-next { right: -18px; }
 
     /* ─────────────────────────────────────────
        SECTION 15 — PLAYLISTS (now playing + grid)
@@ -1164,6 +1460,18 @@
       border-bottom: 1px solid #1a1a1a;
       margin-bottom: 28px;
     }
+    .footer-logo {
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: -.3px;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .footer-tagline {
+      font-size: 12.5px;
+      color: rgba(255,255,255,.45);
+      line-height: 1.65;
+    }
     .footer-cta h3 {
       font-size: 21px;
       font-weight: 800;
@@ -1272,7 +1580,6 @@
       .brand-grid { grid-template-columns: repeat(2, 1fr); }
       .playlists-grid { grid-template-columns: repeat(2, 1fr); }
       .footer-top { grid-template-columns: 1fr 1fr; }
-      .artists-row { grid-template-columns: repeat(2, 1fr); }
       .genre-heading { font-size: 40px; }
       .enterprise-section h2 { font-size: 40px; }
       .top-bar { display: none; }
@@ -1284,10 +1591,33 @@
       .hero { padding: 32px 16px 0; }
       .amplify-inner, .ai-banner-inner { padding: 0 16px; }
       .test-grid, .features-grid, .playlists-grid { grid-template-columns: 1fr; }
-      .ent-grid, .brand-grid, .artists-row { grid-template-columns: 1fr; }
+      .ent-grid, .brand-grid { grid-template-columns: 1fr; }
+      .artist-tile { flex: 0 0 calc(50% - 4px); }
       .footer-top { grid-template-columns: 1fr; }
       section, .testimonials-section, .features-section,
       .enterprise-section, .genre-section, .playlists-section { padding-left: 16px; padding-right: 16px; }
+    }
+
+    /* ── Silhouette bob keyframe ── */
+    @keyframes silBob {
+      from { transform: translateY(0px); }
+      to   { transform: translateY(-7px); }
+    }
+
+    /* ── Smooth image/card hover lift ── */
+    .pl-tile, .feat-card, .test-card, .bg-cell, .artist-tile {
+      transition: transform .22s ease, box-shadow .22s ease;
+    }
+    .pl-tile:hover    { transform: scale(1.025) !important; }
+    .feat-card:hover  { transform: translateY(-4px) !important; box-shadow: 0 10px 32px rgba(0,0,0,.12); }
+    .test-card:hover  { transform: translateY(-3px) !important; box-shadow: 0 8px 24px rgba(0,0,0,.08); }
+    .bg-cell:hover    { transform: scale(1.03) !important; }
+    .artist-tile:hover { transform: scale(1.03) !important; }
+
+    /* ── Section transitions — smooth scroll snap feel ── */
+    .split-row, .section-amplify, .features-section,
+    .testimonials-section, .playlists-section, .genre-section {
+      transition: opacity .01s; /* ensures paint layer for GPU */
     }
   </style>
 </head>
@@ -1316,12 +1646,12 @@
 <nav class="navbar">
   <div class="logo">AART SENSE</div>
   <div class="nav-links">
-    <a href="#">About</a>
-    <a href="#">Awards</a>
-    <a href="#">Music</a>
-    <a href="#">Films</a>
-    <a href="#">Brands</a>
-    <a href="#">Contact</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="investors.html">Investors</a>
+    <a href="brand.html">Brand</a>
+    <a href="faqs.html">FAQs</a>
+    <a href="contact.html">Contact</a>
   </div>
   <div class="nav-right">
     <span class="nav-login">Listen</span>
@@ -1347,15 +1677,34 @@
     </div>
 
     <div class="brand-logos">
-      <span class="brand-logo">DETTOL</span>
-      <span class="brand-logo">AMAZON</span>
-      <span class="brand-logo">CADBURY</span>
-      <span class="brand-logo">GOOGLE</span>
-      <span class="brand-logo" style="letter-spacing:2px">JIO</span>
-      <span class="brand-logo">AXIS BANK</span>
-      <span class="brand-logo">COCA-COLA</span>
-      <span class="brand-logo">SAMSUNG</span>
-      <span class="brand-logo">NESTLÉ</span>
+      <div class="brand-logos-track" aria-hidden="true">
+        <!-- Set 1 -->
+        <span class="brand-logo">DETTOL</span>
+        <span class="brand-logo">AMAZON</span>
+        <span class="brand-logo">CADBURY</span>
+        <span class="brand-logo">GOOGLE</span>
+        <span class="brand-logo">JIO</span>
+        <span class="brand-logo">AXIS BANK</span>
+        <span class="brand-logo">COCA-COLA</span>
+        <span class="brand-logo">SAMSUNG</span>
+        <span class="brand-logo">NESTLÉ</span>
+        <span class="brand-logo">PEPSI</span>
+        <span class="brand-logo">FLIPKART</span>
+        <span class="brand-logo">AMBUJA</span>
+        <!-- Set 2 — exact duplicate for seamless loop -->
+        <span class="brand-logo">DETTOL</span>
+        <span class="brand-logo">AMAZON</span>
+        <span class="brand-logo">CADBURY</span>
+        <span class="brand-logo">GOOGLE</span>
+        <span class="brand-logo">JIO</span>
+        <span class="brand-logo">AXIS BANK</span>
+        <span class="brand-logo">COCA-COLA</span>
+        <span class="brand-logo">SAMSUNG</span>
+        <span class="brand-logo">NESTLÉ</span>
+        <span class="brand-logo">PEPSI</span>
+        <span class="brand-logo">FLIPKART</span>
+        <span class="brand-logo">AMBUJA</span>
+      </div>
     </div>
 
     <!-- Dark concert banner -->
@@ -1434,68 +1783,108 @@
 <section>
   <div class="split-row rev" style="padding-top:0">
     <div class="split-visuals">
-      <!-- App mockup -->
+      <!-- Spotify player mockup -->
       <div class="app-mockup">
         <div class="app-titlebar">
           <div class="dot dot-r"></div>
           <div class="dot dot-y"></div>
           <div class="dot dot-g"></div>
+          <span class="app-titlebar-label">Aart Sense · Listen Now</span>
         </div>
         <div class="app-body">
-          <div class="app-search-bar">
-            <span class="app-search-icon">🔍</span>
-            <span>Search compositions or films</span>
+          <!-- Live Spotify embed -->
+          <div class="spotify-wrap">
+            <iframe id="spotify-frame"
+              src="https://open.spotify.com/embed/track/3g9f2r7CAXPi6ebsbOFgNf?utm_source=generator&theme=0"
+              width="100%" height="152" frameBorder="0"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"></iframe>
           </div>
-          <div class="app-tracks">
-            <div class="app-track">
-              <div class="app-track-thumb" style="background:linear-gradient(135deg,#e86c3a,#c44b1a)"></div>
+          <!-- Track selector -->
+          <div class="app-track-list">
+
+            <div class="app-track active"
+                 data-track="3g9f2r7CAXPi6ebsbOFgNf">
+              <div class="app-track-thumb-wrap">
+                <div class="app-track-thumb" style="background:linear-gradient(135deg,#e86c3a,#c44b1a)"></div>
+                <div class="app-eq">
+                  <div class="app-eq-bar"></div><div class="app-eq-bar"></div>
+                  <div class="app-eq-bar"></div><div class="app-eq-bar"></div>
+                </div>
+              </div>
               <div class="app-track-info">
                 <div class="app-track-name">O Soniye</div>
-                <div class="app-track-artist">Arjuna Harjai</div>
+                <div class="app-track-artist">Arjuna Harjai · Rytthm Upadyay</div>
               </div>
               <div class="app-track-dur">3:48</div>
+              <div class="app-track-play"><svg width="8" height="8" viewBox="0 0 10 10" fill="rgba(255,255,255,.7)"><polygon points="2,1 9,5 2,9"/></svg></div>
             </div>
-            <div class="app-track">
-              <div class="app-track-thumb" style="background:linear-gradient(135deg,#3a6ce8,#1a3ec4)"></div>
+
+            <div class="app-track"
+                 data-track="5AUYlghrRZHKxJ9ni5VIUx">
+              <div class="app-track-thumb-wrap">
+                <div class="app-track-thumb" style="background:linear-gradient(135deg,#3a6ce8,#1a3ec4)"></div>
+                <div class="app-eq">
+                  <div class="app-eq-bar"></div><div class="app-eq-bar"></div>
+                  <div class="app-eq-bar"></div><div class="app-eq-bar"></div>
+                </div>
+              </div>
               <div class="app-track-info">
                 <div class="app-track-name">Karigar</div>
-                <div class="app-track-artist">Arjuna Harjai</div>
+                <div class="app-track-artist">Arjuna Harjai · Surabhi Dashputra</div>
               </div>
               <div class="app-track-dur">4:12</div>
+              <div class="app-track-play"><svg width="8" height="8" viewBox="0 0 10 10" fill="rgba(255,255,255,.7)"><polygon points="2,1 9,5 2,9"/></svg></div>
             </div>
-            <div class="app-track">
-              <div class="app-track-thumb" style="background:linear-gradient(135deg,#8a3ae8,#5a1ac4)"></div>
-              <div class="app-track-info">
-                <div class="app-track-name">Ankhiyaan</div>
-                <div class="app-track-artist">Arjuna Harjai</div>
+
+            <div class="app-track"
+                 data-track="7B68557wAkUpbdg50tnGgI">
+              <div class="app-track-thumb-wrap">
+                <div class="app-track-thumb" style="background:linear-gradient(135deg,#8a3ae8,#5a1ac4)"></div>
+                <div class="app-eq">
+                  <div class="app-eq-bar"></div><div class="app-eq-bar"></div>
+                  <div class="app-eq-bar"></div><div class="app-eq-bar"></div>
+                </div>
               </div>
-              <div class="app-track-dur">3:21</div>
-            </div>
-            <div class="app-track">
-              <div class="app-track-thumb" style="background:linear-gradient(135deg,#e83a6c,#c41a4a)"></div>
               <div class="app-track-info">
-                <div class="app-track-name">Dhul Gaye</div>
-                <div class="app-track-artist">Arjuna Harjai</div>
+                <div class="app-track-name">Zikar Hai</div>
+                <div class="app-track-artist">Arjuna Harjai · Natasha Noorani</div>
               </div>
-              <div class="app-track-dur">4:05</div>
+              <div class="app-track-dur">4:01</div>
+              <div class="app-track-play"><svg width="8" height="8" viewBox="0 0 10 10" fill="rgba(255,255,255,.7)"><polygon points="2,1 9,5 2,9"/></svg></div>
             </div>
-            <div class="app-track">
-              <div class="app-track-thumb" style="background:linear-gradient(135deg,#3ae8b0,#1ac490)"></div>
+
+            <div class="app-track"
+                 data-track="4FRvFFSYigt5G0k4Ty14yS">
+              <div class="app-track-thumb-wrap">
+                <div class="app-track-thumb" style="background:linear-gradient(135deg,#1a1a2e,#2e3a6e)"></div>
+                <div class="app-eq">
+                  <div class="app-eq-bar"></div><div class="app-eq-bar"></div>
+                  <div class="app-eq-bar"></div><div class="app-eq-bar"></div>
+                </div>
+              </div>
               <div class="app-track-info">
-                <div class="app-track-name">Main Janu Na</div>
-                <div class="app-track-artist">Arjuna Harjai</div>
+                <div class="app-track-name">Winter Ayun Waliye</div>
+                <div class="app-track-artist">Arjuna Harjai · Jyotica Tangri</div>
               </div>
-              <div class="app-track-dur">3:36</div>
+              <div class="app-track-dur">3:24</div>
+              <div class="app-track-play"><svg width="8" height="8" viewBox="0 0 10 10" fill="rgba(255,255,255,.7)"><polygon points="2,1 9,5 2,9"/></svg></div>
             </div>
+
+          </div><!-- /app-track-list -->
+
+          <div class="spotify-footer">
+            <svg width="12" height="12" viewBox="0 0 168 168" fill="#1db954"><path d="M84 0C37.6 0 0 37.6 0 84s37.6 84 84 84 84-37.6 84-84S130.4 0 84 0zm38.6 121.2c-1.5 2.5-4.8 3.3-7.3 1.8-20-12.2-45.2-15-74.9-8.2-2.9.7-5.7-1.1-6.4-4-.7-2.9 1.1-5.7 4-6.4 32.5-7.4 60.4-4.2 82.9 9.5 2.5 1.5 3.3 4.8 1.8 7.3zm10.3-22.9c-1.9 3.1-6 4.1-9.1 2.2-22.9-14.1-57.8-18.2-84.9-9.9-3.5 1.1-7.2-.9-8.2-4.4-1.1-3.5.9-7.2 4.4-8.2 30.9-9.4 69.3-4.8 95.6 11.2 3.1 1.9 4.1 6 2.2 9.1zm.9-23.8C112.7 59.1 71.6 57.8 47 65.1c-4.2 1.3-8.6-1.1-9.8-5.3-1.3-4.2 1.1-8.6 5.3-9.8 28.5-8.6 75.9-7 105.9 11 3.7 2.2 5 7 2.7 10.7-2.1 3.6-7 4.9-10.6 2.7z"/></svg>
+            <span>Streaming via Spotify</span>
           </div>
-        </div>
-      </div>
-    </div>
+        </div><!-- /app-body -->
+      </div><!-- /app-mockup -->
+    </div><!-- /split-visuals -->
     <div class="split-text">
       <p class="section-label">100% Original. 0% Generic.</p>
       <h2>Compositions crafted for filmmakers.</h2>
       <p>Every brief is treated as a unique creative challenge. Arjuna's process begins with the narrative — whether film or advertisement — ensuring the music is born from the story, not imposed upon it.</p>
-      <button class="btn-black">Book a Session</button>
+      <a href="https://open.spotify.com/artist/6EwLfbS1MI8kZXTIwkGfHN" target="_blank" rel="noopener" class="btn-black">Listen on Spotify</a>
     </div>
   </div>
 </section>
@@ -1865,6 +2254,7 @@
      SECTION 13 — BRAND GRID (dark)
 ════════════════════════════════════════ -->
 <section class="brand-grid-section">
+  <div class="brand-grid-viewport">
   <div class="brand-grid">
     <div class="bg-cell">
       <div class="bg-img" style="background:linear-gradient(135deg,#1a1230,#0d0820)"></div>
@@ -1873,6 +2263,42 @@
       <div class="bg-label">
         <div class="bg-brand-logo">P.O.W. – Bandi Yuddh Ke</div>
         <div class="bg-song-title">ABBY Gold · Original Score</div>
+      </div>
+    </div>
+    <div class="bg-cell">
+      <div class="bg-img" style="background:linear-gradient(135deg,#2a0a08,#3d1008)"></div>
+      <div class="bg-overlay"></div>
+      <div class="bg-badge">Film</div>
+      <div class="bg-label">
+        <div class="bg-brand-logo">Lucknow Central</div>
+        <div class="bg-song-title">dir. Ranjit Tiwari · Nikkhil Advani</div>
+      </div>
+    </div>
+    <div class="bg-cell">
+      <div class="bg-img" style="background:linear-gradient(135deg,#2a0a08,#3d1008)"></div>
+      <div class="bg-overlay"></div>
+      <div class="bg-badge">Film</div>
+      <div class="bg-label">
+        <div class="bg-brand-logo">Lucknow Central</div>
+        <div class="bg-song-title">dir. Ranjit Tiwari · Nikkhil Advani</div>
+      </div>
+    </div>
+    <div class="bg-cell">
+      <div class="bg-img" style="background:linear-gradient(135deg,#2a0a08,#3d1008)"></div>
+      <div class="bg-overlay"></div>
+      <div class="bg-badge">Film</div>
+      <div class="bg-label">
+        <div class="bg-brand-logo">Lucknow Central</div>
+        <div class="bg-song-title">dir. Ranjit Tiwari · Nikkhil Advani</div>
+      </div>
+    </div>
+    <div class="bg-cell">
+      <div class="bg-img" style="background:linear-gradient(135deg,#2a0a08,#3d1008)"></div>
+      <div class="bg-overlay"></div>
+      <div class="bg-badge">Film</div>
+      <div class="bg-label">
+        <div class="bg-brand-logo">Lucknow Central</div>
+        <div class="bg-song-title">dir. Ranjit Tiwari · Nikkhil Advani</div>
       </div>
     </div>
     <div class="bg-cell">
@@ -1938,6 +2364,12 @@
         <div class="bg-song-title">with Kausar Munir</div>
       </div>
     </div>
+  </div><!-- /.brand-grid -->
+  </div><!-- /.brand-grid-viewport -->
+  <div class="bg-nav-row" id="bgNavRow">
+    <button class="bg-nav-btn" id="bgPrev" aria-label="Previous">&#8592;</button>
+    <div class="bg-page-dots" id="bgDots"></div>
+    <button class="bg-nav-btn" id="bgNext" aria-label="Next">&#8594;</button>
   </div>
 </section>
 
@@ -1953,7 +2385,17 @@
     <h3>Award-winning composer<br>and singer-songwriter.</h3>
     <span>1,000+ Compositions &amp; 12+ Films</span>
   </div>
+  <div class="artists-scroll-wrap">
   <div class="artists-row">
+    <div class="artist-tile">
+      <div class="at-bg" style="background:linear-gradient(180deg,#c0392b 0%,#8b0000 100%)"></div>
+    </div>
+    <div class="artist-tile">
+      <div class="at-bg" style="background:linear-gradient(180deg,#c0392b 0%,#8b0000 100%)"></div>
+    </div>
+    <div class="artist-tile">
+      <div class="at-bg" style="background:linear-gradient(180deg,#c0392b 0%,#8b0000 100%)"></div>
+    </div>
     <div class="artist-tile">
       <div class="at-bg" style="background:linear-gradient(180deg,#c0392b 0%,#8b0000 100%)"></div>
     </div>
@@ -1966,7 +2408,8 @@
     <div class="artist-tile">
       <div class="at-bg" style="background:linear-gradient(180deg,#7f8c8d 0%,#2c3e50 100%)"></div>
     </div>
-  </div>
+  </div><!-- /.artists-row -->
+  </div><!-- /.artists-scroll-wrap -->
 </section>
 
 <!-- ═══════════════════════════════════════
@@ -2088,41 +2531,50 @@
 ════════════════════════════════════════ -->
 <footer class="footer">
   <div class="footer-top">
+    <!-- Brand + CTA -->
     <div class="footer-cta">
-      <h3>Need a Score for Your Next Project?</h3>
-      <p>
-        Get a custom composition brief back within
-        <strong>1 business day</strong>
-      </p>
-      <button class="btn-white">Get in Touch</button>
+      <div class="footer-logo">AART SENSE</div>
+      <p class="footer-tagline">Award-winning composer, producer &amp; studio.<br>London, United Kingdom.</p>
+      <a href="contact.html" class="btn-white" style="display:inline-block;margin-top:16px;">Get in Touch</a>
     </div>
+
+    <!-- Navigate — all pages -->
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="brand.html">Brand</a></li>
+        <li><a href="investors.html">Investors</a></li>
+        <li><a href="faqs.html">FAQs</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Services -->
     <div class="footer-col">
       <h4>Services</h4>
       <ul>
-        <li><a href="#">Film &amp; TV Scoring</a></li>
-        <li><a href="#">Advertising Music</a></li>
-        <li><a href="#">Sync &amp; Clearances</a></li>
-        <li><a href="#">Original Songs</a></li>
+        <li><a href="services.html">Film &amp; TV Scoring</a></li>
+        <li><a href="services.html">Advertising Music</a></li>
+        <li><a href="services.html">Sync &amp; Clearances</a></li>
+        <li><a href="services.html">Original Songs</a></li>
+        <li><a href="services.html">Custom Composition</a></li>
       </ul>
     </div>
+
+    <!-- Help & Contact -->
     <div class="footer-col">
-      <h4>This Is Aart Sense</h4>
+      <h4>Help &amp; Contact</h4>
       <ul>
-        <li><a href="#">About Arjuna</a></li>
-        <li><a href="#">Awards</a></li>
-        <li><a href="#">Press</a></li>
-        <li><a href="#">Playlists</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Contact</h4>
-      <ul>
-        <li><a href="#">Booking Enquiry</a></li>
-        <li><a href="#">FAQ</a></li>
+        <li><a href="contact.html">Booking Enquiry</a></li>
+        <li><a href="faqs.html">FAQ</a></li>
+        <li><a href="brand.html">Press &amp; Media</a></li>
+        <li><a href="investors.html">Investors</a></li>
         <li class="tel"><a href="mailto:mail@aartsense.co.uk">mail@aartsense.co.uk</a></li>
       </ul>
-      <div class="fm-brands" style="margin-top:28px">
-        <div class="fm-title">Aart Sense</div>
+      <div class="fm-brands" style="margin-top:24px">
         <div class="fm-brand">
           <div class="fm-brand-name">AART SENSE</div>
           <div class="fm-brand-tagline">Music for films &amp; advertising</div>
@@ -2144,23 +2596,19 @@
       <span>©2026 Aart Sense Studios Ltd.</span>
       <a href="#">Privacy Policy</a>
       <a href="#">Terms of Use</a>
-      <a href="#">Contact</a>
+      <a href="contact.html">Contact</a>
       <span>London, United Kingdom</span>
     </div>
     <div class="socials">
-      <!-- Twitter/X -->
-      <div class="social-btn" title="Twitter">
+      <div class="social-btn" title="Twitter / X">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
       </div>
-      <!-- Facebook -->
       <div class="social-btn" title="Facebook">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
       </div>
-      <!-- Instagram -->
       <div class="social-btn" title="Instagram">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
       </div>
-      <!-- LinkedIn -->
       <div class="social-btn" title="LinkedIn">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
       </div>
@@ -2176,48 +2624,459 @@
 </div>
 
 <script>
-  /* ── Generate waveform bars ───────────────────────────── */
+(function () {
+  'use strict';
+  const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ══════════════════════════════════════════════════
+     WAVEFORM BARS — generate + pulse
+  ══════════════════════════════════════════════════ */
   function makeWaveform(id, count, maxH, color, activeColor, activeUpto) {
     const el = document.getElementById(id);
     if (!el) return;
     for (let i = 0; i < count; i++) {
       const h = 4 + Math.random() * (maxH - 4);
       const bar = document.createElement('div');
-      bar.style.cssText = `width:2px;border-radius:1px;height:${h}px;background:${i < activeUpto ? activeColor : color}`;
+      bar.dataset.base = h;
+      bar.style.cssText = `width:2px;border-radius:1px;height:${h}px;background:${i < activeUpto ? activeColor : color};transition:height .18s ease;flex-shrink:0`;
       el.appendChild(bar);
     }
+    return el;
   }
 
-  // App mockup waveforms
+  // Music UI waveforms (section 6 mockup, still using fake waveform IDs)
   ['wf1','wf2','wf3','wf4'].forEach(id => makeWaveform(id, 22, 16, '#444', '#888', 0));
+
+  /* ── Spotify track selector (Section 5) ───────────────────────── */
+  const spotifyFrame = document.getElementById('spotify-frame');
+  document.querySelectorAll('.app-track').forEach(track => {
+    track.addEventListener('click', () => {
+      document.querySelectorAll('.app-track').forEach(t => t.classList.remove('active'));
+      track.classList.add('active');
+      if (spotifyFrame && track.dataset.track) {
+        // autoplay=1 works because this fires on a direct user gesture (click)
+        spotifyFrame.src =
+          'https://open.spotify.com/embed/track/' + track.dataset.track +
+          '?utm_source=generator&theme=0&autoplay=1';
+      }
+    });
+  });
 
   // Search UI waveforms
   makeWaveform('suf-wf1', 36, 22, '#d0d0d0', '#111', 0);
   makeWaveform('suf-wf2', 36, 22, '#d0d0d0', '#111', 0);
   makeWaveform('suf-wf3', 36, 22, '#d0d0d0', '#111', 14);
 
-  /* ── Navbar scroll shadow ─────────────────────────────── */
-  const navbar = document.querySelector('.navbar');
-  window.addEventListener('scroll', () => {
-    navbar.style.boxShadow = window.scrollY > 8
-      ? '0 2px 12px rgba(0,0,0,.08)'
-      : 'none';
-  });
+  // Animate suf-wf3 (the "active" one) to pulse like it's playing
+  if (!REDUCED) {
+    const activeWf = document.getElementById('suf-wf3');
+    if (activeWf) {
+      setInterval(() => {
+        activeWf.querySelectorAll('div').forEach(bar => {
+          const base = parseFloat(bar.dataset.base);
+          const jitter = (Math.random() - 0.5) * 8;
+          bar.style.height = Math.max(3, Math.min(22, base + jitter)) + 'px';
+        });
+      }, 180);
+    }
+    // Also pulse wf1 subtly
+    const wf1 = document.getElementById('wf1');
+    if (wf1) {
+      setInterval(() => {
+        wf1.querySelectorAll('div').forEach(bar => {
+          const base = parseFloat(bar.dataset.base);
+          bar.style.height = Math.max(3, base + (Math.random() - 0.5) * 6) + 'px';
+        });
+      }, 220);
+    }
+  }
 
-  /* ── Playlist / artist tile hover cursor ─────────────── */
+  /* ══════════════════════════════════════════════════
+     NAVBAR — scroll shadow + id for animations.js compat
+  ══════════════════════════════════════════════════ */
+  const navbar = document.querySelector('.navbar');
+  if (navbar) navbar.id = 'navbar'; // animations.js looks for id="navbar"
+  window.addEventListener('scroll', () => {
+    if (navbar) navbar.style.boxShadow = window.scrollY > 8
+      ? '0 2px 16px rgba(0,0,0,.1)' : 'none';
+  }, { passive: true });
+
+  /* ══════════════════════════════════════════════════
+     CURSOR on interactive tiles
+  ══════════════════════════════════════════════════ */
   document.querySelectorAll('.pl-tile, .artist-tile, .bg-cell').forEach(el => {
     el.style.cursor = 'pointer';
   });
 
-  /* ── Simple play button toggle on now-playing bar ─────── */
+  /* ══════════════════════════════════════════════════
+     NOW-PLAYING bar — play toggle + progress animation
+  ══════════════════════════════════════════════════ */
   const npPlay = document.querySelector('.np-btn:nth-child(2)');
   let playing = true;
+  let progressW = 45;
+  const progressFill = document.querySelector('.np-progress-fill');
+
   if (npPlay) {
     npPlay.addEventListener('click', () => {
       playing = !playing;
       npPlay.textContent = playing ? '⏸' : '▶';
     });
   }
+
+  // Slowly advance progress while "playing"
+  if (!REDUCED && progressFill) {
+    setInterval(() => {
+      if (!playing) return;
+      progressW = Math.min(progressW + 0.08, 100);
+      progressFill.style.width = progressW + '%';
+      if (progressW >= 100) progressW = 0;
+    }, 100);
+  }
+
+  /* ══════════════════════════════════════════════════
+     HERO ENTRANCE — staggered fade + slide up
+  ══════════════════════════════════════════════════ */
+  if (!REDUCED) {
+    // Hero text children
+    const heroText = document.querySelector('.hero-text');
+    if (heroText) {
+      Array.from(heroText.children).forEach((el, i) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(28px)';
+        el.style.transition = `opacity .7s ease ${0.1 + i * 0.14}s, transform .7s cubic-bezier(.22,.68,0,1.1) ${0.1 + i * 0.14}s`;
+      });
+    }
+    // CTA block
+    const heroCta = document.querySelector('.hero-cta-block');
+    if (heroCta) {
+      heroCta.style.opacity = '0';
+      heroCta.style.transform = 'translateY(22px)';
+      heroCta.style.transition = 'opacity .65s ease .52s, transform .65s cubic-bezier(.22,.68,0,1.1) .52s';
+    }
+    // Brand logos marquee — fade in the container
+    const logoContainer = document.querySelector('.brand-logos');
+    if (logoContainer) {
+      logoContainer.style.opacity = '0';
+      logoContainer.style.transition = 'opacity .7s ease .55s';
+    }
+    // Dark banner silhouettes
+    const banner = document.querySelector('.hero-dark-banner');
+    if (banner) {
+      banner.style.opacity = '0';
+      banner.style.transform = 'translateY(18px)';
+      banner.style.transition = 'opacity .8s ease .9s, transform .8s ease .9s';
+    }
+
+    // Trigger
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        if (heroText) Array.from(heroText.children).forEach(el => {
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+        });
+        if (heroCta) { heroCta.style.opacity = '1'; heroCta.style.transform = 'none'; }
+        if (logoContainer) logoContainer.style.opacity = '1';
+        if (banner) { banner.style.opacity = '1'; banner.style.transform = 'none'; }
+      });
+    });
+
+    /* ══════════════════════════════════════════════════
+       SILHOUETTE BOB — subtle float on the concert visual
+    ══════════════════════════════════════════════════ */
+    const silhouettes = document.querySelectorAll('.sil');
+    silhouettes.forEach((sil, i) => {
+      const dur = 2800 + i * 400;
+      const delay = i * 320;
+      sil.style.animation = `silBob ${dur}ms ease-in-out ${delay}ms infinite alternate`;
+    });
+  }
+
+  /* ══════════════════════════════════════════════════
+     SCROLL ANIMATIONS — IntersectionObserver
+  ══════════════════════════════════════════════════ */
+  if (REDUCED) return;
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(({ isIntersecting, target }) => {
+      if (!isIntersecting) return;
+      target.style.opacity = '1';
+      target.style.transform = 'none';
+      obs.unobserve(target);
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -24px 0px' });
+
+  function reveal(el, delay, fromX) {
+    if (!el || el._ix) return;
+    el._ix = true;
+    el.style.opacity = '0';
+    el.style.transform = fromX ? `translateX(${fromX}px)` : 'translateY(28px)';
+    el.style.transition = `opacity .62s ease ${delay}ms, transform .62s cubic-bezier(.22,.68,0,1.1) ${delay}ms`;
+    el.style.willChange = 'opacity, transform';
+    obs.observe(el);
+  }
+
+  // — Split rows: text slides from left, visual from right
+  document.querySelectorAll('.split-row').forEach(row => {
+    const isRev = row.classList.contains('rev');
+    const text = row.querySelector('.split-text');
+    const visual = row.querySelector('.split-visuals');
+    if (text) reveal(text, 0, isRev ? 40 : -40);
+    if (visual) reveal(visual, 80, isRev ? -40 : 40);
+  });
+
+  // — Section headings not covered by animations.js
+  document.querySelectorAll(
+    '.section-centered h2, .section-centered p, .section-centered button,' +
+    '.vibe-section h2, .vibe-section p, .vibe-section button,' +
+    '.enterprise-section h2, .enterprise-section p,' +
+    '.features-header h2, .features-header p,' +
+    '.test-header h2, .testimonials-section .trustpilot,' +
+    '.playlists-header h2,' +
+    '.ai-banner-left h2, .ai-banner-left .ai-badge,' +
+    '.genre-heading, .artists-sub'
+  ).forEach((el, i) => reveal(el, i * 80));
+
+  // — Amplify left content
+  document.querySelectorAll('.amplify-left > *').forEach((el, i) => reveal(el, i * 90));
+  document.querySelectorAll('.amplify-right > *').forEach((el, i) => reveal(el, 120 + i * 90, 30));
+
+  // — Stat rows in amplify (counter animation)
+  const statObs = new IntersectionObserver((entries) => {
+    entries.forEach(({ isIntersecting, target }) => {
+      if (!isIntersecting) return;
+      const full = target.textContent;
+      const numMatch = full.match(/[\d,]+/);
+      if (!numMatch) return;
+      const target_n = parseInt(numMatch[0].replace(/,/g, ''), 10);
+      const suffix = full.replace(/[\d,]/, '').replace(numMatch[0], '');
+      const prefix = full.slice(0, full.indexOf(numMatch[0]));
+      const em = target.querySelector('em');
+      const emText = em ? em.textContent : '';
+      if (em) em.textContent = '';
+      const t0 = performance.now();
+      function tick(now) {
+        const p = Math.min((now - t0) / 1000, 1);
+        const val = Math.round((1 - Math.pow(2, -10 * p)) * target_n);
+        const fmt = val >= 1000 ? val.toLocaleString('en-GB') : val;
+        target.textContent = prefix + fmt + '+';
+        if (em) { target.appendChild(document.createTextNode(' ')); const e2 = em.cloneNode(); e2.textContent = emText; target.appendChild(e2); }
+        if (p < 1) requestAnimationFrame(tick);
+        else target.innerHTML = full;
+      }
+      requestAnimationFrame(tick);
+      statObs.unobserve(target);
+    });
+  }, { threshold: 0.7 });
+  document.querySelectorAll('.stat-row').forEach(el => statObs.observe(el));
+
+  // — Enterprise grid items stagger
+  document.querySelectorAll('.ent-item').forEach((el, i) => {
+    if (el._ix) return;
+    reveal(el, i * 75);
+  });
+
+  // — Dark CTA section
+  const dcH2 = document.querySelector('.dark-cta h2');
+  const dcP = document.querySelector('.dark-cta p');
+  const dcBtn = document.querySelector('.dark-cta button');
+  const dcCards = document.querySelectorAll('.dc-card');
+  [dcH2, dcP, dcBtn].forEach((el, i) => el && reveal(el, i * 100));
+  dcCards.forEach((el, i) => reveal(el, 200 + i * 100, 0));
+
+  // — AI banner right visual
+  const aiBannerRight = document.querySelector('.ai-banner-right');
+  if (aiBannerRight) reveal(aiBannerRight, 180, 30);
+
+  // — Search UI frame
+  const sufFrame = document.querySelector('.search-ui-frame');
+  if (sufFrame) reveal(sufFrame, 0);
+
+  /* ══════════════════════════════════════════════════
+     PARALLAX — amplify road element on scroll
+  ══════════════════════════════════════════════════ */
+  const road = document.querySelector('.amplify-road');
+  if (road) {
+    window.addEventListener('scroll', () => {
+      const section = road.closest('section, .section-amplify') || road.parentElement;
+      const rect = section.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+      const pct = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+      road.style.transform = `translateY(${(pct - 0.5) * 40}px)`;
+    }, { passive: true });
+  }
+
+  /* ══════════════════════════════════════════════════
+     BRAND GRID CELLS — scale reveal on scroll
+  ══════════════════════════════════════════════════ */
+  const bgCells = document.querySelectorAll('.bg-cell');
+  if (bgCells.length) {
+    const bgObs = new IntersectionObserver((entries) => {
+      entries.forEach(({ isIntersecting, target }) => {
+        if (!isIntersecting) return;
+        target.style.opacity = '1';
+        target.style.transform = 'scale(1)';
+        bgObs.unobserve(target);
+      });
+    }, { threshold: 0.1 });
+
+    bgCells.forEach((cell, i) => {
+      if (cell._ix) return; // skip if animations.js already set up
+      cell.style.opacity = '0';
+      cell.style.transform = 'scale(.94)';
+      cell.style.transition = `opacity .55s ease ${i * 60}ms, transform .55s cubic-bezier(.22,.68,0,1.1) ${i * 60}ms`;
+      cell._ix = true;
+      bgObs.observe(cell);
+    });
+  }
+
+  /* ══════════════════════════════════════════════════
+     BRAND GRID — 2-row pagination
+  ══════════════════════════════════════════════════ */
+  (function () {
+    const viewport = document.querySelector('.brand-grid-viewport');
+    const grid     = document.querySelector('.brand-grid');
+    const prevBtn  = document.getElementById('bgPrev');
+    const nextBtn  = document.getElementById('bgNext');
+    const dotsEl   = document.getElementById('bgDots');
+    const navRow   = document.getElementById('bgNavRow');
+    if (!viewport || !grid || !prevBtn) return;
+
+    const COLS          = 4;
+    const ROWS_PER_PAGE = 2;
+    const GAP           = 6;
+    const cells         = Array.from(grid.children);
+    const totalRows     = Math.ceil(cells.length / COLS);
+    const totalPages    = Math.ceil(totalRows / ROWS_PER_PAGE);
+
+    // Hide nav if everything fits in 2 rows
+    if (cells.length <= COLS * ROWS_PER_PAGE) {
+      navRow.style.display = 'none';
+      return;
+    }
+
+    let page = 0;
+
+    // Build dots
+    for (let i = 0; i < totalPages; i++) {
+      const dot = document.createElement('button');
+      dot.className = 'bg-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Page ' + (i + 1));
+      dot.addEventListener('click', () => goTo(i));
+      dotsEl.appendChild(dot);
+    }
+
+    function rowHeight() {
+      return cells[0] ? cells[0].getBoundingClientRect().height : 0;
+    }
+
+    function setViewportHeight() {
+      const rh = rowHeight();
+      viewport.style.height = (rh * ROWS_PER_PAGE + GAP * (ROWS_PER_PAGE - 1)) + 'px';
+    }
+
+    function goTo(p) {
+      page = Math.max(0, Math.min(p, totalPages - 1));
+      const offset = page * ROWS_PER_PAGE * (rowHeight() + GAP);
+      grid.style.transform = 'translateY(-' + offset + 'px)';
+      dotsEl.querySelectorAll('.bg-dot').forEach((d, i) => d.classList.toggle('active', i === page));
+      prevBtn.disabled = page === 0;
+      nextBtn.disabled = page === totalPages - 1;
+    }
+
+    prevBtn.addEventListener('click', () => goTo(page - 1));
+    nextBtn.addEventListener('click', () => goTo(page + 1));
+
+    setViewportHeight();
+    goTo(0);
+    window.addEventListener('resize', () => { setViewportHeight(); goTo(page); });
+  })();
+
+  /* ══════════════════════════════════════════════════
+     ARTISTS ROW — horizontal scroll with arrows if > 4 tiles
+  ══════════════════════════════════════════════════ */
+  (function () {
+    const wrap  = document.querySelector('.artists-scroll-wrap');
+    const row   = document.querySelector('.artists-row');
+    if (!wrap || !row) return;
+    if (row.children.length <= 4) return;  // nothing to do
+
+    const prevBtn = document.createElement('button');
+    const nextBtn = document.createElement('button');
+    prevBtn.className = 'artists-scroll-btn asc-prev';
+    nextBtn.className = 'artists-scroll-btn asc-next';
+    prevBtn.setAttribute('aria-label', 'Scroll left');
+    nextBtn.setAttribute('aria-label', 'Scroll right');
+    prevBtn.innerHTML = '&#8592;';
+    nextBtn.innerHTML = '&#8594;';
+    wrap.appendChild(prevBtn);
+    wrap.appendChild(nextBtn);
+
+    function tileWidth() {
+      const t = row.children[0];
+      return t ? t.getBoundingClientRect().width + 8 : 280;
+    }
+
+    function updateButtons() {
+      prevBtn.disabled = row.scrollLeft < 4;
+      nextBtn.disabled = row.scrollLeft + row.clientWidth >= row.scrollWidth - 4;
+    }
+
+    prevBtn.addEventListener('click', () => { row.scrollBy({ left: -tileWidth() * 4, behavior: 'smooth' }); });
+    nextBtn.addEventListener('click', () => { row.scrollBy({ left:  tileWidth() * 4, behavior: 'smooth' }); });
+    row.addEventListener('scroll', updateButtons, { passive: true });
+    updateButtons();
+  })();
+
+  /* ══════════════════════════════════════════════════
+     ARTIST TILES — stagger scale + slide up
+  ══════════════════════════════════════════════════ */
+  document.querySelectorAll('.artist-tile').forEach((el, i) => {
+    if (el._ix) return;
+    el._ix = true;
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(22px) scale(.97)';
+    el.style.transition = `opacity .55s ease ${i * 90}ms, transform .55s cubic-bezier(.22,.68,0,1.1) ${i * 90}ms`;
+    obs.observe(el);
+  });
+
+  /* ══════════════════════════════════════════════════
+     PLAYLIST TILES — wave stagger
+  ══════════════════════════════════════════════════ */
+  document.querySelectorAll('.pl-tile').forEach((el, i) => {
+    if (el._ix) return;
+    el._ix = true;
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = `opacity .5s ease ${i * 50}ms, transform .5s cubic-bezier(.22,.68,0,1.1) ${i * 50}ms`;
+    obs.observe(el);
+  });
+
+  /* ══════════════════════════════════════════════════
+     FEAT CARDS — stagger
+  ══════════════════════════════════════════════════ */
+  document.querySelectorAll('.feat-card').forEach((el, i) => {
+    if (el._ix) return;
+    el._ix = true;
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = `opacity .55s ease ${i * 90}ms, transform .55s cubic-bezier(.22,.68,0,1.1) ${i * 90}ms`;
+    obs.observe(el);
+  });
+
+  /* ══════════════════════════════════════════════════
+     TEST CARDS — stagger
+  ══════════════════════════════════════════════════ */
+  document.querySelectorAll('.test-card').forEach((el, i) => {
+    if (el._ix) return;
+    el._ix = true;
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(22px)';
+    el.style.transition = `opacity .55s ease ${i * 80}ms, transform .55s cubic-bezier(.22,.68,0,1.1) ${i * 80}ms`;
+    obs.observe(el);
+  });
+
+})();
 </script>
+<script src="animations.js" defer></script>
 </body>
 </html>

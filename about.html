@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About – Aart Sense | Arjuna Harjai</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="shared.css"/>
+  <style>
+    /* ── Bio split ── */
+    .bio-section { padding: 80px 40px; }
+    .bio-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 72px; align-items: center;
+    }
+    .bio-text h2 {
+      font-size: 48px; font-weight: 800;
+      letter-spacing: -1.8px; line-height: 1.08;
+      margin-bottom: 20px;
+    }
+    .bio-text p {
+      font-size: 15px; color: #555;
+      line-height: 1.75; margin-bottom: 16px;
+    }
+    .bio-visual {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .bv-card {
+      border-radius: 8px; overflow: hidden; aspect-ratio: 3/4;
+    }
+    .bv-card:first-child { margin-top: 32px; }
+
+    /* ── Stats strip (dark) ── */
+    .stats-strip {
+      background: #0a0a0a; padding: 64px 40px;
+    }
+    .stats-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4,1fr);
+      gap: 32px;
+    }
+    .stat-block { text-align: center; }
+    .stat-num {
+      font-size: 52px; font-weight: 900;
+      letter-spacing: -2px; color: #fff;
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 12px; color: rgba(255,255,255,.45);
+      margin-top: 6px; font-weight: 500;
+      letter-spacing: .5px; text-transform: uppercase;
+    }
+
+    /* ── Timeline ── */
+    .timeline-section { padding: 80px 40px; background: #fafafa; border-top: 1px solid #e8e8e8; }
+    .timeline-inner { max-width: 800px; margin: 0 auto; }
+    .timeline-section h2 {
+      font-size: 44px; font-weight: 800;
+      letter-spacing: -1.5px; margin-bottom: 48px;
+    }
+    .timeline { position: relative; padding-left: 28px; }
+    .timeline::before {
+      content: '';
+      position: absolute; left: 0; top: 6px; bottom: 0;
+      width: 2px; background: #e0e0e0;
+    }
+    .tl-item {
+      position: relative; margin-bottom: 36px;
+    }
+    .tl-dot {
+      position: absolute; left: -34px; top: 4px;
+      width: 12px; height: 12px;
+      background: #000; border-radius: 50%;
+      border: 2px solid #fff;
+      box-shadow: 0 0 0 2px #000;
+    }
+    .tl-year {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase;
+      color: #888; margin-bottom: 4px;
+    }
+    .tl-title {
+      font-size: 17px; font-weight: 700;
+      color: #000; margin-bottom: 6px;
+    }
+    .tl-desc {
+      font-size: 13.5px; color: #555; line-height: 1.65;
+    }
+
+    /* ── Awards grid ── */
+    .awards-section { padding: 80px 40px; }
+    .awards-inner { max-width: 1200px; margin: 0 auto; }
+    .awards-section h2 {
+      font-size: 44px; font-weight: 800;
+      letter-spacing: -1.5px; margin-bottom: 8px;
+    }
+    .awards-section > .awards-inner > p {
+      font-size: 14px; color: #555; margin-bottom: 48px;
+    }
+    .awards-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .award-card {
+      background: #fff; border: 1px solid #e8e8e8;
+      border-radius: 10px; padding: 24px;
+      transition: box-shadow .2s, border-color .2s;
+    }
+    .award-card:hover {
+      border-color: #bbb;
+      box-shadow: 0 8px 32px rgba(0,0,0,.06);
+    }
+    .award-year {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase;
+      color: #888; margin-bottom: 10px;
+    }
+    .award-badge {
+      display: inline-block;
+      background: #000; color: #fff;
+      font-size: 10px; font-weight: 800;
+      padding: 3px 9px; border-radius: 2px;
+      letter-spacing: .6px; text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .award-badge.gold { background: #b8860b; }
+    .award-badge.bronze { background: #8b6542; }
+    .award-badge.recognition { background: #1a3a6a; }
+    .award-title {
+      font-size: 16px; font-weight: 700; margin-bottom: 6px;
+    }
+    .award-film {
+      font-size: 13px; color: #555; font-style: italic; margin-bottom: 8px;
+    }
+    .award-body { font-size: 12.5px; color: #666; line-height: 1.6; }
+
+    /* ── Press logos ── */
+    .press-section {
+      background: #fafafa; padding: 56px 40px;
+      border-top: 1px solid #e8e8e8;
+    }
+    .press-inner { max-width: 1200px; margin: 0 auto; }
+    .press-label { font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #aaa; text-align: center; margin-bottom: 28px; }
+    .press-logos {
+      display: flex; align-items: center;
+      justify-content: center; gap: 40px; flex-wrap: wrap;
+    }
+    .press-logo {
+      font-size: 14px; font-weight: 800;
+      color: #b0b0b0; letter-spacing: .5px;
+      text-transform: uppercase;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 960px) {
+      .bio-inner { grid-template-columns: 1fr; gap: 40px; }
+      .stats-inner { grid-template-columns: repeat(2,1fr); }
+      .awards-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .bio-section, .timeline-section, .awards-section, .press-section { padding: 48px 16px; }
+      .stats-strip { padding: 48px 16px; }
+      .bio-text h2 { font-size: 32px; }
+      .timeline-section h2, .awards-section h2 { font-size: 28px; }
+      .awards-grid { grid-template-columns: 1fr; }
+      .stats-inner { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="top-bar-left">
+    <a href="index.html"><span class="brand">AART SENSE</span></a>
+    <span class="sep">|</span><a href="#">RECORDS</a>
+    <span class="sep">|</span><a href="#">ACADEMY</a>
+  </div>
+  <div class="top-bar-right">
+    <a href="contact.html">Contact Us</a>
+    <a href="mailto:mail@aartsense.co.uk">mail@aartsense.co.uk</a>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="logo"><a href="index.html">AART SENSE</a></div>
+  <div class="nav-links">
+    <a href="about.html" class="active">About</a>
+    <a href="services.html">Services</a>
+    <a href="brand.html">Brand</a>
+    <a href="faqs.html">FAQs</a>
+    <a href="investors.html">Investors</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="nav-right">
+    <span class="nav-login">Listen</span>
+    <button class="btn-cta">Book Now</button>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <p class="section-label">About Arjuna Harjai</p>
+    <h1>Born into music.<br>Shaped by tradition.<br>Driven by innovation.</h1>
+    <p>Arjuna Harjai is an award-winning composer, singer-songwriter, and music producer whose journey began at age two and a half — when his parents introduced him to the rich traditions of Hindustani classical music.</p>
+    <div class="page-hero-meta">
+      <div class="ph-stat"><strong>1,000+</strong> Ad Jingles</div>
+      <div class="ph-stat"><strong>12+</strong> Feature Films</div>
+      <div class="ph-stat"><strong>20+</strong> Years Experience</div>
+      <div class="ph-stat"><strong>40+</strong> Global Brands</div>
+    </div>
+  </div>
+</div>
+
+<!-- BIO SECTION -->
+<section class="bio-section">
+  <div class="bio-inner">
+    <div class="bio-text">
+      <p class="section-label">The Story</p>
+      <h2>A composer who lives at the intersection of tradition and tomorrow.</h2>
+      <p>Arjuna Harjai's music career began in India, where he quickly established himself as a leading voice in the advertising and film music industry. His work with lyrical giants like Gulzar and Prasoon Joshi, and director Nikkhil Advani, helped define a generation of Indian screen music.</p>
+      <p>Now based in London, Arjuna has taken his craft global — scoring for international productions, composing independent releases, and launching "The One Minute Composer" series, a daily creative challenge that earned him BBC Asian Network's Introducing Artist of the Week in 2024.</p>
+      <p>His music blends the emotional depth of Hindustani classical music with the textures of contemporary pop, folk, and world music — creating a signature sound that is both timeless and utterly modern.</p>
+    </div>
+    <div class="bio-visual">
+      <div class="bv-card" style="background:linear-gradient(180deg,#1a1230 0%,#0d0820 100%)"></div>
+      <div class="bv-card" style="background:linear-gradient(180deg,#2e1a0a 0%,#1a0a00 100%)"></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-block">
+      <div class="stat-num">1,000+</div>
+      <div class="stat-label">Ad Jingles Composed</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-num">12+</div>
+      <div class="stat-label">Feature Films Scored</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-num">20+</div>
+      <div class="stat-label">Years of Experience</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-num">40+</div>
+      <div class="stat-label">Global Brands</div>
+    </div>
+  </div>
+</div>
+
+<!-- TIMELINE -->
+<section class="timeline-section">
+  <div class="timeline-inner">
+    <h2>The Journey</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">Early Life</div>
+        <div class="tl-title">First lessons at age two and a half</div>
+        <div class="tl-desc">Arjuna's parents introduced him to Hindustani classical music at a remarkably young age, beginning a lifelong relationship with melody, raga, and rhythm that would shape everything to come.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">Early Career · Mumbai</div>
+        <div class="tl-title">Breaking into Indian advertising</div>
+        <div class="tl-desc">Arjuna carved his name in the Mumbai advertising music scene, collaborating with legendary lyricists Gulzar, Prasoon Joshi, and Amitabh Bhattacharya on some of India's most iconic jingles — including the unforgettable 'Dettol Dettol Ho'.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2014–2018 · Bollywood</div>
+        <div class="tl-title">Feature films and television</div>
+        <div class="tl-desc">Scoring for director Nikkhil Advani's productions, Arjuna composed music and background scores for film and the critically acclaimed TV series P.O.W. – Bandi Yuddh Ke (Star Plus / ALTBalaji), Lucknow Central, Kapoor & Sons, Guddu Engineer, and Hero.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2016 · MAMI Award</div>
+        <div class="tl-title">Best Music Director — 5th Mumbai Shorts International Film Festival</div>
+        <div class="tl-desc">Won Best Music Director for the short film "Keh Nahi Paunga" at MAMI — one of India's most prestigious film festivals.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2017 · ABBY Awards</div>
+        <div class="tl-title">GOLD and BRONZE at the Creative ABBY Awards</div>
+        <div class="tl-desc">Won GOLD for Original Background Score "Rab Ki Baatein" and BRONZE for "Raahiyan Ve" from P.O.W. — India's most prestigious advertising awards.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">UK Move · London</div>
+        <div class="tl-title">Taking the craft global</div>
+        <div class="tl-desc">Arjuna relocated to London, establishing Aart Sense Studios Ltd and beginning a new chapter — composing for international productions while continuing to work with Indian and global brands.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2024 · Breakthrough</div>
+        <div class="tl-title">BBC Asian Network, Spotify Viral 50 &amp; The One Minute Composer</div>
+        <div class="tl-desc">Named BBC Asian Network's Introducing Artist of the Week. Launched "The One Minute Composer" — a daily original composition series. His track "Winter Ayun Waliye" hit the Spotify Viral 50 Charts in both India and Pakistan.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section class="awards-section">
+  <div class="awards-inner">
+    <h2>Awards &amp; Recognition</h2>
+    <p>A career defined by critical acclaim across film, advertising, and independent music.</p>
+    <div class="awards-grid">
+      <div class="award-card">
+        <div class="award-year">2017</div>
+        <div class="award-badge gold">Gold</div>
+        <div class="award-title">Creative ABBY Awards</div>
+        <div class="award-film">Original Background Score — "Rab Ki Baatein"</div>
+        <div class="award-body">From P.O.W. – Bandi Yuddh Ke, India's most prestigious advertising awards for original composition.</div>
+      </div>
+      <div class="award-card">
+        <div class="award-year">2017</div>
+        <div class="award-badge bronze">Bronze</div>
+        <div class="award-title">Creative ABBY Awards</div>
+        <div class="award-film">Original Background Score — "Raahiyan Ve"</div>
+        <div class="award-body">Second ABBY at the same ceremony for a second composition from P.O.W. — a remarkable double recognition.</div>
+      </div>
+      <div class="award-card">
+        <div class="award-year">2016</div>
+        <div class="award-badge">Best Music</div>
+        <div class="award-title">MAMI Film Festival</div>
+        <div class="award-film">Best Music Director — "Keh Nahi Paunga"</div>
+        <div class="award-body">5th Mumbai Shorts International Film Festival — one of India's most important platforms for emerging and established film talent.</div>
+      </div>
+      <div class="award-card">
+        <div class="award-year">2024</div>
+        <div class="award-badge recognition">Recognition</div>
+        <div class="award-title">BBC Asian Network</div>
+        <div class="award-film">Introducing Artist of the Week</div>
+        <div class="award-body">Named as BBC Asian Network's featured Introducing Artist — a significant milestone for a UK-based South Asian composer.</div>
+      </div>
+      <div class="award-card">
+        <div class="award-year">2024</div>
+        <div class="award-badge recognition">Viral 50</div>
+        <div class="award-title">Spotify India &amp; Pakistan</div>
+        <div class="award-film">"Winter Ayun Waliye" — The One Minute Composer</div>
+        <div class="award-body">Debuted on the Spotify Viral 50 Charts simultaneously in India and Pakistan — a landmark achievement as an independent UK artist.</div>
+      </div>
+      <div class="award-card">
+        <div class="award-year">Ongoing</div>
+        <div class="award-badge">Press</div>
+        <div class="award-title">Featured in Major Publications</div>
+        <div class="award-film">Rolling Stone India · Times of India · Eastern Eye</div>
+        <div class="award-body">Regularly featured in India's leading music and entertainment press, as well as UK South Asian media outlets.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRESS LOGOS -->
+<section class="press-section">
+  <div class="press-inner">
+    <p class="press-label">As featured in</p>
+    <div class="press-logos">
+      <span class="press-logo">Rolling Stone India</span>
+      <span class="press-logo">Times of India</span>
+      <span class="press-logo">BBC Asian Network</span>
+      <span class="press-logo">Eastern Eye</span>
+      <span class="press-logo">Bold Outline</span>
+      <span class="press-logo">The Hindu</span>
+      <span class="press-logo">Good Ads Matter</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<div class="cta-strip">
+  <h2>Let's create something together.</h2>
+  <p>Whether you're producing a film, launching a campaign, or looking for an original song — Arjuna's door is open.</p>
+  <div class="cta-strip-btns">
+    <button class="btn-outline-white" onclick="location.href='contact.html'">Get in Touch</button>
+    <button class="btn-white" onclick="location.href='services.html'">View Services</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-cta">
+      <div class="footer-logo">AART SENSE</div>
+      <p class="footer-tagline">Award-winning composer, producer &amp; studio.<br>London, United Kingdom.</p>
+      <a href="contact.html" class="btn-white" style="display:inline-block;margin-top:16px;">Get in Touch</a>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="brand.html">Brand</a></li>
+        <li><a href="investors.html">Investors</a></li>
+        <li><a href="faqs.html">FAQs</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="services.html">Film &amp; TV Scoring</a></li>
+        <li><a href="services.html">Advertising Music</a></li>
+        <li><a href="services.html">Sync &amp; Clearances</a></li>
+        <li><a href="services.html">Original Songs</a></li>
+        <li><a href="services.html">Custom Composition</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Help &amp; Contact</h4>
+      <ul>
+        <li><a href="contact.html">Booking Enquiry</a></li>
+        <li><a href="faqs.html">FAQ</a></li>
+        <li><a href="brand.html">Press &amp; Media</a></li>
+        <li><a href="investors.html">Investors</a></li>
+        <li class="tel"><a href="mailto:mail@aartsense.co.uk">mail@aartsense.co.uk</a></li>
+      </ul>
+      <div class="fm-brands" style="margin-top:24px">
+        <div class="fm-brand">
+          <div class="fm-brand-name">AART SENSE</div>
+          <div class="fm-brand-tagline">Music for films &amp; advertising</div>
+        </div>
+        <div class="fm-brand">
+          <div class="fm-brand-name">RECORDS</div>
+          <div class="fm-brand-tagline">Original releases &amp; licensing</div>
+        </div>
+        <div class="fm-brand">
+          <div class="fm-brand-name">ACADEMY</div>
+          <div class="fm-brand-tagline">Performing arts education</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-links">
+      <span>©2026 Aart Sense Studios Ltd.</span>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="contact.html">Contact</a>
+      <span>London, United Kingdom</span>
+    </div>
+    <div class="socials">
+      <div class="social-btn" title="Twitter / X">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
+      </div>
+      <div class="social-btn" title="Facebook">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </div>
+      <div class="social-btn" title="Instagram">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </div>
+      <div class="social-btn" title="LinkedIn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="chat-bubble" title="Chat with us">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+</div>
+
+<script src="animations.js" defer></script>
+</body>
+</html>
