@@ -1,2545 +1,2101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Aart Sense – Arjuna Harjai | Award-Winning Composer, Producer &amp; Studio</title>
+  <title>Artist – Aart Sense | Arjuna Harjai</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="shared.css"/>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      color: #111;
-      background: #fff;
-      overflow-x: hidden;
-    }
-
-    a { text-decoration: none; color: inherit; }
-    button { cursor: pointer; font-family: inherit; }
-    img { display: block; }
-
-    /* ─────────────────────────────────────────
-       TOP BAR
-    ───────────────────────────────────────── */
-    .top-bar {
-      background: #fff;
-      border-bottom: 1px solid #e8e8e8;
-      padding: 5px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 11px;
-      color: #555;
-    }
-    .top-bar-left { display: flex; align-items: center; gap: 0; }
-    .top-bar-left .brand { font-weight: 700; color: #000; letter-spacing: .3px; }
-    .top-bar-left .sep { color: #ccc; margin: 0 8px; }
-    .top-bar-left a { color: #555; }
-    .top-bar-left a:hover { color: #000; }
-    .top-bar-right { display: flex; align-items: center; gap: 20px; }
-    .top-bar-right a { font-weight: 500; color: #555; }
-    .top-bar-right a:hover { color: #000; }
-
-    /* ─────────────────────────────────────────
-       NAVBAR
-    ───────────────────────────────────────── */
-    .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 200;
-      background: #fff;
-      border-bottom: 1px solid #e8e8e8;
-      display: flex;
-      align-items: center;
-      padding: 0 40px;
-      height: 54px;
-      gap: 32px;
-    }
-    .logo {
-      font-size: 17px;
-      font-weight: 900;
-      letter-spacing: -.3px;
-      color: #000;
-      flex-shrink: 0;
-    }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 26px;
-      flex: 1;
-    }
-    .nav-links a {
-      font-size: 13.5px;
-      font-weight: 500;
-      color: #333;
-      transition: color .15s;
-    }
-    .nav-links a:hover { color: #000; }
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 22px;
-      margin-left: auto;
-    }
-    .nav-login {
-      font-size: 13.5px;
-      font-weight: 500;
-      color: #333;
-      cursor: pointer;
-    }
-    .nav-login:hover { color: #000; }
-    .btn-cta {
-      background: #000;
-      color: #fff;
-      border: none;
-      padding: 9px 16px;
-      font-size: 12.5px;
-      font-weight: 700;
-      letter-spacing: .2px;
-      border-radius: 3px;
-      white-space: nowrap;
-      transition: background .15s;
-      cursor: pointer;
-    }
-    .btn-cta:hover { background: #222; }
-
-    /* shared button styles */
-    .btn-black {
-      background: #000;
-      color: #fff;
-      border: none;
-      padding: 13px 22px;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      border-radius: 3px;
-      display: inline-block;
-      cursor: pointer;
-      transition: background .15s;
-    }
-    .btn-black:hover { background: #222; }
-
-    .btn-outline-dark {
-      background: transparent;
-      color: #000;
-      border: 1.5px solid #000;
-      padding: 12px 22px;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      border-radius: 3px;
-      display: inline-block;
-      cursor: pointer;
-      transition: background .15s, color .15s;
-    }
-    .btn-outline-dark:hover { background: #000; color: #fff; }
-
-    .btn-outline-white {
-      background: transparent;
-      color: #fff;
-      border: 1.5px solid #fff;
-      padding: 12px 22px;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      border-radius: 3px;
-      display: inline-block;
-      cursor: pointer;
-      transition: background .15s, color .15s;
-    }
-    .btn-outline-white:hover { background: #fff; color: #000; }
-
-    .section-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      color: #888;
-      margin-bottom: 14px;
-    }
-
-    /* ─────────────────────────────────────────
-       SECTION 1 — HERO
-    ───────────────────────────────────────── */
-    .hero {
-      background: #fff;
-      padding: 56px 40px 0;
-    }
-    .hero-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .hero-content {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: start;
-      gap: 40px;
-      margin-bottom: 48px;
-    }
-    .hero-text h1 {
-      font-size: 60px;
-      font-weight: 800;
-      line-height: 1.05;
-      letter-spacing: -2px;
-      color: #000;
-      margin-bottom: 18px;
-      margin-top: 8px;
-      max-width: 540px;
-    }
-    .hero-text p {
-      font-size: 14.5px;
-      color: #555;
-      line-height: 1.7;
-      max-width: 420px;
-    }
-    .hero-cta-block {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      flex-shrink: 0;
-      align-self: center;
-    }
-    .hero-cta-note {
-      font-size: 11px;
-      color: #888;
-      line-height: 1.55;
-      max-width: 130px;
-    }
-    .brand-logos {
-      overflow: hidden;
-      margin-bottom: 44px;
-      -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%);
-      mask-image: linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%);
-    }
-    .brand-logos-track {
-      display: flex;
-      align-items: center;
-      gap: 48px;
-      width: max-content;
-      animation: brandMarquee 22s linear infinite;
-    }
-    .brand-logos-track:hover { animation-play-state: paused; }
-    @keyframes brandMarquee {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
-    .brand-logo {
-      font-size: 13px;
-      font-weight: 800;
-      color: #b0b0b0;
-      letter-spacing: .8px;
-      text-transform: uppercase;
-      white-space: nowrap;
-      flex-shrink: 0;
-      transition: color .2s;
-    }
-    .brand-logo:hover { color: #fff; }
-    .brand-logo.small { font-size: 11px; }
-    .brand-logo svg { fill: #b0b0b0; }
-    /* Xbox custom */
-    .brand-xbox { display: flex; align-items: center; gap: 5px; color: #b0b0b0; font-size: 13px; font-weight: 800; }
-    .xbox-circle {
-      width: 18px; height: 18px;
-      border-radius: 50%;
-      border: 2px solid #b0b0b0;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 9px; font-weight: 900;
-    }
-
-    /* Hero dark image */
-    .hero-dark-banner {
-      width: 100%;
-      height: 340px;
-      background: linear-gradient(180deg, #0c0e18 0%, #12192a 35%, #080b10 100%);
-      border-radius: 6px 6px 0 0;
+    /* ══════════════════════════════════════
+       ARTISTS & COLLABORATIONS — SLIDER
+    ══════════════════════════════════════ */
+    .as-section {
       position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-    }
-    .hero-dark-banner::before {
-      content: '';
-      position: absolute;
-      top: 10%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 200px;
-      height: 200px;
-      background: radial-gradient(ellipse at center, rgba(140,170,220,0.18) 0%, transparent 65%);
-    }
-    .hero-dark-banner::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: radial-gradient(ellipse at 50% 30%, rgba(60,90,140,0.12) 0%, transparent 60%);
-    }
-    .silhouettes {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 55%;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      gap: -4px;
-      z-index: 1;
-    }
-    .sil {
-      background: #06080d;
-      border-radius: 45% 45% 0 0 / 60% 60% 0 0;
-    }
-    .sil-1 { width: 52px; height: 130px; border-radius: 50% 50% 0 0 / 55% 55% 0 0; margin-right: -8px; }
-    .sil-2 { width: 44px; height: 110px; border-radius: 50% 50% 0 0; margin-right: -6px; }
-    .sil-3 { width: 60px; height: 155px; border-radius: 50% 50% 0 0 / 40% 40% 0 0; }
-    .sil-4 { width: 40px; height: 100px; border-radius: 50% 50% 0 0; margin-left: -6px; }
-    .sil-5 { width: 48px; height: 120px; border-radius: 50% 50% 0 0 / 55% 55% 0 0; margin-left: -8px; }
-    .sil-arms {
-      position: absolute;
-      bottom: 44%;
-      left: 50%;
-      transform: translateX(-50%) rotate(-8deg);
-      width: 36px; height: 16px;
-      background: #06080d;
-      border-radius: 40% 40% 0 0;
-    }
-
-    /* ─────────────────────────────────────────
-       SECTION 2 — AMPLIFY (dark road)
-    ───────────────────────────────────────── */
-    .section-amplify {
-      background: #0b0d14;
-      padding: 80px 40px;
-      position: relative;
+      height: 80vh; min-height: 580px;
+      background: #080808;
       overflow: hidden;
     }
-    .amplify-road {
+    /* Vertical section label */
+    .as-vert-label {
       position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(180deg, #0b0d14 0%, transparent 30%, transparent 70%, #0b0d14 100%),
-        radial-gradient(ellipse at 50% 60%, #1a2030 0%, #0b0d14 60%);
-    }
-    /* Road lines */
-    .amplify-road::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 20%;
-      transform: translateX(-50%);
-      width: 3px;
-      height: 60%;
-      background: linear-gradient(180deg, transparent, rgba(255,255,255,.06) 40%, rgba(255,255,255,.03));
-    }
-    .amplify-road::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse at 50% 50%, rgba(20,35,65,0.4) 0%, transparent 55%);
-    }
-    .amplify-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-      position: relative;
-      z-index: 2;
-    }
-    .amplify-left h2 {
-      font-size: 50px;
-      font-weight: 800;
-      letter-spacing: -1.8px;
-      line-height: 1.08;
-      color: #fff;
-      margin-bottom: 18px;
-    }
-    .amplify-left p {
-      font-size: 14px;
-      color: rgba(255,255,255,.55);
-      line-height: 1.75;
-      max-width: 360px;
-      margin-bottom: 28px;
-    }
-    .amplify-right {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .stat-row {
-      font-size: 22px;
-      font-weight: 800;
-      color: #fff;
-      letter-spacing: -.5px;
-    }
-    .stat-row em {
-      font-style: normal;
-      font-size: 13.5px;
-      font-weight: 400;
-      color: rgba(255,255,255,.5);
-      margin-left: 4px;
-    }
-    .amplify-cta {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-    }
-    .amplify-cta-note {
-      font-size: 11px;
-      color: rgba(255,255,255,.4);
-      line-height: 1.55;
-      max-width: 130px;
-    }
-
-    /* ─────────────────────────────────────────
-       SECTION 3 — EXCLUSIVE COLLECTION (centered)
-    ───────────────────────────────────────── */
-    .section-centered {
-      padding: 96px 40px 80px;
-      text-align: center;
-    }
-    .section-centered h2 {
-      font-size: 58px;
-      font-weight: 800;
-      letter-spacing: -2px;
-      line-height: 1.08;
-      color: #000;
-      max-width: 760px;
-      margin: 0 auto 18px;
-    }
-    .section-centered p {
-      font-size: 15px;
-      color: #555;
-      line-height: 1.7;
-      max-width: 520px;
-      margin: 0 auto 30px;
-    }
-
-    /* ─────────────────────────────────────────
-       SECTION 4 — IN-DEMAND ARTISTS (split)
-    ───────────────────────────────────────── */
-    .split-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 60px 40px;
-    }
-    .split-row.rev .split-visuals { order: -1; }
-
-    .split-text .section-label { margin-bottom: 12px; }
-    .split-text h2 {
-      font-size: 46px;
-      font-weight: 800;
-      letter-spacing: -1.5px;
-      line-height: 1.08;
-      margin-bottom: 16px;
-    }
-    .split-text p {
-      font-size: 14px;
-      color: #555;
-      line-height: 1.75;
-      max-width: 380px;
-      margin-bottom: 26px;
-    }
-
-    /* Artist portrait photos (split section 4) */
-    .artists-duo {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-    .artist-portrait {
-      border-radius: 6px;
-      overflow: hidden;
-      aspect-ratio: 3/4;
-    }
-    .artist-portrait:first-child { margin-top: 32px; }
-    .artist-portrait .ap-bg {
-      width: 100%;
-      height: 100%;
-      min-height: 220px;
-    }
-
-    /* ─────────────────────────────────────────
-       SECTION 5 — UNMATCHED CURATION (split)
-    ───────────────────────────────────────── */
-    /* App mockup */
-    .app-mockup {
-      background: #13132a;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 32px 80px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.06);
-    }
-    .app-titlebar {
-      background: #0d0d1e;
-      padding: 10px 14px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .app-titlebar-label {
-      font-size: 10px;
-      font-weight: 600;
-      color: rgba(255,255,255,.3);
-      margin-left: auto;
-      letter-spacing: .4px;
-    }
-    .dot { width: 9px; height: 9px; border-radius: 50%; cursor: default; }
-    .dot-r { background: #ff5f57; }
-    .dot-y { background: #febc2e; }
-    .dot-g { background: #28c840; }
-    .app-body { padding: 12px 12px 0; }
-    .app-search-bar {
-      background: #0a0a1a;
-      border-radius: 6px;
-      padding: 7px 10px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 8px;
-      border: 1px solid rgba(255,255,255,.06);
-    }
-    .app-search-bar span {
-      font-size: 10.5px;
-      color: rgba(255,255,255,.35);
-    }
-    .app-search-icon { font-size: 11px; }
-    /* Tag pills */
-    .app-tags {
-      display: flex;
-      gap: 6px;
-      margin-bottom: 10px;
-      flex-wrap: wrap;
-    }
-    .app-tag {
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: .4px;
-      color: rgba(255,255,255,.55);
-      background: rgba(255,255,255,.07);
-      border: 1px solid rgba(255,255,255,.1);
-      border-radius: 20px;
-      padding: 3px 8px;
-      cursor: pointer;
-      transition: background .15s, color .15s;
-      white-space: nowrap;
-    }
-    .app-tag:hover, .app-tag.active { background: #7c6ef0; color: #fff; border-color: #7c6ef0; }
-    /* Tracks list */
-    /* Spotify embed wrapper */
-    .spotify-wrap {
-      border-radius: 8px;
-      overflow: hidden;
-      margin-bottom: 8px;
-    }
-    .spotify-wrap iframe { display: block; }
-    .app-track-list {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-    .spotify-footer {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 4px 4px;
-      font-size: 10px;
-      font-weight: 600;
-      color: rgba(255,255,255,.3);
-      letter-spacing: .3px;
-    }
-    /* Legacy selector kept for compat */
-    .app-tracks { display: flex; flex-direction: column; gap: 2px; }
-    .app-track {
-      display: grid;
-      grid-template-columns: 32px 1fr auto;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 6px;
-      border-radius: 5px;
-      cursor: pointer;
-      background: transparent;
-      transition: background .15s;
-      position: relative;
-    }
-    .app-track:hover { background: rgba(255,255,255,.06); }
-    .app-track.active { background: rgba(124,110,240,.12); }
-    .app-track.active .app-track-name { color: #a89ef8; }
-    /* Play icon revealed on hover */
-    .app-track-play {
-      position: absolute;
-      right: 8px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 20px; height: 20px;
-      background: rgba(255,255,255,.12);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      opacity: 0;
-      transition: opacity .15s;
+      left: 22px; top: 50%;
+      transform: translateY(-50%) rotate(-90deg);
+      font-size: 9px; font-weight: 800;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: rgba(255,255,255,.15);
+      white-space: nowrap; z-index: 10;
       pointer-events: none;
     }
-    .app-track:hover .app-track-play { opacity: 1; }
-    .app-track.active .app-track-play { opacity: 0; } /* EQ shows instead when active */
-    /* Thumb wrapper — EQ overlay */
-    .app-track-thumb-wrap {
-      position: relative;
-      width: 32px;
-      height: 32px;
-      flex-shrink: 0;
+    /* Slide container */
+    .as-track {
+      position: absolute; inset: 0;
     }
-    .app-track-thumb {
-      width: 32px;
-      height: 32px;
-      border-radius: 4px;
-      position: absolute;
-      inset: 0;
-    }
-    .app-eq {
-      position: absolute;
-      inset: 0;
+    .as-slide {
+      position: absolute; inset: 0;
       display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      gap: 2px;
-      padding: 5px 4px;
-      background: rgba(0,0,0,.55);
-      border-radius: 4px;
-      opacity: 0;
-      transition: opacity .2s;
+      opacity: 0; pointer-events: none;
+      transition: opacity .72s cubic-bezier(.22,.68,0,1.05);
     }
-    .app-track.active .app-eq { opacity: 1; }
-    .app-eq-bar {
-      width: 3px;
-      border-radius: 1px;
-      background: #a89ef8;
-      height: 4px;
-      animation: eqBounce .75s ease-in-out infinite alternate;
+    .as-slide.as-active {
+      opacity: 1; pointer-events: auto;
     }
-    .app-eq-bar:nth-child(2) { animation-delay: .18s; animation-duration: .6s; }
-    .app-eq-bar:nth-child(3) { animation-delay: .07s; animation-duration: .9s; }
-    .app-eq-bar:nth-child(4) { animation-delay: .33s; animation-duration: .68s; }
-    @keyframes eqBounce {
-      from { height: 2px; }
-      to   { height: 14px; }
+    /* Left — artist portrait */
+    .as-left {
+      width: 50%; position: relative;
+      overflow: hidden; flex-shrink: 0;
     }
-    .app-track-info { min-width: 0; }
-    .app-track-name { font-size: 10.5px; color: rgba(255,255,255,.82); font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .app-track-artist { font-size: 9px; color: rgba(255,255,255,.38); margin-top: 1px; }
-    /* Mini waveform */
-    .app-track-wf {
-      display: flex;
-      align-items: center;
-      gap: 1.5px;
-      height: 18px;
+    .as-portrait {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center top;
+      transform: scale(1.06);
+      transition: transform .9s cubic-bezier(.22,.68,0,1.05);
     }
-    .app-track-wf div {
-      width: 2px;
-      border-radius: 1px;
-      background: rgba(255,255,255,.18);
-      flex-shrink: 0;
+    .as-slide.as-active .as-portrait {
+      transform: scale(1);
     }
-    .app-track.active .app-track-wf div { background: rgba(168,158,248,.45); }
-    .app-track-dur { font-size: 9.5px; color: rgba(255,255,255,.32); text-align: right; }
-    /* Bottom player bar */
-    .app-player {
-      background: #0d0d1e;
-      border-top: 1px solid rgba(255,255,255,.07);
-      padding: 10px 12px 12px;
-      margin-top: 8px;
-    }
-    .app-player-main {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .app-player-thumb {
-      width: 30px;
-      height: 30px;
-      border-radius: 4px;
-      flex-shrink: 0;
-      transition: background .3s;
-    }
-    .app-player-info { flex: 1; min-width: 0; }
-    .app-player-title {
-      font-size: 10px;
-      font-weight: 700;
-      color: rgba(255,255,255,.88);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .app-player-artist { font-size: 9px; color: rgba(255,255,255,.38); margin-top: 1px; }
-    .app-player-controls { display: flex; align-items: center; gap: 10px; }
-    .app-ctrl-btn {
-      background: none;
-      border: none;
-      padding: 0;
-      cursor: pointer;
-      color: rgba(255,255,255,.4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: color .15s;
-    }
-    .app-ctrl-btn:hover { color: rgba(255,255,255,.8); }
-    .app-ctrl-btn.play-btn {
-      width: 26px;
-      height: 26px;
-      background: #fff;
-      border-radius: 50%;
-      color: #000;
-    }
-    .app-ctrl-btn.play-btn:hover { background: #e8e8e8; }
-    .app-progress-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 8px;
-    }
-    .app-progress-time { font-size: 8.5px; color: rgba(255,255,255,.28); min-width: 22px; }
-    .app-progress-bar {
-      flex: 1;
-      height: 3px;
-      background: rgba(255,255,255,.1);
-      border-radius: 2px;
-      cursor: pointer;
-      position: relative;
-    }
-    .app-progress-fill {
-      height: 100%;
-      background: #7c6ef0;
-      border-radius: 2px;
-      width: 28%;
-      transition: width .1s linear;
-      position: relative;
-    }
-    .app-progress-fill::after {
-      content: '';
-      position: absolute;
-      right: -3px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 7px;
-      height: 7px;
-      background: #fff;
-      border-radius: 50%;
-      box-shadow: 0 1px 4px rgba(0,0,0,.4);
-    }
-    .app-vol {
-      display: flex;
-      align-items: flex-end;
-      gap: 2px;
-      height: 12px;
-    }
-    .app-vol span {
-      width: 2.5px;
-      border-radius: 1px;
-      background: rgba(255,255,255,.25);
+    /* Dark cinematic tint over the photo */
+    .as-portrait-tint {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,.18) 0%,
+        rgba(0,0,0,.08) 40%,
+        rgba(0,0,0,.35) 100%
+      );
     }
 
-    /* ─────────────────────────────────────────
-       SECTION 6 — NEW MUSIC DAILY (split)
-    ───────────────────────────────────────── */
-    .musicbed-ui-mockup {
-      background: #fff;
-      border: 1px solid #e0e0e0;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 16px 48px rgba(0,0,0,.1);
-    }
-    .mui-nav {
-      background: #fff;
-      border-bottom: 1px solid #e8e8e8;
-      padding: 10px 16px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-    .mui-logo { font-size: 11px; font-weight: 900; color: #000; }
-    .mui-navlinks { display: flex; gap: 12px; }
-    .mui-navlinks span { font-size: 9px; color: #555; font-weight: 500; }
-    .mui-body { padding: 12px 16px; }
-    .mui-heading { font-size: 12px; font-weight: 700; color: #000; margin-bottom: 10px; }
-    .mui-tracks { display: flex; flex-direction: column; gap: 2px; }
-    .mui-track {
-      display: grid;
-      grid-template-columns: 32px 1fr auto auto;
-      align-items: center;
-      gap: 10px;
-      padding: 6px 4px;
-      border-radius: 4px;
-    }
-    .mui-track:hover { background: #f8f8f8; }
-    .mui-thumb {
-      width: 32px; height: 32px;
-      border-radius: 3px;
-    }
-    .mui-track-title { font-size: 10px; font-weight: 600; color: #111; }
-    .mui-track-artist { font-size: 9px; color: #888; margin-top: 2px; }
-    .mui-tag {
-      font-size: 9px;
-      background: #111;
-      color: #fff;
-      padding: 2px 6px;
-      border-radius: 10px;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-    .mui-waveform { display: flex; align-items: center; gap: 1.5px; height: 20px; }
-    .mui-bar { width: 2px; background: #ccc; border-radius: 1px; }
-    .mui-badge {
-      background: #000;
-      color: #fff;
-      font-size: 9px;
-      font-weight: 700;
-      padding: 3px 8px;
-      border-radius: 2px;
-      margin-top: 8px;
-      display: inline-block;
-    }
-
-    /* ─────────────────────────────────────────
-       SECTION 7 — TESTIMONIALS
-    ───────────────────────────────────────── */
-    .testimonials-section {
-      background: #fff;
-      padding: 80px 40px;
-      border-top: 1px solid #f0f0f0;
-    }
-    .trustpilot {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 18px;
-    }
-    .trust-exc { font-size: 13px; font-weight: 700; color: #00b67a; border-bottom: 1px solid #00b67a; }
-    .trust-stars { display: flex; gap: 2px; }
-    .tstar {
-      width: 17px; height: 17px;
-      background: #00b67a;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 10px; color: #fff;
-    }
-    .trust-tp { font-size: 11.5px; color: #555; font-weight: 500; }
-    .test-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 48px;
-      gap: 40px;
-    }
-    .test-header h2 {
-      font-size: 44px;
-      font-weight: 800;
-      letter-spacing: -1.5px;
-      line-height: 1.1;
-      max-width: 620px;
-    }
-    .test-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-    .test-card {
-      background: #fff;
-      border: 1px solid #e8e8e8;
-      border-radius: 8px;
-      padding: 22px;
-    }
-    .test-stars { display: flex; gap: 3px; margin-bottom: 13px; font-size: 14px; }
-    .test-quote { font-size: 13px; color: #222; line-height: 1.68; margin-bottom: 18px; }
-    .test-author { display: flex; align-items: center; gap: 10px; }
-    .test-avatar {
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-    .test-name { font-size: 12.5px; font-weight: 700; color: #000; }
-    .test-role { font-size: 11px; color: #888; margin-top: 2px; }
-
-    /* ─────────────────────────────────────────
-       SECTION 8 — MATCH THE VIBE
-    ───────────────────────────────────────── */
-    .vibe-section {
-      padding: 96px 40px 80px;
-      text-align: center;
-      border-top: 1px solid #f0f0f0;
-    }
-    .vibe-section h2 {
-      font-size: 56px;
-      font-weight: 800;
-      letter-spacing: -2px;
-      line-height: 1.08;
-      max-width: 720px;
-      margin: 0 auto 18px;
-    }
-    .vibe-section p {
-      font-size: 14.5px;
-      color: #555;
-      line-height: 1.7;
-      max-width: 480px;
-      margin: 0 auto 28px;
-    }
-
-    /* ─────────────────────────────────────────
-       SECTION 9 — AI DARK BANNER
-    ───────────────────────────────────────── */
-    .ai-dark-banner {
-      background: #000;
-      overflow: hidden;
-      position: relative;
-    }
-    .ai-banner-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 40px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: stretch;
-      min-height: 320px;
-    }
-    .ai-banner-left {
-      padding: 60px 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .ai-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.15);
-      border-radius: 4px;
-      padding: 5px 12px;
-      font-size: 11px;
-      font-weight: 700;
-      color: rgba(255,255,255,.8);
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-      width: fit-content;
-    }
-    .ai-badge::before {
-      content: '✦';
-      color: #6b8cff;
-    }
-    .ai-banner-left h2 {
-      font-size: 46px;
-      font-weight: 900;
-      letter-spacing: -1.5px;
-      line-height: 1.05;
-      color: #fff;
-      text-transform: uppercase;
-    }
-    .ai-banner-right {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-    }
-
-    /* ─────────────────────────────────────────
-       SECTION 10 — AI SEARCH UI
-    ───────────────────────────────────────── */
-    .search-ui-section {
-      background: #fff;
-      border-top: 1px solid #e8e8e8;
-    }
-    .search-ui-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 40px 40px;
-    }
-    .search-ui-frame {
-      background: #fff;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 8px 32px rgba(0,0,0,.08);
-    }
-    /* Search bar */
-    .suf-topbar {
-      background: #fff;
-      border-bottom: 1px solid #e8e8e8;
-      padding: 0 20px;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .suf-search-icon { color: #888; font-size: 14px; }
-    .suf-tag {
-      background: #111;
-      color: #fff;
-      font-size: 11.5px;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: 3px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .suf-tag-x { color: rgba(255,255,255,.6); cursor: pointer; font-size: 10px; }
-    .suf-placeholder { font-size: 13px; color: #bbb; }
-    /* Main layout */
-    .suf-body {
-      display: grid;
-      grid-template-columns: 80px 1fr;
-      min-height: 340px;
-    }
-    .suf-sidebar {
-      border-right: 1px solid #e8e8e8;
-      padding: 16px 0;
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-    .suf-filter {
-      padding: 8px 14px;
-      font-size: 11px;
-      font-weight: 600;
-      color: #333;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .suf-filter:hover { color: #000; }
-    .suf-filter.lyrical {
-      margin-top: 8px;
-      border-top: 1px solid #e8e8e8;
-      padding-top: 12px;
-    }
-    .suf-checkbox {
-      width: 12px; height: 12px;
-      border: 1.5px solid #ccc;
-      border-radius: 2px;
-    }
-    .suf-main { padding: 0; }
-    /* Featured song */
-    .suf-featured {
-      display: grid;
-      grid-template-columns: 80px 1fr;
-      align-items: center;
-      gap: 16px;
-      padding: 16px 20px;
-      border-bottom: 1px solid #f0f0f0;
-    }
-    .suf-feat-art {
-      width: 80px; height: 80px;
-      border-radius: 4px;
-    }
-    .suf-feat-title { font-size: 18px; font-weight: 800; color: #000; margin-bottom: 4px; }
-    .suf-feat-artist { display: flex; align-items: center; gap: 6px; font-size: 12.5px; color: #555; }
-    .suf-artist-icon { width: 16px; height: 16px; border-radius: 50%; }
-    .suf-feat-label { font-size: 11px; color: #888; margin-bottom: 6px; }
-    /* Song rows */
-    .suf-row {
-      display: grid;
-      grid-template-columns: 44px 1fr auto 120px auto 40px;
-      align-items: center;
-      gap: 12px;
-      padding: 10px 20px;
-      border-bottom: 1px solid #f8f8f8;
-      cursor: pointer;
-    }
-    .suf-row:hover { background: #fafafa; }
-    .suf-row-thumb { width: 40px; height: 40px; border-radius: 3px; }
-    .suf-row-name { font-size: 13px; font-weight: 600; color: #111; }
-    .suf-row-artist { font-size: 11.5px; color: #888; margin-top: 2px; }
-    .suf-plus { font-size: 10px; background: #eee; border-radius: 3px; padding: 2px 5px; color: #555; font-weight: 600; white-space: nowrap; }
-    .suf-genre { font-size: 11px; color: #888; }
-    .suf-waveform { display: flex; align-items: center; gap: 1.5px; height: 24px; }
-    .suf-wave-bar { width: 2px; border-radius: 1px; background: #d0d0d0; }
-    .suf-wave-bar.active { background: #111; }
-    .suf-dur { font-size: 11.5px; color: #888; }
-
-    /* ─────────────────────────────────────────
-       SECTION 11 — FEATURES FOR FILMMAKERS
-    ───────────────────────────────────────── */
-    .features-section {
-      background: #fff;
-      padding: 80px 40px;
-      border-top: 1px solid #f0f0f0;
-    }
-    .features-header {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: start;
-      margin-bottom: 48px;
-    }
-    .features-header h2 {
-      font-size: 48px;
-      font-weight: 800;
-      letter-spacing: -1.5px;
-      line-height: 1.1;
-    }
-    .features-header p {
-      font-size: 14px;
-      color: #555;
-      line-height: 1.75;
-      padding-top: 6px;
-    }
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
-    .feat-card {
-      border: 1px solid #e8e8e8;
-      border-radius: 8px;
-      overflow: hidden;
-    }
-    .feat-card-img {
-      height: 160px;
-      position: relative;
-      overflow: hidden;
-    }
-    .feat-card-body { padding: 16px; }
-    .feat-card-title { font-size: 14px; font-weight: 700; color: #000; margin-bottom: 8px; }
-    .feat-card-desc { font-size: 12.5px; color: #666; line-height: 1.65; }
-
-    /* ─────────────────────────────────────────
-       SECTION 12 — ENTERPRISE
-    ───────────────────────────────────────── */
-    .enterprise-section {
-      background: #fafafa;
-      padding: 80px 40px;
-      border-top: 1px solid #e8e8e8;
-    }
-    .enterprise-section h2 {
-      font-size: 62px;
-      font-weight: 800;
-      letter-spacing: -2.5px;
-      line-height: 1.04;
-      max-width: 640px;
-      margin-bottom: 18px;
-    }
-    .enterprise-section > p {
-      font-size: 14px;
-      color: #555;
-      line-height: 1.75;
-      max-width: 520px;
-      margin-bottom: 56px;
-    }
-    .ent-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 48px;
-    }
-    .ent-icon { font-size: 20px; margin-bottom: 10px; }
-    .ent-title { font-size: 15px; font-weight: 700; color: #000; margin-bottom: 8px; }
-    .ent-desc { font-size: 13px; color: #666; line-height: 1.65; }
-
-    /* ─────────────────────────────────────────
-       SECTION 13 — BRAND GRID (dark)
-    ───────────────────────────────────────── */
-    .brand-grid-section {
-      background: #000;
-      padding: 8px 8px 0;
-    }
-    .brand-grid-viewport {
-      overflow: hidden;
-      /* height set by JS — shows exactly 2 rows */
-    }
-    .brand-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 6px;
-      transition: transform .52s cubic-bezier(.22,.68,0,1.1);
-      will-change: transform;
-    }
-    /* Pagination nav */
-    .bg-nav-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      padding: 10px 0 8px;
-    }
-    .bg-nav-btn {
-      width: 34px; height: 34px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.12);
-      color: rgba(255,255,255,.65);
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer;
-      transition: background .15s, color .15s;
-      flex-shrink: 0;
-    }
-    .bg-nav-btn:hover { background: rgba(255,255,255,.18); color: #fff; }
-    .bg-nav-btn[disabled] { opacity: .22; cursor: default; pointer-events: none; }
-    .bg-page-dots { display: flex; gap: 7px; align-items: center; }
-    .bg-dot {
-      width: 5px; height: 5px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.2);
-      border: none;
-      padding: 0;
-      cursor: pointer;
-      transition: background .22s, transform .22s;
-    }
-    .bg-dot.active { background: #fff; transform: scale(1.5); }
-    .bg-cell {
-      position: relative;
-      border-radius: 6px;
-      overflow: hidden;
-      aspect-ratio: 16/9;
-      cursor: pointer;
-    }
-    .bg-cell .bg-img {
-      width: 100%;
-      height: 100%;
-      transition: transform .4s;
-    }
-    .bg-cell:hover .bg-img { transform: scale(1.04); }
-    .bg-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(0deg, rgba(0,0,0,.55) 0%, transparent 50%);
-    }
-    .bg-label {
-      position: absolute;
-      bottom: 10px;
-      left: 10px;
-    }
-    .bg-brand-logo {
-      font-size: 10px;
-      font-weight: 800;
-      color: rgba(255,255,255,.9);
-      letter-spacing: .6px;
-      text-transform: uppercase;
-      margin-bottom: 2px;
-    }
-    .bg-song-title { font-size: 9px; color: rgba(255,255,255,.55); }
-    .bg-badge {
-      position: absolute;
-      top: 8px; right: 8px;
-      background: rgba(0,0,0,.6);
-      border: 1px solid rgba(255,255,255,.15);
-      border-radius: 3px;
-      padding: 2px 7px;
-      font-size: 9px;
-      font-weight: 800;
-      color: rgba(255,255,255,.9);
-      text-transform: uppercase;
-      letter-spacing: .5px;
-    }
-
-    /* ─────────────────────────────────────────
-       SECTION 14 — GENRE
-    ───────────────────────────────────────── */
-    .genre-section {
-      padding: 80px 40px 60px;
-      background: #fff;
-    }
-    .genre-heading {
-      font-size: 60px;
-      font-weight: 800;
-      letter-spacing: -2.5px;
-      line-height: 1.05;
-      margin-bottom: 56px;
-    }
-    .genre-heading .dim { color: #c0c0c0; }
-    .artists-sub {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 14px;
-    }
-    .artists-sub h3 { font-size: 28px; font-weight: 800; letter-spacing: -.8px; }
-    .artists-sub span { font-size: 10.5px; font-weight: 700; letter-spacing: 1.1px; text-transform: uppercase; color: #999; }
-    .artists-scroll-wrap {
-      position: relative;
-    }
-    .artists-row {
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      scrollbar-width: none;
-    }
-    .artists-row::-webkit-scrollbar { display: none; }
-    .artist-tile {
-      flex: 0 0 calc(25% - 6px);
-      border-radius: 6px;
-      overflow: hidden;
-      aspect-ratio: 3/4;
-      position: relative;
-      cursor: pointer;
-    }
-    .artist-tile .at-bg {
-      width: 100%;
-      height: 100%;
-      transition: transform .4s;
-    }
-    .artist-tile:hover .at-bg { transform: scale(1.04); }
-    .artists-scroll-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 38px; height: 38px;
-      border-radius: 50%;
-      background: #fff;
-      border: 1px solid #e0e0e0;
-      box-shadow: 0 2px 10px rgba(0,0,0,.1);
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer;
+    /* Right-edge gradient bleeds into right panel */
+    .as-left-fade {
+      position: absolute; top: 0; right: 0; bottom: 0;
+      width: 180px;
+      background: linear-gradient(to right, transparent 0%, #080808 100%);
       z-index: 2;
-      font-size: 15px;
-      color: #111;
-      transition: background .15s, box-shadow .15s;
     }
-    .artists-scroll-btn:hover { background: #f5f5f5; box-shadow: 0 4px 16px rgba(0,0,0,.14); }
-    .artists-scroll-btn[disabled] { opacity: 0; pointer-events: none; }
-    .artists-scroll-btn.asc-prev { left: -18px; }
-    .artists-scroll-btn.asc-next { right: -18px; }
-
-    /* ─────────────────────────────────────────
-       SECTION 15 — PLAYLISTS (now playing + grid)
-    ───────────────────────────────────────── */
-    .playlists-section {
-      padding: 0 40px 72px;
-      background: #fff;
+    /* Big ghost name on portrait */
+    .as-ghost-name {
+      position: absolute; bottom: 32px; left: 32px;
+      font-size: 96px; font-weight: 900;
+      color: rgba(255,255,255,.06);
+      letter-spacing: -5px; line-height: 1;
+      user-select: none; z-index: 1;
     }
-    /* mini now-playing bar */
-    .now-playing-bar {
-      border: 1px solid #e8e8e8;
-      border-radius: 8px;
-      padding: 12px 16px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 56px;
-      background: #fff;
+    /* Right — content */
+    .as-right {
+      flex: 1; position: relative; z-index: 5;
+      display: flex; flex-direction: column;
+      justify-content: center;
+      padding: 56px 56px 80px 40px;
+      overflow-y: auto;
     }
-    .np-thumb { width: 40px; height: 40px; border-radius: 4px; flex-shrink: 0; }
-    .np-info { flex: 1; min-width: 0; }
-    .np-song { font-size: 12px; font-weight: 700; color: #000; text-transform: uppercase; letter-spacing: .5px; }
-    .np-artist { font-size: 11px; color: #888; margin-top: 2px; }
-    .np-progress {
-      flex: 2;
-      height: 3px;
-      background: #e0e0e0;
-      border-radius: 2px;
-      overflow: hidden;
+    .as-counter {
+      font-size: 10px; font-weight: 800;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: rgba(255,255,255,.2);
+      margin-bottom: 36px;
     }
-    .np-progress-fill {
-      height: 100%;
-      background: #000;
-      border-radius: 2px;
-    }
-    .np-controls { display: flex; align-items: center; gap: 14px; }
-    .np-btn { font-size: 16px; color: #555; cursor: pointer; background: none; border: none; }
-    .np-btn:hover { color: #000; }
-
-    .playlists-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 20px;
-    }
-    .playlists-header h2 {
-      font-size: 40px;
-      font-weight: 800;
-      letter-spacing: -1.2px;
-      line-height: 1.1;
-    }
-    .playlists-header span {
-      font-size: 10.5px;
-      font-weight: 700;
-      letter-spacing: 1.1px;
-      text-transform: uppercase;
-      color: #999;
-    }
-    .playlists-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-    }
-    .pl-tile {
-      border-radius: 7px;
-      overflow: hidden;
-      position: relative;
-      aspect-ratio: 16/9;
-      cursor: pointer;
-    }
-    .pl-tile .pt-bg {
-      width: 100%; height: 100%;
-      transition: transform .4s;
-    }
-    .pl-tile:hover .pt-bg { transform: scale(1.04); }
-    .pl-tile-label {
-      position: absolute;
-      bottom: 14px;
-      left: 14px;
-      right: 14px;
-      font-size: 17px;
-      font-weight: 800;
-      color: #fff;
-      letter-spacing: -.3px;
-      text-shadow: 0 2px 10px rgba(0,0,0,.5);
-    }
-
-    /* ─────────────────────────────────────────
-       SECTION 16 — DARK CTA
-    ───────────────────────────────────────── */
-    .dark-cta {
-      background: #0a0a0a;
-      padding: 80px 40px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      align-items: center;
-    }
-    .dc-trust { display: flex; align-items: center; gap: 8px; margin-bottom: 20px; }
-    .dc-exc { font-size: 12.5px; font-weight: 700; color: #00b67a; border-bottom: 1px solid #00b67a; }
-    .dc-stars { display: flex; gap: 2px; }
-    .dc-star { width: 15px; height: 15px; background: #00b67a; display: flex; align-items: center; justify-content: center; font-size: 9px; color: #fff; }
-    .dc-tp { font-size: 11px; color: rgba(255,255,255,.4); }
-    .dark-cta h2 {
-      font-size: 46px;
-      font-weight: 800;
-      letter-spacing: -1.8px;
-      line-height: 1.1;
-      color: #fff;
-      margin-bottom: 18px;
-    }
-    .dark-cta p {
-      font-size: 14px;
-      color: rgba(255,255,255,.5);
-      line-height: 1.75;
-      margin-bottom: 28px;
-      max-width: 420px;
-    }
-    .dc-visual {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      gap: 6px;
-      height: 380px;
-    }
-    .dc-card {
-      border-radius: 6px;
-      overflow: hidden;
-      position: relative;
-      cursor: pointer;
-    }
-    .dc-card .dcc-bg { width: 100%; height: 100%; }
-    .dc-card:first-child { grid-row: 1 / 3; }
-
-    /* ─────────────────────────────────────────
-       SECTION 17 — FOOTER
-    ───────────────────────────────────────── */
-    .footer {
-      background: #0a0a0a;
-      border-top: 1px solid #1a1a1a;
-      color: #fff;
-      padding: 56px 40px 28px;
-    }
-    .footer-top {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr 1fr 1fr;
-      gap: 48px;
-      padding-bottom: 40px;
-      border-bottom: 1px solid #1a1a1a;
-      margin-bottom: 28px;
-    }
-    .footer-logo {
-      font-size: 18px;
-      font-weight: 900;
-      letter-spacing: -.3px;
-      color: #fff;
-      margin-bottom: 10px;
-    }
-    .footer-tagline {
-      font-size: 12.5px;
-      color: rgba(255,255,255,.45);
-      line-height: 1.65;
-    }
-    .footer-cta h3 {
-      font-size: 21px;
-      font-weight: 800;
-      letter-spacing: -.5px;
-      line-height: 1.3;
-      margin-bottom: 8px;
-    }
-    .footer-cta p {
-      font-size: 12px;
-      color: rgba(255,255,255,.45);
-      line-height: 1.65;
-      margin-bottom: 20px;
-    }
-    .footer-cta p strong {
-      display: block;
-      font-size: 11px;
-      font-weight: 600;
-      color: rgba(255,255,255,.55);
-      margin-top: 4px;
-      text-decoration: underline;
-    }
-    .btn-white {
-      background: #fff;
-      color: #000;
-      border: none;
-      padding: 11px 20px;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: .8px;
-      text-transform: uppercase;
-      border-radius: 3px;
-      cursor: pointer;
+    .as-role-tag {
       display: inline-block;
-      transition: background .15s;
-    }
-    .btn-white:hover { background: #e8e8e8; }
-    .footer-col h4 {
-      font-size: 10.5px;
-      font-weight: 700;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.4);
+      font-size: 10px; font-weight: 800;
+      letter-spacing: 1px; text-transform: uppercase;
+      color: rgba(255,255,255,.5);
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+      padding: 4px 10px; border-radius: 2px;
       margin-bottom: 16px;
     }
-    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .footer-col ul li a { font-size: 13px; color: rgba(255,255,255,.7); transition: color .15s; }
-    .footer-col ul li a:hover { color: #fff; }
-    .footer-col ul li.tel a { color: rgba(255,255,255,.5); font-size: 12px; }
-    .fm-col h4 { margin-bottom: 12px; }
-    .fm-brand { margin-bottom: 12px; }
-    .fm-brand-name { font-size: 12.5px; font-weight: 800; color: rgba(255,255,255,.85); letter-spacing: .4px; }
-    .fm-brand-tagline { font-size: 11px; color: rgba(255,255,255,.4); margin-top: 1px; }
+    .as-name {
+      font-size: 62px; font-weight: 900;
+      color: #fff; letter-spacing: -3px;
+      line-height: .92; margin-bottom: 16px;
+    }
+    .as-bio {
+      font-size: 13.5px; color: rgba(255,255,255,.42);
+      line-height: 1.72; margin-bottom: 32px;
+      max-width: 400px;
+    }
+    /* Songs divider */
+    .as-songs-label {
+      font-size: 9px; font-weight: 800;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: rgba(255,255,255,.22);
+      margin-bottom: 12px;
+    }
+    .as-songs {
+      list-style: none; margin-bottom: 0;
+    }
+    .as-songs li {
+      display: flex; align-items: center;
+      gap: 12px; padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .as-songs li:last-child { border-bottom: none; }
+    .as-song-num {
+      font-size: 10px; font-weight: 700;
+      color: rgba(255,255,255,.2);
+      width: 20px; flex-shrink: 0; text-align: right;
+    }
+    .as-song-info { flex: 1; }
+    .as-song-title {
+      font-size: 14px; font-weight: 700;
+      color: rgba(255,255,255,.78);
+      line-height: 1.3;
+    }
+    .as-song-sub {
+      font-size: 11.5px; color: rgba(255,255,255,.3);
+      margin-top: 1px;
+    }
+    .as-song-badge {
+      font-size: 9px; font-weight: 800;
+      letter-spacing: .8px; text-transform: uppercase;
+      padding: 3px 7px; border-radius: 2px;
+      flex-shrink: 0;
+      background: rgba(255,255,255,.07);
+      color: rgba(255,255,255,.4);
+      border: 1px solid rgba(255,255,255,.1);
+    }
+    .as-song-badge.gold { background: rgba(184,134,11,.25); color: #e8b84b; border-color: rgba(184,134,11,.35); }
+    .as-song-badge.viral { background: rgba(30,180,80,.2); color: #4dd884; border-color: rgba(30,180,80,.3); }
+    .as-song-badge.award { background: rgba(30,100,180,.2); color: #5aabf0; border-color: rgba(30,100,180,.3); }
 
-    .footer-bottom {
-      display: flex;
-      align-items: center;
+    /* Progress bar */
+    .as-progress {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 2px; background: rgba(255,255,255,.05); z-index: 20;
+    }
+    .as-progress-fill {
+      height: 100%; width: 0%;
+      background: rgba(255,255,255,.35);
+    }
+
+    /* Navigation */
+    .as-nav {
+      position: absolute; bottom: 36px; right: 48px;
+      display: flex; align-items: center; gap: 12px;
+      z-index: 20;
+    }
+    .as-nav-btn {
+      width: 42px; height: 42px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.06);
+      color: #fff; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .18s, border-color .2s;
+      backdrop-filter: blur(6px);
+    }
+    .as-nav-btn:hover {
+      background: rgba(255,255,255,.14);
+      border-color: rgba(255,255,255,.4);
+    }
+    .as-dots {
+      display: flex; gap: 7px; align-items: center;
+    }
+    .as-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: rgba(255,255,255,.2);
+      cursor: pointer;
+      transition: background .2s, transform .2s;
+    }
+    .as-dot.as-dot-active {
+      background: #fff; transform: scale(1.5);
+    }
+
+    /* Cards section below slider */
+    .collab-cards-section {
+      padding: 80px 40px;
+      background: #fff;
+    }
+    .collab-cards-inner {
+      max-width: 1200px; margin: 0 auto;
+    }
+    .collab-cards-label {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 1.2px; text-transform: uppercase;
+      color: #888; margin-bottom: 32px;
+    }
+
+    /* Featured collaborations — large 2-col cards */
+    .collab-featured {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    .collab-card-lg {
+      background: #000; border-radius: 12px;
+      overflow: hidden; position: relative;
+      min-height: 400px;
+      display: flex; flex-direction: column;
+      justify-content: flex-end;
+      transition: transform .25s, box-shadow .25s;
+      cursor: default;
+    }
+    .collab-card-lg:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 60px rgba(0,0,0,.22);
+    }
+    .collab-card-bg {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+    }
+    .collab-card-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(0,0,0,.92) 0%,
+        rgba(0,0,0,.55) 45%,
+        rgba(0,0,0,.15) 100%
+      );
+    }
+    .collab-card-body {
+      position: relative; z-index: 2;
+      padding: 32px;
+    }
+    .collab-role-tag {
+      display: inline-block;
+      font-size: 10px; font-weight: 800;
+      letter-spacing: 1px; text-transform: uppercase;
+      background: rgba(255,255,255,.12);
+      color: rgba(255,255,255,.75);
+      border: 1px solid rgba(255,255,255,.2);
+      padding: 4px 10px; border-radius: 2px;
+      margin-bottom: 14px;
+      backdrop-filter: blur(4px);
+    }
+    .collab-artist-name {
+      font-size: 30px; font-weight: 900;
+      color: #fff; letter-spacing: -1px;
+      line-height: 1.05; margin-bottom: 8px;
+    }
+    .collab-artist-title {
+      font-size: 13px; color: rgba(255,255,255,.6);
+      margin-bottom: 18px; line-height: 1.5;
+    }
+    .collab-works {
+      list-style: none; display: flex;
+      flex-direction: column; gap: 6px;
+      margin-bottom: 22px;
+    }
+    .collab-works li {
+      font-size: 12.5px; color: rgba(255,255,255,.55);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .collab-works li::before {
+      content: '→'; font-weight: 700;
+      color: rgba(255,255,255,.3); flex-shrink: 0;
+    }
+    .collab-genre-pills {
+      display: flex; gap: 6px; flex-wrap: wrap;
+    }
+    .collab-pill {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: .6px; text-transform: uppercase;
+      background: rgba(255,255,255,.08);
+      color: rgba(255,255,255,.5);
+      padding: 3px 8px; border-radius: 2px;
+      border: 1px solid rgba(255,255,255,.12);
+    }
+
+    /* Secondary collaborator row — 3 smaller cards */
+    .collab-secondary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 56px;
+    }
+    .collab-card-sm {
+      background: #0a0a0a; border-radius: 10px;
+      overflow: hidden; position: relative;
+      min-height: 260px;
+      display: flex; flex-direction: column;
+      justify-content: flex-end;
+      transition: transform .22s, box-shadow .22s;
+    }
+    .collab-card-sm:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 48px rgba(0,0,0,.18);
+    }
+    .collab-card-sm .collab-card-bg {
+      opacity: .8;
+    }
+    .collab-card-sm .collab-card-body {
+      padding: 22px;
+    }
+    .collab-card-sm .collab-artist-name {
+      font-size: 20px; letter-spacing: -.6px;
+    }
+    .collab-card-sm .collab-artist-title {
+      font-size: 12px; margin-bottom: 12px;
+    }
+
+    /* Collaboration stats strip */
+    .collab-stats-row {
+      display: grid; grid-template-columns: repeat(4,1fr);
+      gap: 1px; background: #e8e8e8;
+      border: 1px solid #e8e8e8;
+      border-radius: 10px; overflow: hidden;
+      margin-bottom: 80px;
+    }
+    .collab-stat {
+      background: #fff;
+      padding: 32px 28px; text-align: center;
+    }
+    .collab-stat-num {
+      font-size: 44px; font-weight: 900;
+      letter-spacing: -1.8px; line-height: 1;
+      margin-bottom: 6px;
+    }
+    .collab-stat-label {
+      font-size: 11.5px; color: #777;
+      font-weight: 500; letter-spacing: .3px;
+    }
+
+    /* Notable projects horizontal list */
+    .notable-section {
+      background: #0a0a0a;
+      padding: 72px 40px;
+    }
+    .notable-inner {
+      max-width: 1200px; margin: 0 auto;
+    }
+    .notable-section .section-label {
+      color: rgba(255,255,255,.4);
+    }
+    .notable-section h2 {
+      font-size: 46px; font-weight: 900;
+      color: #fff; letter-spacing: -1.8px;
+      line-height: 1.05; margin-bottom: 48px;
+    }
+    .notable-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 2px; background: rgba(255,255,255,.08);
+      border-radius: 10px; overflow: hidden;
+    }
+    .notable-item {
+      background: #0f0f0f; padding: 30px 28px;
+      transition: background .18s;
+    }
+    .notable-item:hover { background: #161616; }
+    .notable-item-num {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase;
+      color: rgba(255,255,255,.25); margin-bottom: 14px;
+    }
+    .notable-item-title {
+      font-size: 17px; font-weight: 800;
+      color: #fff; letter-spacing: -.4px;
+      margin-bottom: 6px; line-height: 1.2;
+    }
+    .notable-item-sub {
+      font-size: 12.5px; color: rgba(255,255,255,.4);
+      margin-bottom: 14px; line-height: 1.55;
+    }
+    .notable-item-tags {
+      display: flex; gap: 5px; flex-wrap: wrap;
+    }
+    .n-tag {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: .6px; text-transform: uppercase;
+      background: rgba(255,255,255,.06);
+      color: rgba(255,255,255,.35);
+      padding: 3px 7px; border-radius: 2px;
+    }
+
+    /* ══════════════════════════════════════
+       ABOUT (SECTION 2)
+    ══════════════════════════════════════ */
+    .artist-about {
+      padding: 88px 40px;
+      background: #fafafa;
+      border-top: 1px solid #e8e8e8;
+    }
+    .artist-about-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.1fr 1fr;
+      gap: 72px; align-items: center;
+    }
+    .artist-about-text h2 {
+      font-size: 46px; font-weight: 800;
+      letter-spacing: -1.8px; line-height: 1.08;
+      margin-bottom: 20px;
+    }
+    .artist-about-text p {
+      font-size: 14.5px; color: #555;
+      line-height: 1.78; margin-bottom: 16px;
+    }
+    .artist-about-links {
+      display: flex; gap: 12px; margin-top: 28px;
+    }
+    .artist-about-links a {
+      font-size: 13px; font-weight: 700;
+      color: #000; text-decoration: none;
+      border-bottom: 2px solid #000;
+      padding-bottom: 1px;
+      transition: opacity .18s;
+    }
+    .artist-about-links a:hover { opacity: .5; }
+    .artist-about-visual {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .aav-block {
+      border-radius: 8px; overflow: hidden;
+      aspect-ratio: 3/4;
+    }
+    .aav-block:first-child { margin-top: 28px; }
+    /* Collaborating Artists Strip */
+    .ca-strip {
+      padding: 64px 40px;
+      background: #fff;
+      border-top: 1px solid #e8e8e8;
+    }
+    .ca-strip-inner { max-width: 1200px; margin: 0 auto; }
+    .ca-strip-header {
+      display: flex; align-items: baseline;
       justify-content: space-between;
-      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+    .ca-strip-label {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 1.2px; text-transform: uppercase;
+      color: #888;
+    }
+    .ca-strip-count {
+      font-size: 12px; color: #bbb; font-weight: 500;
+    }
+    .ca-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
       gap: 14px;
     }
-    .footer-links {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      font-size: 11.5px;
-      color: rgba(255,255,255,.35);
-      flex-wrap: wrap;
+    .ca-card {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 10px;
     }
-    .footer-links a { color: rgba(255,255,255,.35); transition: color .15s; }
-    .footer-links a:hover { color: rgba(255,255,255,.7); }
-    .socials { display: flex; gap: 14px; }
-    .social-btn {
-      width: 32px; height: 32px;
+    .ca-photo {
+      width: 100%; aspect-ratio: 1/1;
+      border-radius: 10px; overflow: hidden;
+      position: relative;
+      background: #111;
+      transition: transform .22s, box-shadow .22s;
+    }
+    .ca-photo:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 36px rgba(0,0,0,.14);
+    }
+    .ca-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: top center;
+      display: block;
+      filter: grayscale(15%);
+      transition: filter .3s, transform .3s;
+    }
+    .ca-photo:hover img {
+      filter: grayscale(0%);
+      transform: scale(1.05);
+    }
+    .ca-photo-placeholder {
+      width: 100%; height: 100%;
       display: flex; align-items: center; justify-content: center;
-      color: rgba(255,255,255,.45);
-      transition: color .15s;
-      cursor: pointer;
     }
-    .social-btn:hover { color: #fff; }
+    .ca-initials {
+      font-size: 28px; font-weight: 900;
+      color: rgba(255,255,255,.25);
+      letter-spacing: -1px;
+    }
+    .ca-self-tag {
+      position: absolute; top: 8px; right: 8px;
+      font-size: 8px; font-weight: 800;
+      letter-spacing: 1px; text-transform: uppercase;
+      background: rgba(255,255,255,.9);
+      color: #000; padding: 2px 6px; border-radius: 2px;
+    }
+    .ca-name {
+      font-size: 12.5px; font-weight: 800;
+      color: #111; text-align: center;
+      letter-spacing: -.2px; line-height: 1.2;
+    }
+    .ca-role {
+      font-size: 10.5px; color: #999;
+      text-align: center; font-weight: 500;
+      margin-top: -4px;
+    }
 
-    /* Chat bubble */
-    .chat-bubble {
-      position: fixed;
-      bottom: 22px; right: 22px;
-      z-index: 999;
-      width: 46px; height: 46px;
-      background: #000;
+    .artist-philosophy {
+      padding: 64px 40px;
+      border-top: 1px solid #e8e8e8;
+    }
+    .artist-philosophy-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 24px;
+    }
+    .phil-card {
+      padding: 28px; border: 1px solid #e8e8e8;
+      border-radius: 10px; background: #fff;
+      transition: box-shadow .2s, border-color .2s;
+    }
+    .phil-card:hover {
+      border-color: #bbb;
+      box-shadow: 0 8px 32px rgba(0,0,0,.06);
+    }
+    .phil-icon {
+      font-size: 24px; margin-bottom: 14px;
+    }
+    .phil-title {
+      font-size: 16px; font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .phil-body {
+      font-size: 13px; color: #555; line-height: 1.65;
+    }
+
+    /* ══════════════════════════════════════
+       MUSIC MARKETING & PR (SECTION 3)
+    ══════════════════════════════════════ */
+    .mktg-section {
+      padding: 88px 40px;
+      background: #fff;
+      border-top: 1px solid #e8e8e8;
+    }
+    .mktg-inner { max-width: 1200px; margin: 0 auto; }
+    .mktg-header {
+      max-width: 640px; margin-bottom: 52px;
+    }
+    .mktg-header h2 {
+      font-size: 48px; font-weight: 800;
+      letter-spacing: -1.8px; line-height: 1.06;
+      margin-bottom: 12px;
+    }
+    .mktg-header p {
+      font-size: 14.5px; color: #555; line-height: 1.75;
+    }
+    .mktg-grid {
+      display: grid; grid-template-columns: repeat(4,1fr);
+      gap: 16px;
+    }
+    .mktg-card {
+      background: #fff; border: 1px solid #e8e8e8;
+      border-radius: 10px; padding: 26px 22px;
+      transition: box-shadow .2s, border-color .2s, transform .2s;
+    }
+    .mktg-card:hover {
+      border-color: #bbb;
+      box-shadow: 0 10px 36px rgba(0,0,0,.07);
+      transform: translateY(-2px);
+    }
+    .mktg-card-icon {
+      width: 40px; height: 40px;
+      background: #0a0a0a; border-radius: 8px;
+      display: flex; align-items: center;
+      justify-content: center; margin-bottom: 16px;
+    }
+    .mktg-card-icon svg { color: #fff; }
+    .mktg-card-title {
+      font-size: 15px; font-weight: 800;
+      letter-spacing: -.3px; margin-bottom: 8px;
+    }
+    .mktg-card-desc {
+      font-size: 12.5px; color: #666; line-height: 1.65;
+      margin-bottom: 16px;
+    }
+    .mktg-card-items {
+      list-style: none;
+    }
+    .mktg-card-items li {
+      font-size: 11.5px; color: #555;
+      padding: 4px 0; border-bottom: 1px solid #f2f2f2;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .mktg-card-items li::before {
+      content: '·'; font-weight: 900;
+      color: #aaa; flex-shrink: 0;
+    }
+    .mktg-card-items li:last-child { border-bottom: none; }
+
+    /* ══════════════════════════════════════
+       MUSIC DISTRIBUTION & SYNC (SECTION 4)
+    ══════════════════════════════════════ */
+    .dist-section {
+      padding: 88px 40px;
+      background: #0a0a0a;
+    }
+    .dist-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+    .dist-text .section-label { color: rgba(255,255,255,.4); }
+    .dist-text h2 {
+      font-size: 46px; font-weight: 900;
+      color: #fff; letter-spacing: -1.8px;
+      line-height: 1.06; margin-bottom: 18px;
+    }
+    .dist-text p {
+      font-size: 14px; color: rgba(255,255,255,.55);
+      line-height: 1.78; margin-bottom: 32px;
+    }
+    .dist-platforms {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      margin-bottom: 32px;
+    }
+    .dist-platform {
+      display: flex; align-items: center;
+      gap: 7px; background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 6px; padding: 7px 14px;
+      font-size: 12px; font-weight: 700;
+      color: rgba(255,255,255,.7);
+      letter-spacing: .3px;
+    }
+    .dist-platform-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%; background: rgba(255,255,255,.35);
+    }
+    .dist-features {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .dist-feat {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 8px; padding: 20px;
+    }
+    .dist-feat-title {
+      font-size: 14px; font-weight: 800;
+      color: #fff; margin-bottom: 6px;
+    }
+    .dist-feat-body {
+      font-size: 12px; color: rgba(255,255,255,.4);
+      line-height: 1.6;
+    }
+    .sync-pipeline {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 10px; padding: 32px;
+    }
+    .sync-pipeline h3 {
+      font-size: 16px; font-weight: 800;
+      color: #fff; margin-bottom: 24px;
+      letter-spacing: -.3px;
+    }
+    .sync-step {
+      display: flex; align-items: flex-start;
+      gap: 16px; margin-bottom: 22px;
+    }
+    .sync-step:last-child { margin-bottom: 0; }
+    .sync-step-num {
+      width: 32px; height: 32px; flex-shrink: 0;
+      background: rgba(255,255,255,.1);
       border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 4px 14px rgba(0,0,0,.35);
+      display: flex; align-items: center;
+      justify-content: center;
+      font-size: 12px; font-weight: 900;
+      color: rgba(255,255,255,.6);
+      margin-top: 2px;
+    }
+    .sync-step-text {}
+    .sync-step-title {
+      font-size: 14px; font-weight: 700;
+      color: rgba(255,255,255,.85); margin-bottom: 3px;
+    }
+    .sync-step-desc {
+      font-size: 12px; color: rgba(255,255,255,.4);
+      line-height: 1.55;
     }
 
-    /* ─────────────────────────────────────────
+    /* ══════════════════════════════════════
+       AWARD-WINNING PORTFOLIO (SECTION 5)
+    ══════════════════════════════════════ */
+    .portfolio-section {
+      padding: 88px 40px;
+      background: #fff;
+      border-top: 1px solid #e8e8e8;
+    }
+    .portfolio-inner { max-width: 1200px; margin: 0 auto; }
+    .portfolio-header {
+      display: flex; align-items: flex-end;
+      justify-content: space-between; gap: 32px;
+      margin-bottom: 52px;
+    }
+    .portfolio-header h2 {
+      font-size: 48px; font-weight: 900;
+      letter-spacing: -2px; line-height: 1.0;
+      max-width: 520px;
+    }
+    .portfolio-header p {
+      font-size: 14px; color: #555; line-height: 1.72;
+      max-width: 340px;
+    }
+    .genre-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 20px; margin-bottom: 48px;
+    }
+    .genre-card {
+      border-radius: 12px; overflow: hidden;
+      min-height: 200px; position: relative;
+      display: flex; flex-direction: column;
+      justify-content: flex-end;
+      transition: transform .22s, box-shadow .22s;
+    }
+    .genre-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 48px rgba(0,0,0,.14);
+    }
+    .genre-card-bg {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+    }
+    .genre-card-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.88) 0%, rgba(0,0,0,.3) 60%, transparent 100%);
+    }
+    .genre-card-body {
+      position: relative; z-index: 2;
+      padding: 24px;
+    }
+    .genre-label {
+      font-size: 10px; font-weight: 800;
+      letter-spacing: 1.2px; text-transform: uppercase;
+      color: rgba(255,255,255,.45); margin-bottom: 6px;
+    }
+    .genre-name {
+      font-size: 22px; font-weight: 900;
+      color: #fff; letter-spacing: -.7px;
+      line-height: 1.1; margin-bottom: 8px;
+    }
+    .genre-desc {
+      font-size: 12px; color: rgba(255,255,255,.5);
+      line-height: 1.55;
+    }
+    .portfolio-tracks {
+      background: #fafafa; border: 1px solid #e8e8e8;
+      border-radius: 10px; overflow: hidden;
+    }
+    .pt-header {
+      padding: 20px 28px; border-bottom: 1px solid #e8e8e8;
+      display: flex; align-items: center;
+      justify-content: space-between;
+    }
+    .pt-header-title {
+      font-size: 14px; font-weight: 800; letter-spacing: -.2px;
+    }
+    .pt-header-sub {
+      font-size: 12px; color: #888;
+    }
+    .pt-row {
+      display: grid;
+      grid-template-columns: 28px 1fr auto auto;
+      align-items: center;
+      gap: 16px; padding: 14px 28px;
+      border-bottom: 1px solid #f0f0f0;
+      transition: background .15s;
+    }
+    .pt-row:last-child { border-bottom: none; }
+    .pt-row:hover { background: #f5f5f5; }
+    .pt-num {
+      font-size: 12px; color: #bbb;
+      font-weight: 600; text-align: center;
+    }
+    .pt-info {}
+    .pt-title {
+      font-size: 14px; font-weight: 700;
+      color: #000; margin-bottom: 2px;
+    }
+    .pt-artist-ref {
+      font-size: 11.5px; color: #888;
+    }
+    .pt-genre-tag {
+      font-size: 10px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .6px;
+      background: #111; color: #fff;
+      padding: 3px 7px; border-radius: 2px;
+      white-space: nowrap;
+    }
+    .pt-year {
+      font-size: 11.5px; color: #aaa;
+      font-weight: 500; white-space: nowrap;
+    }
+
+    /* ══════════════════════════════════════
+       INDUSTRY RECOGNITION (SECTION 6)
+    ══════════════════════════════════════ */
+    .recognition-section {
+      padding: 88px 40px;
+      background: #fafafa;
+      border-top: 1px solid #e8e8e8;
+    }
+    .recognition-inner { max-width: 1200px; margin: 0 auto; }
+    .recognition-section h2 {
+      font-size: 46px; font-weight: 800;
+      letter-spacing: -1.8px; line-height: 1.06;
+      margin-bottom: 8px;
+    }
+    .recognition-section > .recognition-inner > .rec-intro {
+      font-size: 14px; color: #555;
+      margin-bottom: 52px;
+    }
+    .recognition-columns {
+      display: grid; grid-template-columns: 1.2fr 1fr;
+      gap: 40px;
+    }
+    /* Awards column */
+    .rec-awards-title {
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase;
+      color: #888; margin-bottom: 20px;
+    }
+    .rec-award-item {
+      display: flex; align-items: flex-start;
+      gap: 16px; padding: 20px 0;
+      border-bottom: 1px solid #ebebeb;
+    }
+    .rec-award-item:first-of-type { padding-top: 0; }
+    .rec-award-badge-lg {
+      width: 44px; height: 44px; flex-shrink: 0;
+      border-radius: 6px;
+      display: flex; align-items: center;
+      justify-content: center;
+      font-size: 10px; font-weight: 900;
+      letter-spacing: .5px; text-transform: uppercase;
+      color: #fff;
+    }
+    .rec-award-badge-lg.gold { background: #b8860b; }
+    .rec-award-badge-lg.bronze { background: #8b6542; }
+    .rec-award-badge-lg.best { background: #000; }
+    .rec-award-badge-lg.recognition { background: #1a3a6a; }
+    .rec-award-text {}
+    .rec-award-name {
+      font-size: 15px; font-weight: 700;
+      margin-bottom: 3px; letter-spacing: -.2px;
+    }
+    .rec-award-detail {
+      font-size: 12.5px; color: #555; margin-bottom: 3px;
+    }
+    .rec-award-year {
+      font-size: 11px; color: #aaa;
+      font-weight: 600; letter-spacing: .5px;
+      text-transform: uppercase;
+    }
+    /* Press column */
+    .rec-press-title {
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase;
+      color: #888; margin-bottom: 20px;
+    }
+    .rec-press-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 12px; margin-bottom: 24px;
+    }
+    .rec-press-card {
+      background: #fff; border: 1px solid #e8e8e8;
+      border-radius: 8px; padding: 16px;
+      transition: box-shadow .2s;
+    }
+    .rec-press-card:hover {
+      box-shadow: 0 6px 24px rgba(0,0,0,.06);
+    }
+    .rec-pub-name {
+      font-size: 10px; font-weight: 800;
+      letter-spacing: 1px; text-transform: uppercase;
+      color: #aaa; margin-bottom: 8px;
+    }
+    .rec-press-headline {
+      font-size: 13px; font-weight: 700;
+      line-height: 1.4; color: #111;
+    }
+    .rec-chart-block {
+      background: #000; border-radius: 10px;
+      padding: 22px 24px; color: #fff;
+    }
+    .rec-chart-label {
+      font-size: 10px; font-weight: 800;
+      letter-spacing: 1.2px; text-transform: uppercase;
+      color: rgba(255,255,255,.4); margin-bottom: 8px;
+    }
+    .rec-chart-title {
+      font-size: 16px; font-weight: 800; margin-bottom: 4px;
+    }
+    .rec-chart-detail {
+      font-size: 12px; color: rgba(255,255,255,.5);
+    }
+
+    /* ══════════════════════════════════════
+       THE ONE MINUTE COMPOSER (SECTION 7)
+    ══════════════════════════════════════ */
+    .omc-section {
+      padding: 0;
+      background: #fff;
+      border-top: 1px solid #e8e8e8;
+      overflow: hidden;
+    }
+    .omc-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      min-height: 600px;
+    }
+    .omc-visual {
+      background: linear-gradient(145deg, #0d0820 0%, #1a0a2e 40%, #2e1a0a 100%);
+      position: relative; overflow: hidden;
+      display: flex; align-items: center;
+      justify-content: center; padding: 60px 50px;
+    }
+    .omc-visual-glow {
+      position: absolute;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(124,110,240,.25) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .omc-logo-block {
+      position: relative; z-index: 2;
+      text-align: center;
+    }
+    .omc-logo-label {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: rgba(255,255,255,.3); margin-bottom: 16px;
+    }
+    .omc-logo-text {
+      font-size: 46px; font-weight: 900;
+      color: #fff; letter-spacing: -2px;
+      line-height: 1.0; margin-bottom: 4px;
+    }
+    .omc-logo-sub {
+      font-size: 13px; font-weight: 700;
+      color: rgba(255,255,255,.4); letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .omc-badges {
+      display: flex; justify-content: center;
+      gap: 10px; margin-top: 28px; flex-wrap: wrap;
+    }
+    .omc-badge {
+      font-size: 10px; font-weight: 800;
+      letter-spacing: .8px; text-transform: uppercase;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.15);
+      color: rgba(255,255,255,.6);
+      padding: 5px 12px; border-radius: 2px;
+    }
+    .omc-content {
+      padding: 64px 56px;
+      display: flex; flex-direction: column;
+      justify-content: center;
+    }
+    .omc-content h2 {
+      font-size: 44px; font-weight: 900;
+      letter-spacing: -1.8px; line-height: 1.05;
+      margin-bottom: 18px;
+    }
+    .omc-content > p {
+      font-size: 14.5px; color: #555;
+      line-height: 1.78; margin-bottom: 32px;
+    }
+    .omc-stats {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 16px; margin-bottom: 32px;
+    }
+    .omc-stat {
+      background: #f5f5f5; border-radius: 8px;
+      padding: 18px 16px; text-align: center;
+    }
+    .omc-stat-num {
+      font-size: 28px; font-weight: 900;
+      letter-spacing: -1px; line-height: 1;
+      margin-bottom: 4px;
+    }
+    .omc-stat-label {
+      font-size: 10.5px; color: #888;
+      font-weight: 600; letter-spacing: .3px;
+    }
+    .omc-features { list-style: none; }
+    .omc-features li {
+      font-size: 13px; color: #444;
+      padding: 8px 0; border-bottom: 1px solid #f0f0f0;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .omc-features li::before {
+      content: '→'; font-weight: 700;
+      color: #000; flex-shrink: 0;
+    }
+    .omc-features li:last-child { border-bottom: none; }
+
+    /* ══════════════════════════════════════
        RESPONSIVE
-    ───────────────────────────────────────── */
+    ══════════════════════════════════════ */
     @media (max-width: 960px) {
-      .hero-content { grid-template-columns: 1fr; }
-      .hero-cta-block { flex-wrap: wrap; }
-      .hero-text h1 { font-size: 42px; }
-      .amplify-inner, .split-row, .test-grid,
-      .features-grid, .dark-cta, .dc-visual { grid-template-columns: 1fr; }
-      .split-row.rev .split-visuals { order: 0; }
-      .features-grid { grid-template-columns: repeat(2, 1fr); }
-      .ent-grid { grid-template-columns: repeat(2, 1fr); }
-      .brand-grid { grid-template-columns: repeat(2, 1fr); }
-      .playlists-grid { grid-template-columns: repeat(2, 1fr); }
-      .footer-top { grid-template-columns: 1fr 1fr; }
-      .genre-heading { font-size: 40px; }
-      .enterprise-section h2 { font-size: 40px; }
-      .top-bar { display: none; }
+      .as-section { height: auto; min-height: 100vh; }
+      .as-slide { flex-direction: column; }
+      .as-left { width: 100%; height: 45vh; min-height: 260px; }
+      .as-left-fade {
+        top: auto; left: 0; right: 0; bottom: 0; width: auto; height: 80px;
+        background: linear-gradient(to bottom, transparent 0%, #080808 100%);
+      }
+      .as-right { padding: 32px 28px 80px; }
+      .as-name { font-size: 44px; letter-spacing: -2px; }
+      .as-ghost-name { font-size: 60px; }
+      .ca-grid { grid-template-columns: repeat(4, 1fr); gap: 12px; }
+      .collab-featured { grid-template-columns: 1fr; }
+      .collab-secondary { grid-template-columns: 1fr 1fr; }
+      .notable-grid { grid-template-columns: 1fr 1fr; }
+      .artist-about-inner { grid-template-columns: 1fr; gap: 40px; }
+      .artist-philosophy-inner { grid-template-columns: 1fr 1fr; }
+      .mktg-grid { grid-template-columns: 1fr 1fr; }
+      .dist-inner { grid-template-columns: 1fr; gap: 40px; }
+      .portfolio-header { flex-direction: column; align-items: flex-start; }
+      .genre-grid { grid-template-columns: 1fr 1fr; }
+      .recognition-columns { grid-template-columns: 1fr; }
+      .rec-press-grid { grid-template-columns: 1fr 1fr; }
+      .omc-inner { grid-template-columns: 1fr; }
+      .omc-visual { min-height: 280px; }
+      .omc-content { padding: 48px 32px; }
     }
-
     @media (max-width: 600px) {
-      .navbar { padding: 0 16px; gap: 16px; }
-      .nav-links { display: none; }
-      .hero { padding: 32px 16px 0; }
-      .amplify-inner, .ai-banner-inner { padding: 0 16px; }
-      .test-grid, .features-grid, .playlists-grid { grid-template-columns: 1fr; }
-      .ent-grid, .brand-grid { grid-template-columns: 1fr; }
-      .artist-tile { flex: 0 0 calc(50% - 4px); }
-      .footer-top { grid-template-columns: 1fr; }
-      section, .testimonials-section, .features-section,
-      .enterprise-section, .genre-section, .playlists-section { padding-left: 16px; padding-right: 16px; }
-    }
-
-    /* ── Silhouette bob keyframe ── */
-    @keyframes silBob {
-      from { transform: translateY(0px); }
-      to   { transform: translateY(-7px); }
-    }
-
-    /* ── Smooth image/card hover lift ── */
-    .pl-tile, .feat-card, .test-card, .bg-cell, .artist-tile {
-      transition: transform .22s ease, box-shadow .22s ease;
-    }
-    .pl-tile:hover    { transform: scale(1.025) !important; }
-    .feat-card:hover  { transform: translateY(-4px) !important; box-shadow: 0 10px 32px rgba(0,0,0,.12); }
-    .test-card:hover  { transform: translateY(-3px) !important; box-shadow: 0 8px 24px rgba(0,0,0,.08); }
-    .bg-cell:hover    { transform: scale(1.03) !important; }
-    .artist-tile:hover { transform: scale(1.03) !important; }
-
-    /* ── Section transitions — smooth scroll snap feel ── */
-    .split-row, .section-amplify, .features-section,
-    .testimonials-section, .playlists-section, .genre-section {
-      transition: opacity .01s; /* ensures paint layer for GPU */
+      .as-left { height: 38vh; min-height: 200px; }
+      .as-right { padding: 24px 16px 80px; }
+      .as-name { font-size: 34px; letter-spacing: -1.5px; }
+      .as-nav { right: 16px; bottom: 28px; }
+      .collab-cards-section { padding: 52px 16px; }
+      .artist-about, .artist-philosophy, .mktg-section,
+      .portfolio-section, .recognition-section { padding: 52px 16px; }
+      .notable-section, .dist-section { padding: 52px 16px; }
+      .ca-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+      .ca-strip { padding: 48px 16px; }
+      .collab-secondary { grid-template-columns: 1fr; }
+      .notable-grid { grid-template-columns: 1fr; }
+      .artist-about-text h2, .mktg-header h2, .portfolio-header h2,
+      .recognition-section h2, .omc-content h2 { font-size: 28px; }
+      .notable-section h2, .dist-text h2 { font-size: 28px; }
+      .artist-philosophy-inner { grid-template-columns: 1fr; }
+      .mktg-grid { grid-template-columns: 1fr; }
+      .dist-features { grid-template-columns: 1fr; }
+      .genre-grid { grid-template-columns: 1fr; }
+      .pt-row { grid-template-columns: 24px 1fr auto; }
+      .pt-genre-tag { display: none; }
+      .omc-stats { grid-template-columns: 1fr; }
+      .omc-content { padding: 36px 16px; }
+      .omc-logo-text { font-size: 30px; }
+      .rec-press-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════
-     TOP BAR
-════════════════════════════════════════ -->
+<!-- TOP BAR -->
 <div class="top-bar">
   <div class="top-bar-left">
-    <a href="#"><span class="brand">AART SENSE</span></a>
-    <span class="sep">|</span>
-    <a href="#">RECORDS</a>
-    <span class="sep">|</span>
-    <a href="#">ACADEMY</a>
+    <a href="index.html"><span class="brand">AART SENSE</span></a>
+    <span class="sep">|</span><a href="#">RECORDS</a>
+    <span class="sep">|</span><a href="#">ACADEMY</a>
   </div>
   <div class="top-bar-right">
-    <a href="#">Contact Us</a>
+    <a href="contact.html">Contact Us</a>
     <a href="mailto:mail@aartsense.co.uk">mail@aartsense.co.uk</a>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     NAVBAR
-════════════════════════════════════════ -->
-<nav class="navbar">
-  <div class="logo">AART SENSE</div>
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="logo"><a href="index.html">AART SENSE</a></div>
   <div class="nav-links">
     <a href="about.html">About</a>
-    <a href="artist.html">Artist</a>
     <a href="services.html">Services</a>
-    <a href="investors.html">Investors</a>
     <a href="brand.html">Brand</a>
     <a href="faqs.html">FAQs</a>
+    <a href="investors.html">Investors</a>
     <a href="contact.html">Contact</a>
   </div>
   <div class="nav-right">
     <span class="nav-login">Listen</span>
     <button class="btn-cta">Book Now</button>
   </div>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
-
-<!-- ═══════════════════════════════════════
-     SECTION 1 — HERO
-════════════════════════════════════════ -->
-<section class="hero">
-  <div class="hero-inner">
-    <div class="hero-content">
-      <div class="hero-text">
-        <p class="section-label">Award-Winning Music Composer · London, UK</p>
-        <h1>Where Hindustani Classical meets contemporary soul</h1>
-        <p>Arjuna Harjai connects films, brands, and productions with authentic, emotionally resonant original compositions. From Bollywood to global advertising — 20+ years of crafting sounds that stay.</p>
-      </div>
-      <div class="hero-cta-block">
-        <button class="btn-black">Listen Now</button>
-        <p class="hero-cta-note">No booking fee. Explore the full portfolio.</p>
-      </div>
-    </div>
-
-    <div class="brand-logos">
-      <div class="brand-logos-track" aria-hidden="true">
-        <!-- Set 1 -->
-        <span class="brand-logo">DETTOL</span>
-        <span class="brand-logo">AMAZON</span>
-        <span class="brand-logo">CADBURY</span>
-        <span class="brand-logo">GOOGLE</span>
-        <span class="brand-logo">JIO</span>
-        <span class="brand-logo">AXIS BANK</span>
-        <span class="brand-logo">COCA-COLA</span>
-        <span class="brand-logo">SAMSUNG</span>
-        <span class="brand-logo">NESTLÉ</span>
-        <span class="brand-logo">PEPSI</span>
-        <span class="brand-logo">FLIPKART</span>
-        <span class="brand-logo">AMBUJA</span>
-        <!-- Set 2 — exact duplicate for seamless loop -->
-        <span class="brand-logo">DETTOL</span>
-        <span class="brand-logo">AMAZON</span>
-        <span class="brand-logo">CADBURY</span>
-        <span class="brand-logo">GOOGLE</span>
-        <span class="brand-logo">JIO</span>
-        <span class="brand-logo">AXIS BANK</span>
-        <span class="brand-logo">COCA-COLA</span>
-        <span class="brand-logo">SAMSUNG</span>
-        <span class="brand-logo">NESTLÉ</span>
-        <span class="brand-logo">PEPSI</span>
-        <span class="brand-logo">FLIPKART</span>
-        <span class="brand-logo">AMBUJA</span>
-      </div>
-    </div>
-
-    <!-- Dark concert banner -->
-    <div class="hero-dark-banner">
-      <div class="silhouettes">
-        <div class="sil sil-1"></div>
-        <div class="sil sil-2"></div>
-        <div class="sil sil-3">
-          <div class="sil-arms"></div>
-        </div>
-        <div class="sil sil-4"></div>
-        <div class="sil sil-5"></div>
-      </div>
-    </div>
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-header">
+    <div class="mobile-logo">AART SENSE</div>
+    <button class="mobile-menu-close" id="mobileMenuClose">&#10005;</button>
   </div>
-</section>
+  <nav class="mobile-nav">
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="brand.html">Brand</a>
+    <a href="faqs.html">FAQs</a>
+    <a href="investors.html">Investors</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="mobile-menu-footer">
+    <button class="btn-cta">Book Now</button>
+  </div>
+</div>
+<div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
 
-<!-- ═══════════════════════════════════════
-     SECTION 2 — AMPLIFY THE EMOTION (dark)
-════════════════════════════════════════ -->
-<section class="section-amplify">
-  <div class="amplify-road"></div>
-  <div class="amplify-inner">
-    <div class="amplify-left">
-      <h2>Amplify the emotion in every frame and beat.</h2>
-      <p>From jingles that define brands to scores that anchor feature films, every composition by Arjuna Harjai is crafted to stir emotion and stay with your audience. With Aart Sense, it's artistry over algorithm. Every time.</p>
-      <div class="amplify-cta">
-        <button class="btn-outline-white">Book a Session</button>
-        <p class="amplify-cta-note">Reach out to start your project with Arjuna today.</p>
+
+<!-- ═══════════════════════════════════════════
+  SECTION 1: ARTISTS & COLLABORATIONS SLIDER
+═══════════════════════════════════════════ -->
+<section class="as-section" id="artistSlider">
+  <span class="as-vert-label">Artists &amp; Collaborations</span>
+
+  <div class="as-track" id="asTrack">
+
+    <!-- ── SLIDE 1: ARIJIT SINGH ── -->
+    <div class="as-slide as-active">
+      <div class="as-left">
+        <div class="as-portrait" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/0/0f/Arijit_5th_GiMA_Awards.jpg'); background-color:#111;"></div>
+        <div class="as-portrait-tint"></div>
+        <div class="as-left-fade"></div>
+        <div class="as-ghost-name">ARIJIT</div>
+      </div>
+      <div class="as-right">
+        <div class="as-counter">01 / 07 &nbsp;·&nbsp; Artists &amp; Collaborations</div>
+        <span class="as-role-tag">Singer · Bollywood · National Award</span>
+        <h2 class="as-name">Arijit Singh</h2>
+        <p class="as-bio">India's most-streamed vocalist and National Award-winning singer. A voice that defines a generation of Bollywood music. Collaborated with Arjuna on original compositions and recordings that blend soulful melody with contemporary production.</p>
+        <div class="as-songs-label">Songs &amp; Works Together</div>
+        <ul class="as-songs">
+          <li>
+            <span class="as-song-num">01</span>
+            <div class="as-song-info"><div class="as-song-title">Original Composition — Studio Sessions</div><div class="as-song-sub">Bollywood &amp; independent music</div></div>
+            <span class="as-song-badge">Collaboration</span>
+          </li>
+          <li>
+            <span class="as-song-num">02</span>
+            <div class="as-song-info"><div class="as-song-title">Vocal Recording — Arjuna's Production</div><div class="as-song-sub">Feature release · Original score</div></div>
+            <span class="as-song-badge">Production</span>
+          </li>
+          <li>
+            <span class="as-song-num">03</span>
+            <div class="as-song-info"><div class="as-song-title">Music Direction</div><div class="as-song-sub">Background score &amp; songs</div></div>
+            <span class="as-song-badge award">Film</span>
+          </li>
+        </ul>
       </div>
     </div>
-    <div class="amplify-right">
-      <div class="stat-row">1,000+ <em>ad jingles composed</em></div>
-      <div class="stat-row" style="margin-top:14px">12+ <em>feature films scored</em></div>
-      <div class="stat-row" style="margin-top:14px">20+ <em>years of experience</em></div>
-    </div>
-  </div>
-</section>
 
-<!-- ═══════════════════════════════════════
-     SECTION 3 — EXCLUSIVE COLLECTION
-════════════════════════════════════════ -->
-<section class="section-centered">
-  <h2>An award-winning portfolio with unmatched versatility.</h2>
-  <p>From the iconic 'Dettol Dettol Ho' to original scores for a dozen feature films — every composition blends the depth of Hindustani classical music with contemporary emotion to help your story connect.</p>
-  <button class="btn-outline-dark">Explore Portfolio</button>
-</section>
-
-<!-- ═══════════════════════════════════════
-     SECTION 4 — IN-DEMAND ARTISTS
-════════════════════════════════════════ -->
-<section>
-  <div class="split-row">
-    <div class="split-text">
-      <p class="section-label">You Know It When You Hear It.</p>
-      <h2>India's most recognised composer, defining what's next.</h2>
-      <p>Born into music, trained in Hindustani classical from age two, Arjuna Harjai has shaped the soundscape of Indian advertising and cinema — from collaborations with Gulzar and Prasoon Joshi to scoring for Nikkhil Advani's productions.</p>
-      <button class="btn-black">Book Now</button>
-    </div>
-    <div class="split-visuals">
-      <div class="artists-duo">
-        <div class="artist-portrait">
-          <div class="ap-bg" style="background: linear-gradient(180deg,#e8d5b0 0%,#c9a87c 60%,#8a6a44 100%);"></div>
-        </div>
-        <div class="artist-portrait">
-          <div class="ap-bg" style="background: linear-gradient(180deg,#7a1c1c 0%,#4a0808 60%,#2a0000 100%);"></div>
-        </div>
+    <!-- ── SLIDE 2: JONITA GANDHI ── -->
+    <div class="as-slide">
+      <div class="as-left">
+        <div class="as-portrait" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/9/96/Jonita_at_IIFA_2017_Green_Carpet_%28cropped%29.jpg'); background-color:#111;"></div>
+        <div class="as-portrait-tint"></div>
+        <div class="as-left-fade"></div>
+        <div class="as-ghost-name">JONITA</div>
+      </div>
+      <div class="as-right">
+        <div class="as-counter">02 / 07 &nbsp;·&nbsp; Artists &amp; Collaborations</div>
+        <span class="as-role-tag">Singer · Canada · Multilingual</span>
+        <h2 class="as-name">Jonita Gandhi</h2>
+        <p class="as-bio">Canadian-Indian playback singer with a remarkable multilingual range — from Hindi and Tamil to English. Her crystalline voice and effortless versatility brought a contemporary international dimension to Arjuna's compositions.</p>
+        <div class="as-songs-label">Songs &amp; Works Together</div>
+        <ul class="as-songs">
+          <li>
+            <span class="as-song-num">01</span>
+            <div class="as-song-info"><div class="as-song-title">Vocal Feature — Original Song</div><div class="as-song-sub">Contemporary pop · Hindi &amp; English</div></div>
+            <span class="as-song-badge">Pop</span>
+          </li>
+          <li>
+            <span class="as-song-num">02</span>
+            <div class="as-song-info"><div class="as-song-title">Studio Recording — Arjuna's Production</div><div class="as-song-sub">Multilingual composition</div></div>
+            <span class="as-song-badge">Production</span>
+          </li>
+          <li>
+            <span class="as-song-num">03</span>
+            <div class="as-song-info"><div class="as-song-title">Advertising Jingle — Brand Campaign</div><div class="as-song-sub">National broadcast · Original composition</div></div>
+            <span class="as-song-badge">Advertising</span>
+          </li>
+        </ul>
       </div>
     </div>
+
+    <!-- ── SLIDE 3: RASHMEET KAUR ── -->
+    <div class="as-slide">
+      <div class="as-left">
+        <div class="as-portrait" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/0/07/Rashmeet_K._%28cropped%29.jpg'); background-color:#111;"></div>
+        <div class="as-portrait-tint"></div>
+        <div class="as-left-fade"></div>
+        <div class="as-ghost-name">RASHMEET</div>
+      </div>
+      <div class="as-right">
+        <div class="as-counter">03 / 07 &nbsp;·&nbsp; Artists &amp; Collaborations</div>
+        <span class="as-role-tag">Singer · Folk · Punjabi · Independent</span>
+        <h2 class="as-name">Rashmeet Kaur</h2>
+        <p class="as-bio">Known for her distinctive folk-rooted Punjabi sound, Rashmeet brought raw authenticity and emotional depth to Arjuna's compositions. Her voice bridges classical Indian tradition with the energy of contemporary independent music.</p>
+        <div class="as-songs-label">Songs &amp; Works Together</div>
+        <ul class="as-songs">
+          <li>
+            <span class="as-song-num">01</span>
+            <div class="as-song-info"><div class="as-song-title">Punjabi Folk Original</div><div class="as-song-sub">The One Minute Composer · Independent release</div></div>
+            <span class="as-song-badge viral">Folk</span>
+          </li>
+          <li>
+            <span class="as-song-num">02</span>
+            <div class="as-song-info"><div class="as-song-title">Vocal Collaboration — Studio Recording</div><div class="as-song-sub">Arjuna Harjai Production · Original composition</div></div>
+            <span class="as-song-badge">Production</span>
+          </li>
+          <li>
+            <span class="as-song-num">03</span>
+            <div class="as-song-info"><div class="as-song-title">Original Song — Independent Music</div><div class="as-song-sub">UK &amp; India release · Streaming platforms</div></div>
+            <span class="as-song-badge">Release</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ── SLIDE 4: ARJUNA HARJAI (ME) ── -->
+    <div class="as-slide">
+      <div class="as-left">
+        <div class="as-portrait" style="background-image: url('https://www.musiculture.in/wp-content/uploads/2023/06/AH7-804x800.jpg'); background-color:#111;"></div>
+        <div class="as-portrait-tint"></div>
+        <div class="as-left-fade"></div>
+        <div class="as-ghost-name">ARJUNA</div>
+      </div>
+      <div class="as-right">
+        <div class="as-counter">04 / 07 &nbsp;·&nbsp; Artists &amp; Collaborations</div>
+        <span class="as-role-tag">Composer · Producer · Aart Sense</span>
+        <h2 class="as-name">Arjuna Harjai</h2>
+        <p class="as-bio">The composer behind it all. Award-winning music director, singer-songwriter, and producer — trained in Hindustani classical music from age two. The creative force behind every collaboration, every score, and every original composition at Aart Sense.</p>
+        <div class="as-songs-label">Selected Original Works</div>
+        <ul class="as-songs">
+          <li>
+            <span class="as-song-num">01</span>
+            <div class="as-song-info"><div class="as-song-title">Winter Ayun Waliye</div><div class="as-song-sub">The One Minute Composer · Spotify Viral 50</div></div>
+            <span class="as-song-badge viral">Viral 50</span>
+          </li>
+          <li>
+            <span class="as-song-num">02</span>
+            <div class="as-song-info"><div class="as-song-title">Rab Ki Baatein — P.O.W.</div><div class="as-song-sub">ABBY Gold · Original Score</div></div>
+            <span class="as-song-badge gold">ABBY Gold</span>
+          </li>
+          <li>
+            <span class="as-song-num">03</span>
+            <div class="as-song-info"><div class="as-song-title">1,000+ Ad Jingles · 12+ Film Scores</div><div class="as-song-sub">Dettol · Amazon · Cadbury · And more</div></div>
+            <span class="as-song-badge award">Portfolio</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ── SLIDE 5: Surabhi Dashputra ── -->
+    <div class="as-slide">
+      <div class="as-left">
+        <div class="as-portrait" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIHNU9mZShufq8QjN92XuM0mEXZPmKKb-fYA&s'); background-color:#111;"></div>
+        <div class="as-portrait-tint"></div>
+        <div class="as-left-fade"></div>
+        <div class="as-ghost-name">Surabhi Dashputra</div>
+      </div>
+      <div class="as-right">
+        <div class="as-counter">05 / 07 &nbsp;·&nbsp; Artists &amp; Collaborations</div>
+        <span class="as-role-tag">Artist · Vocalist · Collaborator</span>
+        <h2 class="as-name">Surabhi Dashputra</h2>
+        <p class="as-bio">A distinctive voice and creative collaborator whose artistry added a unique sonic layer to Arjuna's compositions. Their partnership blends genres and defies expectations — producing music that resonates across cultures and audiences.</p>
+        <div class="as-songs-label">Songs &amp; Works Together</div>
+        <ul class="as-songs">
+          <li>
+            <span class="as-song-num">01</span>
+            <div class="as-song-info"><div class="as-song-title">Original Collaboration — Studio</div><div class="as-song-sub">Arjuna Harjai Production · Original music</div></div>
+            <span class="as-song-badge">Collaboration</span>
+          </li>
+          <li>
+            <span class="as-song-num">02</span>
+            <div class="as-song-info"><div class="as-song-title">Vocal Feature — Original Song</div><div class="as-song-sub">Independent release · UK &amp; India</div></div>
+            <span class="as-song-badge">Original</span>
+          </li>
+          <li>
+            <span class="as-song-num">03</span>
+            <div class="as-song-info"><div class="as-song-title">Music Direction</div><div class="as-song-sub">Score &amp; arrangement</div></div>
+            <span class="as-song-badge award">Production</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ── SLIDE 6: JYOTICA TANGRI ── -->
+    <div class="as-slide">
+      <div class="as-left">
+        <div class="as-portrait" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/4/40/JT_pic.jpg'); background-color:#111;"></div>
+        <div class="as-portrait-tint"></div>
+        <div class="as-left-fade"></div>
+        <div class="as-ghost-name">JYOTICA</div>
+      </div>
+      <div class="as-right">
+        <div class="as-counter">06 / 07 &nbsp;·&nbsp; Artists &amp; Collaborations</div>
+        <span class="as-role-tag">Singer · Playback · Bollywood</span>
+        <h2 class="as-name">Jyotica Tangri</h2>
+        <p class="as-bio">Known for her warm, expressive voice and soulful renditions, Jyotica Tangri brought emotional authenticity to Arjuna's compositions. Her playback work spans Bollywood, independent music, and advertising — a natural creative partner.</p>
+        <div class="as-songs-label">Songs &amp; Works Together</div>
+        <ul class="as-songs">
+          <li>
+            <span class="as-song-num">01</span>
+            <div class="as-song-info"><div class="as-song-title">Original Song — Arjuna's Production</div><div class="as-song-sub">Playback composition · Studio recording</div></div>
+            <span class="as-song-badge">Playback</span>
+          </li>
+          <li>
+            <span class="as-song-num">02</span>
+            <div class="as-song-info"><div class="as-song-title">Advertising Vocal Feature</div><div class="as-song-sub">Brand campaign · National broadcast</div></div>
+            <span class="as-song-badge gold">Advertising</span>
+          </li>
+          <li>
+            <span class="as-song-num">03</span>
+            <div class="as-song-info"><div class="as-song-title">Independent Music Collaboration</div><div class="as-song-sub">Original composition · Streaming release</div></div>
+            <span class="as-song-badge">Original</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ── SLIDE 7: NATASHA NOORANI ── -->
+    <div class="as-slide">
+      <div class="as-left">
+        <div class="as-portrait" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTqMypWyH98yyxxGQtFtZO-6OsBvmqabnBEg&s'); background-color:#111;"></div>
+        <div class="as-portrait-tint"></div>
+        <div class="as-left-fade"></div>
+        <div class="as-ghost-name">NATASHA</div>
+      </div>
+      <div class="as-right">
+        <div class="as-counter">07 / 07 &nbsp;·&nbsp; Artists &amp; Collaborations</div>
+        <span class="as-role-tag">Singer · Pakistan · Alternative</span>
+        <h2 class="as-name">Natasha Noorani</h2>
+        <p class="as-bio">One of Pakistan's most exciting independent voices — known for blending Urdu poetry with alternative electronic and pop production. Her collaboration with Arjuna bridged the India-Pakistan musical connection, creating work that resonates across borders.</p>
+        <div class="as-songs-label">Songs &amp; Works Together</div>
+        <ul class="as-songs">
+          <li>
+            <span class="as-song-num">01</span>
+            <div class="as-song-info"><div class="as-song-title">Cross-Border Original</div><div class="as-song-sub">India–Pakistan collaboration · Arjuna's production</div></div>
+            <span class="as-song-badge viral">Independent</span>
+          </li>
+          <li>
+            <span class="as-song-num">02</span>
+            <div class="as-song-info"><div class="as-song-title">Urdu–Hindi Composition</div><div class="as-song-sub">Vocal feature · Alternative pop</div></div>
+            <span class="as-song-badge">Alternative</span>
+          </li>
+          <li>
+            <span class="as-song-num">03</span>
+            <div class="as-song-info"><div class="as-song-title">Original Song — Studio Recording</div><div class="as-song-sub">Streaming release · UK &amp; South Asia</div></div>
+            <span class="as-song-badge award">Release</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
   </div>
+
+  <!-- Navigation -->
+  <div class="as-nav" id="asNav">
+    <button class="as-nav-btn" id="asPrev" aria-label="Previous artist">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <div class="as-dots" id="asDots">
+      <span class="as-dot as-dot-active"></span>
+      <span class="as-dot"></span>
+      <span class="as-dot"></span>
+      <span class="as-dot"></span>
+      <span class="as-dot"></span>
+      <span class="as-dot"></span>
+      <span class="as-dot"></span>
+    </div>
+    <button class="as-nav-btn" id="asNext" aria-label="Next artist">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
+
+  <div class="as-progress"><div class="as-progress-fill" id="asProgressFill"></div></div>
 </section>
 
-<!-- ═══════════════════════════════════════
-     SECTION 5 — UNMATCHED CURATION
-════════════════════════════════════════ -->
-<section>
-  <div class="split-row rev" style="padding-top:0">
-    <div class="split-visuals">
-      <!-- Spotify player mockup -->
-      <div class="app-mockup">
-        <div class="app-titlebar">
-          <div class="dot dot-r"></div>
-          <div class="dot dot-y"></div>
-          <div class="dot dot-g"></div>
-          <span class="app-titlebar-label">Aart Sense · Listen Now</span>
-        </div>
-        <div class="app-body">
-          <!-- Live Spotify embed -->
-          <div class="spotify-wrap">
-            <iframe id="spotify-frame"
-              src="https://open.spotify.com/embed/track/3g9f2r7CAXPi6ebsbOFgNf?utm_source=generator&theme=0"
-              width="100%" height="152" frameBorder="0"
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-              loading="lazy"></iframe>
+<!-- COLLABORATION CARDS -->
+<section class="collab-cards-section">
+  <div class="collab-cards-inner">
+    <p class="collab-cards-label">Featured Collaborators</p>
+
+    <!-- FEATURED: 2 large cards -->
+    <div class="collab-featured">
+
+      <div class="collab-card-lg">
+        <div class="collab-card-bg" style="background:linear-gradient(145deg,#0d0a1a 0%,#1a1230 50%,#2a1a40 100%)"></div>
+        <div class="collab-card-overlay"></div>
+        <div class="collab-card-body">
+          <span class="collab-role-tag">Lyricist · Poet</span>
+          <div class="collab-artist-name">Gulzar</div>
+          <div class="collab-artist-title">India's most celebrated poet-lyricist. Oscar, Grammy &amp; Dadasaheb Phalke Awardee.</div>
+          <ul class="collab-works">
+            <li>P.O.W. – Bandi Yuddh Ke (Star Plus / ALTBalaji)</li>
+            <li>Advertising compositions — national campaigns</li>
+            <li>Original background scores, lyrics collaboration</li>
+          </ul>
+          <div class="collab-genre-pills">
+            <span class="collab-pill">TV Drama</span>
+            <span class="collab-pill">Advertising</span>
+            <span class="collab-pill">Hindustani</span>
           </div>
-          <!-- Track selector -->
-          <div class="app-track-list">
+        </div>
+      </div>
 
-            <div class="app-track active"
-                 data-track="3g9f2r7CAXPi6ebsbOFgNf">
-              <div class="app-track-thumb-wrap">
-                <div class="app-track-thumb" style="background:linear-gradient(135deg,#e86c3a,#c44b1a)"></div>
-                <div class="app-eq">
-                  <div class="app-eq-bar"></div><div class="app-eq-bar"></div>
-                  <div class="app-eq-bar"></div><div class="app-eq-bar"></div>
-                </div>
-              </div>
-              <div class="app-track-info">
-                <div class="app-track-name">O Soniye</div>
-                <div class="app-track-artist">Arjuna Harjai · Rytthm Upadyay</div>
-              </div>
-              <div class="app-track-dur">3:48</div>
-              <div class="app-track-play"><svg width="8" height="8" viewBox="0 0 10 10" fill="rgba(255,255,255,.7)"><polygon points="2,1 9,5 2,9"/></svg></div>
-            </div>
-
-            <div class="app-track"
-                 data-track="5AUYlghrRZHKxJ9ni5VIUx">
-              <div class="app-track-thumb-wrap">
-                <div class="app-track-thumb" style="background:linear-gradient(135deg,#3a6ce8,#1a3ec4)"></div>
-                <div class="app-eq">
-                  <div class="app-eq-bar"></div><div class="app-eq-bar"></div>
-                  <div class="app-eq-bar"></div><div class="app-eq-bar"></div>
-                </div>
-              </div>
-              <div class="app-track-info">
-                <div class="app-track-name">Karigar</div>
-                <div class="app-track-artist">Arjuna Harjai · Surabhi Dashputra</div>
-              </div>
-              <div class="app-track-dur">4:12</div>
-              <div class="app-track-play"><svg width="8" height="8" viewBox="0 0 10 10" fill="rgba(255,255,255,.7)"><polygon points="2,1 9,5 2,9"/></svg></div>
-            </div>
-
-            <div class="app-track"
-                 data-track="7B68557wAkUpbdg50tnGgI">
-              <div class="app-track-thumb-wrap">
-                <div class="app-track-thumb" style="background:linear-gradient(135deg,#8a3ae8,#5a1ac4)"></div>
-                <div class="app-eq">
-                  <div class="app-eq-bar"></div><div class="app-eq-bar"></div>
-                  <div class="app-eq-bar"></div><div class="app-eq-bar"></div>
-                </div>
-              </div>
-              <div class="app-track-info">
-                <div class="app-track-name">Zikar Hai</div>
-                <div class="app-track-artist">Arjuna Harjai · Natasha Noorani</div>
-              </div>
-              <div class="app-track-dur">4:01</div>
-              <div class="app-track-play"><svg width="8" height="8" viewBox="0 0 10 10" fill="rgba(255,255,255,.7)"><polygon points="2,1 9,5 2,9"/></svg></div>
-            </div>
-
-            <div class="app-track"
-                 data-track="4FRvFFSYigt5G0k4Ty14yS">
-              <div class="app-track-thumb-wrap">
-                <div class="app-track-thumb" style="background:linear-gradient(135deg,#1a1a2e,#2e3a6e)"></div>
-                <div class="app-eq">
-                  <div class="app-eq-bar"></div><div class="app-eq-bar"></div>
-                  <div class="app-eq-bar"></div><div class="app-eq-bar"></div>
-                </div>
-              </div>
-              <div class="app-track-info">
-                <div class="app-track-name">Winter Ayun Waliye</div>
-                <div class="app-track-artist">Arjuna Harjai · Jyotica Tangri</div>
-              </div>
-              <div class="app-track-dur">3:24</div>
-              <div class="app-track-play"><svg width="8" height="8" viewBox="0 0 10 10" fill="rgba(255,255,255,.7)"><polygon points="2,1 9,5 2,9"/></svg></div>
-            </div>
-
-          </div><!-- /app-track-list -->
-
-          <div class="spotify-footer">
-            <svg width="12" height="12" viewBox="0 0 168 168" fill="#1db954"><path d="M84 0C37.6 0 0 37.6 0 84s37.6 84 84 84 84-37.6 84-84S130.4 0 84 0zm38.6 121.2c-1.5 2.5-4.8 3.3-7.3 1.8-20-12.2-45.2-15-74.9-8.2-2.9.7-5.7-1.1-6.4-4-.7-2.9 1.1-5.7 4-6.4 32.5-7.4 60.4-4.2 82.9 9.5 2.5 1.5 3.3 4.8 1.8 7.3zm10.3-22.9c-1.9 3.1-6 4.1-9.1 2.2-22.9-14.1-57.8-18.2-84.9-9.9-3.5 1.1-7.2-.9-8.2-4.4-1.1-3.5.9-7.2 4.4-8.2 30.9-9.4 69.3-4.8 95.6 11.2 3.1 1.9 4.1 6 2.2 9.1zm.9-23.8C112.7 59.1 71.6 57.8 47 65.1c-4.2 1.3-8.6-1.1-9.8-5.3-1.3-4.2 1.1-8.6 5.3-9.8 28.5-8.6 75.9-7 105.9 11 3.7 2.2 5 7 2.7 10.7-2.1 3.6-7 4.9-10.6 2.7z"/></svg>
-            <span>Streaming via Spotify</span>
-          </div>
-        </div><!-- /app-body -->
-      </div><!-- /app-mockup -->
-    </div><!-- /split-visuals -->
-    <div class="split-text">
-      <p class="section-label">100% Original. 0% Generic.</p>
-      <h2>Compositions crafted for filmmakers.</h2>
-      <p>Every brief is treated as a unique creative challenge. Arjuna's process begins with the narrative — whether film or advertisement — ensuring the music is born from the story, not imposed upon it.</p>
-      <a href="https://open.spotify.com/artist/6EwLfbS1MI8kZXTIwkGfHN" target="_blank" rel="noopener" class="btn-black">Listen on Spotify</a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════
-     SECTION 6 — NEW MUSIC DAILY
-════════════════════════════════════════ -->
-<section>
-  <div class="split-row" style="padding-top:0">
-    <div class="split-text">
-      <p class="section-label">The One Minute Composer.</p>
-      <h2>Fresh originals released with every new prompt.</h2>
-      <p>In 2024 Arjuna launched a groundbreaking series — composing and releasing a new original track daily, inspired by random prompts. "Winter Ayun Waliye" hit the Spotify Viral 50 Charts in both India and Pakistan.</p>
-      <button class="btn-black">Listen Now</button>
-    </div>
-    <div class="split-visuals">
-      <!-- Musicbed UI mockup -->
-      <div class="musicbed-ui-mockup">
-        <div class="mui-nav">
-          <span class="mui-logo">AART SENSE</span>
-          <div class="mui-navlinks">
-            <span>Music</span><span>Films</span><span>Playlists</span><span>Services</span>
+      <div class="collab-card-lg">
+        <div class="collab-card-bg" style="background:linear-gradient(145deg,#0a1a0d 0%,#122e1a 50%,#1a401e 100%)"></div>
+        <div class="collab-card-overlay"></div>
+        <div class="collab-card-body">
+          <span class="collab-role-tag">Lyricist · Creative Director</span>
+          <div class="collab-artist-name">Prasoon Joshi</div>
+          <div class="collab-artist-title">National Award-winning lyricist, author &amp; Chairman, CBFC. India's foremost creative force.</div>
+          <ul class="collab-works">
+            <li>Iconic advertising campaigns — national scale</li>
+            <li>Original songs &amp; compositions collaboration</li>
+            <li>Multiple award-winning commercial music</li>
+          </ul>
+          <div class="collab-genre-pills">
+            <span class="collab-pill">Advertising</span>
+            <span class="collab-pill">Film Music</span>
+            <span class="collab-pill">Original Songs</span>
           </div>
         </div>
-        <div class="mui-body">
-          <div class="mui-heading">Latest Releases</div>
-          <div class="mui-tracks">
-            <div class="mui-track">
-              <div class="mui-thumb" style="background:linear-gradient(135deg,#1a1a2e,#2a2a4e)"></div>
-              <div>
-                <div class="mui-track-title">Winter Ayun Waliye</div>
-                <div class="mui-track-artist">Arjuna Harjai</div>
-              </div>
-              <div class="mui-waveform" id="wf1"></div>
-              <div class="mui-track-title" style="font-size:9.5px;color:#888">3:24</div>
-            </div>
-            <div class="mui-track">
-              <div class="mui-thumb" style="background:linear-gradient(135deg,#2e1a1a,#4e2a2a)"></div>
-              <div>
-                <div class="mui-track-title">Zikar Hai</div>
-                <div class="mui-track-artist">ft. Natasha Noorani</div>
-              </div>
-              <div class="mui-waveform" id="wf2"></div>
-              <div class="mui-track-title" style="font-size:9.5px;color:#888">4:01</div>
-            </div>
-            <div class="mui-track">
-              <div class="mui-thumb" style="background:linear-gradient(135deg,#1a2e1a,#2a4e2a)"></div>
-              <div>
-                <div class="mui-track-title">Mangoge Na?</div>
-                <div class="mui-track-artist">Arjuna Harjai</div>
-              </div>
-              <div class="mui-waveform" id="wf3"></div>
-              <div class="mui-track-title" style="font-size:9.5px;color:#888">3:18</div>
-            </div>
-            <div class="mui-track">
-              <div class="mui-thumb" style="background:linear-gradient(135deg,#2e2a1a,#4e4a2a)"></div>
-              <div>
-                <div class="mui-track-title">Tu Hi Hai Channa</div>
-                <div class="mui-track-artist">Arjuna Harjai</div>
-              </div>
-              <div class="mui-waveform" id="wf4"></div>
-              <div class="mui-track-title" style="font-size:9.5px;color:#888">3:55</div>
-            </div>
+      </div>
+
+    </div>
+
+    <!-- SECONDARY: 3 smaller cards -->
+    <div class="collab-secondary">
+
+      <div class="collab-card-sm">
+        <div class="collab-card-bg" style="background:linear-gradient(145deg,#1a0d0a 0%,#2e1812 100%)"></div>
+        <div class="collab-card-overlay"></div>
+        <div class="collab-card-body">
+          <span class="collab-role-tag">Director · Producer</span>
+          <div class="collab-artist-name">Nikkhil Advani</div>
+          <div class="collab-artist-title">Bollywood director behind Lucknow Central, Kapoor &amp; Sons, and Kal Ho Na Ho.</div>
+          <ul class="collab-works">
+            <li>Lucknow Central (2017)</li>
+            <li>Kapoor &amp; Sons (2016)</li>
+            <li>P.O.W. – Bandi Yuddh Ke</li>
+          </ul>
+          <div class="collab-genre-pills">
+            <span class="collab-pill">Bollywood</span>
+            <span class="collab-pill">TV Series</span>
           </div>
-          <span class="mui-badge">Spotify Viral 50 · India &amp; Pakistan</span>
         </div>
       </div>
+
+      <div class="collab-card-sm">
+        <div class="collab-card-bg" style="background:linear-gradient(145deg,#0a0d1a 0%,#121830 100%)"></div>
+        <div class="collab-card-overlay"></div>
+        <div class="collab-card-body">
+          <span class="collab-role-tag">Lyricist · Singer</span>
+          <div class="collab-artist-name">Amitabh Bhattacharya</div>
+          <div class="collab-artist-title">Filmfare Award-winning lyricist behind some of Bollywood's most beloved songs.</div>
+          <ul class="collab-works">
+            <li>Advertising music collaborations</li>
+            <li>Original compositions &amp; jingles</li>
+          </ul>
+          <div class="collab-genre-pills">
+            <span class="collab-pill">Pop</span>
+            <span class="collab-pill">Advertising</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="collab-card-sm">
+        <div class="collab-card-bg" style="background:linear-gradient(145deg,#1a1a0a 0%,#2e2a12 100%)"></div>
+        <div class="collab-card-overlay"></div>
+        <div class="collab-card-body">
+          <span class="collab-role-tag">Independent Artist · Vocalist</span>
+          <div class="collab-artist-name">The One Minute Composer Network</div>
+          <div class="collab-artist-title">An evolving roster of vocalists, musicians &amp; producers across the UK &amp; India.</div>
+          <ul class="collab-works">
+            <li>"Winter Ayun Waliye" — Spotify Viral 50</li>
+            <li>365+ original compositions published</li>
+          </ul>
+          <div class="collab-genre-pills">
+            <span class="collab-pill">Folk</span>
+            <span class="collab-pill">World</span>
+            <span class="collab-pill">Pop</span>
+          </div>
+        </div>
+      </div>
+
     </div>
+
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════
-     SECTION 7 — TESTIMONIALS
-════════════════════════════════════════ -->
-<section class="testimonials-section">
-  <div class="trustpilot">
-    <span class="trust-exc">ABBY Gold 2017</span>
-    <div class="trust-stars">
-      <div class="tstar">★</div><div class="tstar">★</div><div class="tstar">★</div><div class="tstar">★</div><div class="tstar">★</div>
-    </div>
-    <span class="trust-tp">Industry Recognition</span>
-  </div>
-  <div class="test-header">
-    <h2>Trusted by India's biggest brands, award-winning filmmakers, and global productions.</h2>
-    <button class="btn-black" style="flex-shrink:0">Book Now</button>
-  </div>
-  <div class="test-grid">
-    <div class="test-card">
-      <div class="test-stars">★★★★★</div>
-      <p class="test-quote">"The iconic 'Dettol Dettol Ho' is one of the most recognisable advertising jingles in India — a masterclass in brand music that endures decades later."</p>
-      <div class="test-author">
-        <div class="test-avatar" style="background:linear-gradient(135deg,#c0a080,#8a6a44)"></div>
-        <div>
-          <div class="test-name">Good Ads Matter</div>
-          <div class="test-role">Ad Makers Collective · 2023</div>
-        </div>
-      </div>
-    </div>
-    <div class="test-card">
-      <div class="test-stars">★★★★★</div>
-      <p class="test-quote">"My creative process is largely influenced by the narrative I am working with — whether it's film or advertising, the story always leads the music."</p>
-      <div class="test-author">
-        <div class="test-avatar" style="background:linear-gradient(135deg,#a0c0e0,#4a7ab0)"></div>
-        <div>
-          <div class="test-name">Arjuna Harjai</div>
-          <div class="test-role">MusiCulture Interview</div>
-        </div>
-      </div>
-    </div>
-    <div class="test-card">
-      <div class="test-stars">★★★★★</div>
-      <p class="test-quote">"Arjuna Harjai wins GOLD at the Creative ABBY Awards for Original Background Score 'Rab Ki Baatein' from P.O.W. – Bandi Yuddh Ke."</p>
-      <div class="test-author">
-        <div class="test-avatar" style="background:linear-gradient(135deg,#c0d0e0,#6a8aaa)"></div>
-        <div>
-          <div class="test-name">Creative ABBY Awards</div>
-          <div class="test-role">GOLD · Original Score · 2017</div>
-        </div>
-      </div>
-    </div>
-    <div class="test-card">
-      <div class="test-stars">★★★★★</div>
-      <p class="test-quote">"'Winter Ayun Waliye' debuts on the Spotify Viral 50 Charts in both India and Pakistan — a remarkable milestone for an independent UK-based artist."</p>
-      <div class="test-author">
-        <div class="test-avatar" style="background:linear-gradient(135deg,#d0c0a0,#aa9060)"></div>
-        <div>
-          <div class="test-name">Spotify Charts</div>
-          <div class="test-role">Viral 50 · India &amp; Pakistan · 2024</div>
-        </div>
-      </div>
-    </div>
-    <div class="test-card">
-      <div class="test-stars">★★★★★</div>
-      <p class="test-quote">"Arjuna Harjai named Introducing Artist of the Week — a composer who truly crosses borders with his music, bridging Indian classical and contemporary global sounds."</p>
-      <div class="test-author">
-        <div class="test-avatar" style="background:linear-gradient(135deg,#c0a0c0,#8a4a8a)"></div>
-        <div>
-          <div class="test-name">BBC Asian Network</div>
-          <div class="test-role">Introducing Artist of the Week · 2024</div>
-        </div>
-      </div>
-    </div>
-    <div class="test-card">
-      <div class="test-stars">★★★★★</div>
-      <p class="test-quote">"Harjai wins Best Music Director for 'Keh Nahi Paunga' at the 5th Mumbai Shorts International Film Festival — an outstanding debut as a film score composer."</p>
-      <div class="test-author">
-        <div class="test-avatar" style="background:linear-gradient(135deg,#a0c0a0,#4a8a4a)"></div>
-        <div>
-          <div class="test-name">MAMI Film Festival</div>
-          <div class="test-role">Best Music Director · 2016</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- Notable Projects (dark) -->
+<div class="notable-section">
+  <div class="notable-inner">
+    <p class="section-label">Portfolio Highlights</p>
+    <h2>Music that left a mark.</h2>
+    <div class="notable-grid">
 
-<!-- ═══════════════════════════════════════
-     SECTION 8 — MATCH THE VIBE
-════════════════════════════════════════ -->
-<section class="vibe-section">
-  <h2>Match the emotion of any scene, guaranteed.</h2>
-  <p>Share your reference track, temp music, or just a brief description — Arjuna will compose a score that captures the exact tone, mood, and atmosphere your project demands.</p>
-  <button class="btn-black">Get a Custom Quote</button>
-</section>
+      <div class="notable-item">
+        <div class="notable-item-num">01</div>
+        <div class="notable-item-title">P.O.W. – Bandi Yuddh Ke</div>
+        <div class="notable-item-sub">Star Plus / ALTBalaji series. Full background score &amp; original songs with Gulzar &amp; Prasoon Joshi.</div>
+        <div class="notable-item-tags">
+          <span class="n-tag">TV Drama</span>
+          <span class="n-tag">Score</span>
+          <span class="n-tag">ABBY Gold</span>
+        </div>
+      </div>
 
-<!-- ═══════════════════════════════════════
-     SECTION 9 — AI DARK BANNER
-════════════════════════════════════════ -->
-<div class="ai-dark-banner">
-  <div class="ai-banner-inner">
-    <div class="ai-banner-left">
-      <div class="ai-badge">Now on Spotify</div>
-      <h2>The One Minute<br>Composer Series</h2>
-    </div>
-    <div class="ai-banner-right">
-      <!-- visual placeholder -->
-      <div style="width:100%;height:220px;background:linear-gradient(135deg,rgba(255,255,255,.04),rgba(255,255,255,.01));border-radius:8px;border:1px solid rgba(255,255,255,.07)"></div>
+      <div class="notable-item">
+        <div class="notable-item-num">02</div>
+        <div class="notable-item-title">Lucknow Central</div>
+        <div class="notable-item-sub">Bollywood feature film directed by Ranjit Tiwari, produced by Nikkhil Advani's Emmay Entertainment.</div>
+        <div class="notable-item-tags">
+          <span class="n-tag">Feature Film</span>
+          <span class="n-tag">Bollywood</span>
+        </div>
+      </div>
+
+      <div class="notable-item">
+        <div class="notable-item-num">03</div>
+        <div class="notable-item-title">Dettol Dettol Ho</div>
+        <div class="notable-item-sub">One of India's most iconic advertising jingles. Instantly recognisable across generations of Indian households.</div>
+        <div class="notable-item-tags">
+          <span class="n-tag">Advertising</span>
+          <span class="n-tag">Jingle</span>
+          <span class="n-tag">Icon</span>
+        </div>
+      </div>
+
+      <div class="notable-item">
+        <div class="notable-item-num">04</div>
+        <div class="notable-item-title">Kapoor &amp; Sons</div>
+        <div class="notable-item-sub">Critically acclaimed Bollywood drama directed by Shakun Batra, with music collaboration for Nikkhil Advani's production team.</div>
+        <div class="notable-item-tags">
+          <span class="n-tag">Feature Film</span>
+          <span class="n-tag">Drama</span>
+        </div>
+      </div>
+
+      <div class="notable-item">
+        <div class="notable-item-num">05</div>
+        <div class="notable-item-title">Winter Ayun Waliye</div>
+        <div class="notable-item-sub">Original release under The One Minute Composer. Debuted on Spotify Viral 50 simultaneously in India &amp; Pakistan.</div>
+        <div class="notable-item-tags">
+          <span class="n-tag">Folk</span>
+          <span class="n-tag">Viral 50</span>
+          <span class="n-tag">UK Independent</span>
+        </div>
+      </div>
+
+      <div class="notable-item">
+        <div class="notable-item-num">06</div>
+        <div class="notable-item-title">Keh Nahi Paunga</div>
+        <div class="notable-item-sub">Short film score that won Best Music Director at the 5th Mumbai Shorts International Film Festival (MAMI) in 2016.</div>
+        <div class="notable-item-tags">
+          <span class="n-tag">Short Film</span>
+          <span class="n-tag">MAMI Award</span>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     SECTION 10 — AI SEARCH UI
-════════════════════════════════════════ -->
-<div class="search-ui-section">
-  <div class="search-ui-inner">
-    <div class="search-ui-frame">
-      <!-- Top search bar -->
-      <div class="suf-topbar">
-        <span class="suf-search-icon">🔍</span>
-        <div class="suf-tag">Winter Ayun Waliye <span class="suf-tag-x">✕</span></div>
-        <span class="suf-placeholder">Search (moods, genres or themes)</span>
+
+<!-- ═══════════════════════════════════════════
+  SECTION 2: ABOUT
+═══════════════════════════════════════════ -->
+<section class="artist-about">
+  <div class="artist-about-inner">
+    <div class="artist-about-text">
+      <p class="section-label">About Arjuna Harjai</p>
+      <h2>Trained in classical.<br>Trusted by legends.</h2>
+      <p>Arjuna Harjai's musical journey began at age two and a half with Hindustani classical training — a foundation that runs through every note he has ever written. From the studios of Mumbai to the global stage in London, his work spans advertising, Bollywood, television, and independent music.</p>
+      <p>He has composed for directors, collaborated with poets, and built a studio that now serves artists and brands across the world. His instinct for melody and his ability to serve any emotional brief make him one of the most sought-after composers of his generation.</p>
+      <div class="artist-about-links">
+        <a href="about.html">Full Biography</a>
+        <a href="contact.html">Work Together</a>
       </div>
-      <!-- Body: sidebar + results -->
-      <div class="suf-body">
-        <div class="suf-sidebar">
-          <div class="suf-filter">Genre</div>
-          <div class="suf-filter">Mood</div>
-          <div class="suf-filter">Artist</div>
-          <div class="suf-filter">Attributes</div>
-          <div class="suf-filter">Instrument</div>
-          <div class="suf-filter">Advanced</div>
-          <div class="suf-filter lyrical">
-            <div class="suf-checkbox"></div>
-            Lyrical
-          </div>
-        </div>
-        <div class="suf-main">
-          <!-- Featured track -->
-          <div class="suf-featured">
-            <div class="suf-feat-art" style="background:linear-gradient(135deg,#1a1a2e,#2e3a5e)"></div>
-            <div>
-              <div class="suf-feat-label">Similar To: Winter Ayun Waliye</div>
-              <div class="suf-feat-title">Winter Ayun Waliye</div>
-              <div class="suf-feat-artist">
-                <div class="suf-artist-icon" style="background:linear-gradient(135deg,#e0c8a0,#a08040)"></div>
-                Arjuna Harjai
-              </div>
-            </div>
-          </div>
-          <!-- Song results -->
-          <div class="suf-row">
-            <div class="suf-row-thumb" style="background:linear-gradient(135deg,#a8c8e8,#4888b8)"></div>
-            <div>
-              <div class="suf-row-name">Laiyaan Ve</div>
-              <div class="suf-row-artist">Arjuna Harjai</div>
-            </div>
-            <span class="suf-plus">+1</span>
-            <span class="suf-genre">Folk,&nbsp;Indie</span>
-            <div class="suf-waveform" id="suf-wf1"></div>
-            <span class="suf-dur">3:44</span>
-          </div>
-          <div class="suf-row">
-            <div class="suf-row-thumb" style="background:linear-gradient(135deg,#e8a8c8,#b84888)"></div>
-            <div>
-              <div class="suf-row-name">Kaavaan Kaavaan</div>
-              <div class="suf-row-artist">Arjuna Harjai</div>
-            </div>
-            <span class="suf-plus">+1</span>
-            <span class="suf-genre">Classical,&nbsp;Pop</span>
-            <div class="suf-waveform" id="suf-wf2"></div>
-            <span class="suf-dur">4:02</span>
-          </div>
-          <div class="suf-row">
-            <div class="suf-row-thumb" style="background:linear-gradient(135deg,#a8e8c8,#48b888)"></div>
-            <div>
-              <div class="suf-row-name">Kinaare</div>
-              <div class="suf-row-artist">Arjuna Harjai</div>
-            </div>
-            <span class="suf-plus">+1</span>
-            <span class="suf-genre">Acoustic,&nbsp;Soul</span>
-            <div class="suf-waveform" id="suf-wf3"></div>
-            <span class="suf-dur">3:29</span>
-          </div>
-        </div>
-      </div>
+    </div>
+    <div class="artist-about-visual">
+      <div class="aav-block" style="background:linear-gradient(180deg,#1a1230 0%,#0d0820 100%)"></div>
+      <div class="aav-block" style="background:linear-gradient(180deg,#0a1a0d 0%,#051208 100%)"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Philosophy cards -->
+<div class="artist-philosophy">
+  <div class="artist-philosophy-inner">
+    <div class="phil-card">
+      <div class="phil-icon">♩</div>
+      <div class="phil-title">Music Without Borders</div>
+      <div class="phil-body">Arjuna draws on Hindustani classical roots and weaves them into contemporary pop, folk, and world music — creating sounds that feel both ancient and entirely new.</div>
+    </div>
+    <div class="phil-card">
+      <div class="phil-icon">◎</div>
+      <div class="phil-title">Story First, Always</div>
+      <div class="phil-body">Every composition begins with the story. Whether it's a 30-second ad or a feature film, the music exists to serve the emotional truth of the narrative — nothing more, nothing less.</div>
+    </div>
+    <div class="phil-card">
+      <div class="phil-icon">↗</div>
+      <div class="phil-title">Craft Through Volume</div>
+      <div class="phil-body">The One Minute Composer discipline — a new composition every single day — has forged an instinct for melody that sets Arjuna apart. Speed and quality are not opposites.</div>
     </div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     SECTION 11 — FEATURES FOR FILMMAKERS
-════════════════════════════════════════ -->
-<section class="features-section">
-  <div class="features-header">
-    <h2>Services built for film &amp; advertising.</h2>
-    <p>Discover the full range of music services Arjuna Harjai offers — from original film scores to global advertising jingles, all crafted from the ground up.</p>
+
+<!-- ═══════════════════════════════════════════
+  SECTION 3: MUSIC MARKETING & PR SERVICES
+═══════════════════════════════════════════ -->
+<section class="mktg-section">
+  <div class="mktg-inner">
+    <div class="mktg-header">
+      <p class="section-label">Marketing &amp; PR</p>
+      <h2>Music Marketing<br>&amp; PR Services</h2>
+      <p>Beyond composition, Aart Sense offers strategic music marketing and PR — helping artists, labels, and brands cut through the noise and reach the audiences that matter.</p>
+    </div>
+    <div class="mktg-grid">
+
+      <div class="mktg-card">
+        <div class="mktg-card-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div class="mktg-card-title">Artist Positioning &amp; PR</div>
+        <div class="mktg-card-desc">Strategic narrative-building and media outreach to place artists in the right publications and platforms.</div>
+        <ul class="mktg-card-items">
+          <li>Press release writing &amp; distribution</li>
+          <li>Editorial feature pitching</li>
+          <li>Radio &amp; podcast placements</li>
+          <li>Interview &amp; press tour coordination</li>
+        </ul>
+      </div>
+
+      <div class="mktg-card">
+        <div class="mktg-card-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <div class="mktg-card-title">Playlist Pitching</div>
+        <div class="mktg-card-desc">Targeted Spotify, Apple Music, and Amazon Music playlist campaigns with editorial and algorithmic strategies.</div>
+        <ul class="mktg-card-items">
+          <li>Spotify editorial submissions</li>
+          <li>Independent playlist network</li>
+          <li>Pre-release campaign planning</li>
+          <li>Release date optimisation</li>
+        </ul>
+      </div>
+
+      <div class="mktg-card">
+        <div class="mktg-card-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </div>
+        <div class="mktg-card-title">Social Media Strategy</div>
+        <div class="mktg-card-desc">Content strategy and creative direction for artist social channels — building audiences that convert to real fans.</div>
+        <ul class="mktg-card-items">
+          <li>Content calendar planning</li>
+          <li>Short-form video creative direction</li>
+          <li>Platform-specific growth strategy</li>
+          <li>Influencer &amp; collaborator outreach</li>
+        </ul>
+      </div>
+
+      <div class="mktg-card">
+        <div class="mktg-card-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        </div>
+        <div class="mktg-card-title">Brand &amp; Sync Pitching</div>
+        <div class="mktg-card-desc">Connecting original music to brand campaigns, TV programmes, films, and streaming platforms through active sync pitching.</div>
+        <ul class="mktg-card-items">
+          <li>Music supervision relationships</li>
+          <li>Brand partnership outreach</li>
+          <li>Catalogue sync placement</li>
+          <li>Licensing deal negotiation</li>
+        </ul>
+      </div>
+
+    </div>
   </div>
-  <div class="features-grid">
-    <div class="feat-card">
-      <div class="feat-card-img" style="background:linear-gradient(135deg,#1a1a2e 0%,#2a2a4e 50%,#111 100%)">
-        <div style="padding:14px">
-          <div style="background:#0d0d1a;border-radius:5px;padding:8px 10px;margin-top:10px;display:flex;align-items:center;gap:6px">
-            <span style="font-size:10px;color:rgba(255,255,255,.4)">🎬</span>
-            <span style="font-size:9px;color:rgba(255,255,255,.35)">Film · TV · Short Films</span>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+  SECTION 4: MUSIC DISTRIBUTION & SYNC
+═══════════════════════════════════════════ -->
+<section class="dist-section">
+  <div class="dist-inner">
+
+    <div class="dist-text">
+      <p class="section-label">Distribution &amp; Sync</p>
+      <h2>Music Distribution<br>&amp; Sync</h2>
+      <p>Aart Sense handles the full distribution and synchronisation pipeline — from recording to release, from brief to clearance — ensuring every track reaches its rightful audience and every rights-holder is protected.</p>
+      <div class="dist-platforms">
+        <div class="dist-platform"><span class="dist-platform-dot"></span>Spotify</div>
+        <div class="dist-platform"><span class="dist-platform-dot"></span>Apple Music</div>
+        <div class="dist-platform"><span class="dist-platform-dot"></span>Amazon Music</div>
+        <div class="dist-platform"><span class="dist-platform-dot"></span>YouTube Music</div>
+        <div class="dist-platform"><span class="dist-platform-dot"></span>Tidal</div>
+        <div class="dist-platform"><span class="dist-platform-dot"></span>JioSaavn</div>
+        <div class="dist-platform"><span class="dist-platform-dot"></span>Gaana</div>
+        <div class="dist-platform"><span class="dist-platform-dot"></span>Deezer</div>
+      </div>
+      <div class="dist-features">
+        <div class="dist-feat">
+          <div class="dist-feat-title">Global Distribution</div>
+          <div class="dist-feat-body">Release to 150+ streaming platforms and digital stores simultaneously across all major territories.</div>
+        </div>
+        <div class="dist-feat">
+          <div class="dist-feat-title">Rights Management</div>
+          <div class="dist-feat-body">Full mechanical and master rights management with MCPS, PRS and international societies.</div>
+        </div>
+        <div class="dist-feat">
+          <div class="dist-feat-title">Royalty Collection</div>
+          <div class="dist-feat-body">End-to-end royalty collection, reporting, and transparent payment across all platforms and territories.</div>
+        </div>
+        <div class="dist-feat">
+          <div class="dist-feat-title">Sync Clearance</div>
+          <div class="dist-feat-body">Broadcast-ready sync clearance for film, TV, advertising, and social media — delivered with full documentation.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sync-pipeline">
+      <h3>Sync Licensing Pipeline</h3>
+      <div class="sync-step">
+        <div class="sync-step-num">01</div>
+        <div class="sync-step-text">
+          <div class="sync-step-title">Brief &amp; Creative Match</div>
+          <div class="sync-step-desc">Client shares their project brief. Our team identifies matching tracks from the catalogue or initiates a custom composition.</div>
+        </div>
+      </div>
+      <div class="sync-step">
+        <div class="sync-step-num">02</div>
+        <div class="sync-step-text">
+          <div class="sync-step-title">Licensing Agreement</div>
+          <div class="sync-step-desc">Rights scope defined — territory, duration, media type, exclusivity. Clear licensing agreements drafted within 48 hours.</div>
+        </div>
+      </div>
+      <div class="sync-step">
+        <div class="sync-step-num">03</div>
+        <div class="sync-step-text">
+          <div class="sync-step-title">Master &amp; Publishing Clearance</div>
+          <div class="sync-step-desc">Both master recording and publishing rights cleared simultaneously. MCPS, PRS &amp; international society compliance.</div>
+        </div>
+      </div>
+      <div class="sync-step">
+        <div class="sync-step-num">04</div>
+        <div class="sync-step-text">
+          <div class="sync-step-title">Delivery &amp; Documentation</div>
+          <div class="sync-step-desc">Uncompressed WAV stems, cue sheets, and all clearance documentation delivered. Ready for broadcast or streaming.</div>
+        </div>
+      </div>
+      <div class="sync-step">
+        <div class="sync-step-num">05</div>
+        <div class="sync-step-text">
+          <div class="sync-step-title">Ongoing Royalty Tracking</div>
+          <div class="sync-step-desc">Post-release royalty tracking across all broadcast and streaming uses with regular reporting to rights-holders.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+  SECTION 5: AWARD-WINNING PORTFOLIO
+═══════════════════════════════════════════ -->
+<section class="portfolio-section">
+  <div class="portfolio-inner">
+
+    <div class="portfolio-header">
+      <h2>Award-Winning<br>Portfolio</h2>
+      <p>A song for every genre. From the grandeur of Hindustani classical to the pulse of contemporary pop — Arjuna's portfolio spans the full emotional and sonic spectrum of music.</p>
+    </div>
+
+    <div class="genre-grid">
+
+      <div class="genre-card">
+        <div class="genre-card-bg" style="background:linear-gradient(135deg,#0d0820 0%,#1a1230 50%,#2e1a50 100%)"></div>
+        <div class="genre-card-overlay"></div>
+        <div class="genre-card-body">
+          <div class="genre-label">Genre</div>
+          <div class="genre-name">Film &amp; TV Score</div>
+          <div class="genre-desc">Orchestral background scores and original songs for Indian cinema and international television.</div>
+        </div>
+      </div>
+
+      <div class="genre-card">
+        <div class="genre-card-bg" style="background:linear-gradient(135deg,#0a1a0d 0%,#122e1a 50%,#1e4028 100%)"></div>
+        <div class="genre-card-overlay"></div>
+        <div class="genre-card-body">
+          <div class="genre-label">Genre</div>
+          <div class="genre-name">Advertising &amp; Jingles</div>
+          <div class="genre-desc">Iconic commercial music for 40+ global brands including Dettol, Cadbury, Amazon, and Google.</div>
+        </div>
+      </div>
+
+      <div class="genre-card">
+        <div class="genre-card-bg" style="background:linear-gradient(135deg,#1a0d0a 0%,#2e1812 50%,#401e14 100%)"></div>
+        <div class="genre-card-overlay"></div>
+        <div class="genre-card-body">
+          <div class="genre-label">Genre</div>
+          <div class="genre-name">Hindustani Classical</div>
+          <div class="genre-desc">Deeply rooted ragas and classical compositions blended with modern production sensibilities.</div>
+        </div>
+      </div>
+
+      <div class="genre-card">
+        <div class="genre-card-bg" style="background:linear-gradient(135deg,#0a0d1a 0%,#12182e 50%,#1e2040 100%)"></div>
+        <div class="genre-card-overlay"></div>
+        <div class="genre-card-body">
+          <div class="genre-label">Genre</div>
+          <div class="genre-name">Contemporary Pop</div>
+          <div class="genre-desc">Modern pop productions with Spotify Viral 50 success. Crafted for global streaming audiences.</div>
+        </div>
+      </div>
+
+      <div class="genre-card">
+        <div class="genre-card-bg" style="background:linear-gradient(135deg,#1a1a0a 0%,#2e2a12 50%,#40381a 100%)"></div>
+        <div class="genre-card-overlay"></div>
+        <div class="genre-card-body">
+          <div class="genre-label">Genre</div>
+          <div class="genre-name">Folk &amp; World Music</div>
+          <div class="genre-desc">Songs rooted in Punjabi, Kashmiri, and other South Asian folk traditions — reimagined for contemporary listeners.</div>
+        </div>
+      </div>
+
+      <div class="genre-card">
+        <div class="genre-card-bg" style="background:linear-gradient(135deg,#0a1a1a 0%,#122e2e 50%,#1a3c3c 100%)"></div>
+        <div class="genre-card-overlay"></div>
+        <div class="genre-card-body">
+          <div class="genre-label">Genre</div>
+          <div class="genre-name">Bespoke &amp; Custom</div>
+          <div class="genre-desc">One-of-a-kind commissions for live performances, installations, events, and unique creative briefs.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Track list sample -->
+    <div class="portfolio-tracks">
+      <div class="pt-header">
+        <div class="pt-header-title">Selected Works</div>
+        <div class="pt-header-sub">Across genres &amp; formats</div>
+      </div>
+      <div class="pt-row">
+        <div class="pt-num">01</div>
+        <div class="pt-info">
+          <div class="pt-title">Rab Ki Baatein</div>
+          <div class="pt-artist-ref">P.O.W. – Bandi Yuddh Ke · with Gulzar</div>
+        </div>
+        <div class="pt-genre-tag">TV Drama</div>
+        <div class="pt-year">2017</div>
+      </div>
+      <div class="pt-row">
+        <div class="pt-num">02</div>
+        <div class="pt-info">
+          <div class="pt-title">Raahiyan Ve</div>
+          <div class="pt-artist-ref">P.O.W. – Bandi Yuddh Ke · Background Score</div>
+        </div>
+        <div class="pt-genre-tag">Orchestral</div>
+        <div class="pt-year">2017</div>
+      </div>
+      <div class="pt-row">
+        <div class="pt-num">03</div>
+        <div class="pt-info">
+          <div class="pt-title">Winter Ayun Waliye</div>
+          <div class="pt-artist-ref">The One Minute Composer · Spotify Viral 50</div>
+        </div>
+        <div class="pt-genre-tag">Folk / Pop</div>
+        <div class="pt-year">2024</div>
+      </div>
+      <div class="pt-row">
+        <div class="pt-num">04</div>
+        <div class="pt-info">
+          <div class="pt-title">Dettol Dettol Ho</div>
+          <div class="pt-artist-ref">Reckitt Benckiser · Iconic Advertising Jingle</div>
+        </div>
+        <div class="pt-genre-tag">Advertising</div>
+        <div class="pt-year">2010s</div>
+      </div>
+      <div class="pt-row">
+        <div class="pt-num">05</div>
+        <div class="pt-info">
+          <div class="pt-title">Keh Nahi Paunga — Score</div>
+          <div class="pt-artist-ref">MAMI Award · Best Music Director 2016</div>
+        </div>
+        <div class="pt-genre-tag">Short Film</div>
+        <div class="pt-year">2016</div>
+      </div>
+      <div class="pt-row">
+        <div class="pt-num">06</div>
+        <div class="pt-info">
+          <div class="pt-title">Lucknow Central — Original Score</div>
+          <div class="pt-artist-ref">Emmay Entertainment · Nikkhil Advani</div>
+        </div>
+        <div class="pt-genre-tag">Bollywood</div>
+        <div class="pt-year">2017</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+  SECTION 6: INDUSTRY RECOGNITION
+═══════════════════════════════════════════ -->
+<section class="recognition-section">
+  <div class="recognition-inner">
+    <p class="section-label">Awards &amp; Press</p>
+    <h2>Industry Recognition</h2>
+    <p class="rec-intro">Recognised by India's most prestigious music and film institutions, as well as the UK's leading South Asian media outlets.</p>
+
+    <div class="recognition-columns">
+
+      <!-- Awards -->
+      <div>
+        <div class="rec-awards-title">Awards &amp; Honours</div>
+
+        <div class="rec-award-item">
+          <div class="rec-award-badge-lg gold">Gold</div>
+          <div class="rec-award-text">
+            <div class="rec-award-name">Creative ABBY Awards — Gold</div>
+            <div class="rec-award-detail">Original Background Score, "Rab Ki Baatein" — P.O.W.</div>
+            <div class="rec-award-year">2017 · Advertising</div>
           </div>
         </div>
-      </div>
-      <div class="feat-card-body">
-        <div class="feat-card-title">Film &amp; TV Scoring</div>
-        <div class="feat-card-desc">Original background scores and songs for feature films, web series, and short films — from Bollywood to independent productions.</div>
-      </div>
-    </div>
-    <div class="feat-card">
-      <div class="feat-card-img" style="background:linear-gradient(135deg,#1e2a1e 0%,#2a4a2a 50%,#111 100%)">
-        <div style="padding:14px;padding-top:24px">
-          <div style="background:#00aa55;border-radius:4px;padding:5px 10px;display:inline-flex;align-items:center;gap:5px;font-size:9px;color:#fff;font-weight:700">
-            <span>✓</span> Sync Rights Included
-          </div>
-          <div style="font-size:8.5px;color:rgba(255,255,255,.5);margin-top:8px">Dettol · Amazon · Cadbury</div>
-        </div>
-      </div>
-      <div class="feat-card-body">
-        <div class="feat-card-title">Advertising &amp; Brand Music</div>
-        <div class="feat-card-desc">Iconic jingles and brand soundscapes for the world's biggest brands — with full sync rights clearance included in every commission.</div>
-      </div>
-    </div>
-    <div class="feat-card">
-      <div class="feat-card-img" style="background:linear-gradient(135deg,#2a1e2e 0%,#4a2a4e 50%,#111 100%)">
-        <div style="padding:14px;display:flex;flex-direction:column;gap:5px;margin-top:10px">
-          <div style="background:rgba(255,255,255,.08);border-radius:3px;padding:5px 8px;font-size:8.5px;color:rgba(255,255,255,.7);font-weight:600">O Soniye · Full Mix</div>
-          <div style="background:rgba(255,255,255,.05);border-radius:3px;padding:5px 8px;font-size:8.5px;color:rgba(255,255,255,.4)">O Soniye · Instrumental</div>
-          <div style="background:rgba(255,255,255,.05);border-radius:3px;padding:5px 8px;font-size:8.5px;color:rgba(255,255,255,.4)">O Soniye · Vocal Only</div>
-        </div>
-      </div>
-      <div class="feat-card-body">
-        <div class="feat-card-title">Multiple Stems &amp; Versions</div>
-        <div class="feat-card-desc">Every composition is delivered in multiple versions — full mix, instrumental, vocal only — giving editors maximum flexibility in post.</div>
-      </div>
-    </div>
-    <div class="feat-card">
-      <div class="feat-card-img" style="background:linear-gradient(135deg,#1a2a2e 0%,#2a4a4e 50%,#111 100%)">
-        <div style="padding:14px;margin-top:12px">
-          <div style="display:flex;gap:6px;align-items:center">
-            <div style="background:rgba(255,255,255,.1);border-radius:3px;padding:4px 8px;font-size:9px;color:rgba(255,255,255,.7);font-weight:700">🎵 Classical</div>
-            <div style="background:rgba(255,255,255,.1);border-radius:3px;padding:4px 8px;font-size:9px;color:rgba(255,255,255,.7);font-weight:700">🎸 Contemporary</div>
+
+        <div class="rec-award-item">
+          <div class="rec-award-badge-lg bronze">Bronze</div>
+          <div class="rec-award-text">
+            <div class="rec-award-name">Creative ABBY Awards — Bronze</div>
+            <div class="rec-award-detail">Original Background Score, "Raahiyan Ve" — P.O.W.</div>
+            <div class="rec-award-year">2017 · Advertising</div>
           </div>
         </div>
-      </div>
-      <div class="feat-card-body">
-        <div class="feat-card-title">Singer-Songwriter &amp; Originals</div>
-        <div class="feat-card-desc">Independent music production and original song releases spanning Hindustani classical, folk, pop, and everything in between.</div>
-      </div>
-    </div>
-  </div>
-  <div style="display:flex;justify-content:flex-end;margin-top:28px">
-    <button class="btn-black">Get in Touch</button>
-  </div>
-</section>
 
-<!-- ═══════════════════════════════════════
-     SECTION 12 — ENTERPRISE
-════════════════════════════════════════ -->
-<section class="enterprise-section">
-  <h2>Powerful music solutions for high performing creative teams.</h2>
-  <p>Tailored to meet the unique needs of large film productions, advertising agencies, and media companies. Aart Sense offers unparalleled flexibility and bespoke options. Contact Arjuna to get started.</p>
-  <div class="ent-grid">
-    <div class="ent-item">
-      <div class="ent-icon">🏷️</div>
-      <div class="ent-title">Custom Licensing Options</div>
-      <div class="ent-desc">Tailored rates for individual productions, series, or long-term advertising campaigns across all platforms.</div>
-    </div>
-    <div class="ent-item">
-      <div class="ent-icon">✅</div>
-      <div class="ent-title">Sync &amp; Clearances</div>
-      <div class="ent-desc">Full sync rights and clearances for every composition — ready for broadcast, streaming, cinema, and social media.</div>
-    </div>
-    <div class="ent-item">
-      <div class="ent-icon">⬇️</div>
-      <div class="ent-title">Uncompressed Studio Files</div>
-      <div class="ent-desc">Receive broadcast-ready WAV stems and final mixes, saving time in post-production and giving editors full control.</div>
-    </div>
-    <div class="ent-item">
-      <div class="ent-icon">🔍</div>
-      <div class="ent-title">Music Supervision</div>
-      <div class="ent-desc">Expert music supervision for your production — Arjuna guides the entire sonic direction from brief to final delivery.</div>
-    </div>
-    <div class="ent-item">
-      <div class="ent-icon">🎵</div>
-      <div class="ent-title">Original Compositions</div>
-      <div class="ent-desc">Collaborate directly with Arjuna to create bespoke original music — songs, scores, jingles, or full soundtracks.</div>
-    </div>
-  </div>
-</section>
+        <div class="rec-award-item">
+          <div class="rec-award-badge-lg best">Best</div>
+          <div class="rec-award-text">
+            <div class="rec-award-name">MAMI — Best Music Director</div>
+            <div class="rec-award-detail">5th Mumbai Shorts International Film Festival — "Keh Nahi Paunga"</div>
+            <div class="rec-award-year">2016 · Film</div>
+          </div>
+        </div>
 
-<!-- ═══════════════════════════════════════
-     SECTION 13 — BRAND GRID (dark)
-════════════════════════════════════════ -->
-<section class="brand-grid-section">
-  <div class="brand-grid-viewport">
-  <div class="brand-grid">
-    <div class="bg-cell">
-      <div class="bg-img" style="background:linear-gradient(135deg,#1a1230,#0d0820)"></div>
-      <div class="bg-overlay"></div>
-      <div class="bg-badge">Star Plus · ALTBalaji</div>
-      <div class="bg-label">
-        <div class="bg-brand-logo">P.O.W. – Bandi Yuddh Ke</div>
-        <div class="bg-song-title">ABBY Gold · Original Score</div>
-      </div>
-    </div>
-    <div class="bg-cell">
-      <div class="bg-img" style="background:linear-gradient(135deg,#2a0a08,#3d1008)"></div>
-      <div class="bg-overlay"></div>
-      <div class="bg-badge">Film</div>
-      <div class="bg-label">
-        <div class="bg-brand-logo">Lucknow Central</div>
-        <div class="bg-song-title">dir. Ranjit Tiwari · Nikkhil Advani</div>
-      </div>
-    </div>
-    <div class="bg-cell">
-      <div class="bg-img" style="background:linear-gradient(135deg,#2a0a08,#3d1008)"></div>
-      <div class="bg-overlay"></div>
-      <div class="bg-badge">Film</div>
-      <div class="bg-label">
-        <div class="bg-brand-logo">Lucknow Central</div>
-        <div class="bg-song-title">dir. Ranjit Tiwari · Nikkhil Advani</div>
-      </div>
-    </div>
-    <div class="bg-cell">
-      <div class="bg-img" style="background:linear-gradient(135deg,#2a0a08,#3d1008)"></div>
-      <div class="bg-overlay"></div>
-      <div class="bg-badge">Film</div>
-      <div class="bg-label">
-        <div class="bg-brand-logo">Lucknow Central</div>
-        <div class="bg-song-title">dir. Ranjit Tiwari · Nikkhil Advani</div>
-      </div>
-    </div>
-    <div class="bg-cell">
-      <div class="bg-img" style="background:linear-gradient(135deg,#2a0a08,#3d1008)"></div>
-      <div class="bg-overlay"></div>
-      <div class="bg-badge">Film</div>
-      <div class="bg-label">
-        <div class="bg-brand-logo">Lucknow Central</div>
-        <div class="bg-song-title">dir. Ranjit Tiwari · Nikkhil Advani</div>
-      </div>
-    </div>
-    <div class="bg-cell">
-      <div class="bg-img" style="background:linear-gradient(135deg,#2a0a08,#3d1008)"></div>
-      <div class="bg-overlay"></div>
-      <div class="bg-badge">Film</div>
-      <div class="bg-label">
-        <div class="bg-brand-logo">Lucknow Central</div>
-        <div class="bg-song-title">dir. Ranjit Tiwari · Nikkhil Advani</div>
-      </div>
-    </div>
-    <div class="bg-cell">
-      <div class="bg-img" style="background:linear-gradient(135deg,#0a1a2a,#0d2030)"></div>
-      <div class="bg-overlay"></div>
-      <div class="bg-badge">Dettol</div>
-      <div class="bg-label">
-        <div class="bg-brand-logo">Dettol Dettol Ho</div>
-        <div class="bg-song-title">with Prasoon Joshi</div>
-      </div>
-    </div>
-    <div class="bg-cell">
-      <div class="bg-img" style="background:linear-gradient(135deg,#0d1a0d,#162416)"></div>
-      <div class="bg-overlay"></div>
-      <div class="bg-badge">Amazon</div>
-      <div class="bg-label">
-        <div class="bg-brand-logo">Amazon Wale</div>
-        <div class="bg-song-title">with Amitabh Bhattacharya</div>
-      </div>
-    </div>
-    <div class="bg-cell">
-      <div class="bg-img" style="background:linear-gradient(135deg,#1a1a1a,#282828)"></div>
-      <div class="bg-overlay"></div>
-      <div class="bg-badge">Film · MAMI Award</div>
-      <div class="bg-label">
-        <div class="bg-brand-logo">Guddu Engineer</div>
-        <div class="bg-song-title">Best Music Director 2016</div>
-      </div>
-    </div>
-    <div class="bg-cell">
-      <div class="bg-img" style="background:linear-gradient(135deg,#2a1a0a,#3d2510)"></div>
-      <div class="bg-overlay"></div>
-      <div class="bg-badge">Ambuja Cement</div>
-      <div class="bg-label">
-        <div class="bg-brand-logo">Chattein</div>
-        <div class="bg-song-title">with Gulzar</div>
-      </div>
-    </div>
-    <div class="bg-cell">
-      <div class="bg-img" style="background:linear-gradient(135deg,#0a1a1a,#0d2828)"></div>
-      <div class="bg-overlay"></div>
-      <div class="bg-badge">Film</div>
-      <div class="bg-label">
-        <div class="bg-brand-logo">Kapoor &amp; Sons</div>
-        <div class="bg-song-title">Background Score</div>
-      </div>
-    </div>
-    <div class="bg-cell">
-      <div class="bg-img" style="background:linear-gradient(135deg,#1a0a1a,#281228)"></div>
-      <div class="bg-overlay"></div>
-      <div class="bg-badge">Flipkart</div>
-      <div class="bg-label">
-        <div class="bg-brand-logo">Father's Day Campaign</div>
-        <div class="bg-song-title">with Kausar Munir</div>
-      </div>
-    </div>
-  </div><!-- /.brand-grid -->
-  </div><!-- /.brand-grid-viewport -->
-  <div class="bg-nav-row" id="bgNavRow">
-    <button class="bg-nav-btn" id="bgPrev" aria-label="Previous">&#8592;</button>
-    <div class="bg-page-dots" id="bgDots"></div>
-    <button class="bg-nav-btn" id="bgNext" aria-label="Next">&#8594;</button>
-  </div>
-</section>
+        <div class="rec-award-item">
+          <div class="rec-award-badge-lg recognition">BBC</div>
+          <div class="rec-award-text">
+            <div class="rec-award-name">BBC Asian Network — Introducing Artist</div>
+            <div class="rec-award-detail">Artist of the Week — UK's foremost South Asian broadcaster</div>
+            <div class="rec-award-year">2024 · Radio</div>
+          </div>
+        </div>
 
-<!-- ═══════════════════════════════════════
-     SECTION 14 — GENRE & ARTISTS
-════════════════════════════════════════ -->
-<section class="genre-section">
-  <h2 class="genre-heading">
-    <span class="dim">Music composed across every</span><br>
-    genre, emotion, and canvas.
-  </h2>
-  <div class="artists-sub">
-    <h3>Award-winning composer<br>and singer-songwriter.</h3>
-    <span>1,000+ Compositions &amp; 12+ Films</span>
-  </div>
-  <div class="artists-scroll-wrap">
-  <div class="artists-row">
-    <div class="artist-tile">
-      <div class="at-bg" style="background:linear-gradient(180deg,#c0392b 0%,#8b0000 100%)"></div>
-    </div>
-    <div class="artist-tile">
-      <div class="at-bg" style="background:linear-gradient(180deg,#c0392b 0%,#8b0000 100%)"></div>
-    </div>
-    <div class="artist-tile">
-      <div class="at-bg" style="background:linear-gradient(180deg,#c0392b 0%,#8b0000 100%)"></div>
-    </div>
-    <div class="artist-tile">
-      <div class="at-bg" style="background:linear-gradient(180deg,#c0392b 0%,#8b0000 100%)"></div>
-    </div>
-    <div class="artist-tile">
-      <div class="at-bg" style="background:linear-gradient(180deg,#2c3e50 0%,#1a252f 100%)"></div>
-    </div>
-    <div class="artist-tile">
-      <div class="at-bg" style="background:linear-gradient(180deg,#27ae60 0%,#145a32 100%)"></div>
-    </div>
-    <div class="artist-tile">
-      <div class="at-bg" style="background:linear-gradient(180deg,#7f8c8d 0%,#2c3e50 100%)"></div>
-    </div>
-  </div><!-- /.artists-row -->
-  </div><!-- /.artists-scroll-wrap -->
-</section>
-
-<!-- ═══════════════════════════════════════
-     SECTION 15 — PLAYLISTS
-════════════════════════════════════════ -->
-<section class="playlists-section">
-  <!-- Now playing bar -->
-  <div class="now-playing-bar">
-    <div class="np-thumb" style="background:linear-gradient(135deg,#1a1a2e,#2a2a4e)"></div>
-    <div class="np-info">
-      <div class="np-song">Winter Ayun Waliye</div>
-      <div class="np-artist">Arjuna Harjai</div>
-    </div>
-    <div class="np-progress">
-      <div class="np-progress-fill" style="width:45%"></div>
-    </div>
-    <div class="np-controls">
-      <button class="np-btn">⏮</button>
-      <button class="np-btn">⏸</button>
-      <button class="np-btn">⏭</button>
-    </div>
-  </div>
-
-  <div class="playlists-header">
-    <h2>Featured songs,<br>updated regularly.</h2>
-    <span>1,000+ Compositions &amp; 12+ Films</span>
-  </div>
-
-  <div class="playlists-grid">
-    <div class="pl-tile">
-      <div class="pt-bg" style="background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%)"></div>
-      <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.5),transparent 50%)"></div>
-      <div class="pl-tile-label">Winter Ayun Waliye</div>
-    </div>
-    <div class="pl-tile">
-      <div class="pt-bg" style="background:linear-gradient(135deg,#e8740a 0%,#c45a00 50%,#8a3a00 100%)"></div>
-      <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.4),transparent 50%)"></div>
-      <div class="pl-tile-label">Zikar Hai</div>
-    </div>
-    <div class="pl-tile">
-      <div class="pt-bg" style="background:linear-gradient(135deg,#0f3460 0%,#16213e 50%,#0a1628 100%)"></div>
-      <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.5),transparent 50%)"></div>
-      <div class="pl-tile-label">Karigar</div>
-    </div>
-    <div class="pl-tile">
-      <div class="pt-bg" style="background:linear-gradient(135deg,#ff6b9d 0%,#ff4081 50%,#c0185a 100%)"></div>
-      <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.4),transparent 50%)"></div>
-      <div class="pl-tile-label">O Soniye</div>
-    </div>
-    <div class="pl-tile">
-      <div class="pt-bg" style="background:linear-gradient(135deg,#f59e0b 0%,#d97706 50%,#92400e 100%)"></div>
-      <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.4),transparent 50%)"></div>
-      <div class="pl-tile-label">Mangoge Na?</div>
-    </div>
-    <div class="pl-tile">
-      <div class="pt-bg" style="background:linear-gradient(135deg,#166534 0%,#15803d 50%,#4ade80 100%)"></div>
-      <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.4),transparent 50%)"></div>
-      <div class="pl-tile-label">Tu Hi Hai Channa</div>
-    </div>
-    <div class="pl-tile">
-      <div class="pt-bg" style="background:linear-gradient(135deg,#7c3aed 0%,#6d28d9 50%,#4c1d95 100%)"></div>
-      <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.4),transparent 50%)"></div>
-      <div class="pl-tile-label">Dhul Gaye</div>
-    </div>
-    <div class="pl-tile">
-      <div class="pt-bg" style="background:linear-gradient(135deg,#ec4899 0%,#db2777 50%,#9d174d 100%)"></div>
-      <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.4),transparent 50%)"></div>
-      <div class="pl-tile-label">Ankhiyaan</div>
-    </div>
-    <div class="pl-tile">
-      <div class="pt-bg" style="background:linear-gradient(135deg,#4338ca 0%,#3730a3 50%,#312e81 100%)"></div>
-      <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.4),transparent 50%)"></div>
-      <div class="pl-tile-label">Main Janu Na</div>
-    </div>
-  </div>
-
-  <div style="display:flex;justify-content:flex-end;margin-top:24px">
-    <button class="btn-black">Listen on Spotify</button>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════
-     SECTION 16 — DARK CTA
-════════════════════════════════════════ -->
-<section class="dark-cta">
-  <div>
-    <div class="dc-trust">
-      <span class="dc-exc">ABBY Gold 2017</span>
-      <div class="dc-stars">
-        <div class="dc-star">★</div><div class="dc-star">★</div><div class="dc-star">★</div><div class="dc-star">★</div><div class="dc-star">★</div>
       </div>
-      <span class="dc-tp">Industry Recognition</span>
-    </div>
-    <h2>Set the mood with India's most awarded composer.</h2>
-    <p>Discover an unparalleled blend of Hindustani classical depth and contemporary emotion. Hear the difference — only with Aart Sense.</p>
-    <button class="btn-outline-white">Book a Session</button>
-  </div>
-  <div class="dc-visual">
-    <div class="dc-card">
-      <div class="dcc-bg" style="background:linear-gradient(180deg,#1a0a2e 0%,#0d0618 100%)"></div>
-      <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.3),transparent);display:flex;align-items:flex-end;padding:12px">
-        <span style="font-size:11px;font-weight:700;color:rgba(255,255,255,.7);letter-spacing:.5px">SI-TIO</span>
+
+      <!-- Press -->
+      <div>
+        <div class="rec-press-title">Press &amp; Media</div>
+        <div class="rec-press-grid">
+          <div class="rec-press-card">
+            <div class="rec-pub-name">Rolling Stone India</div>
+            <div class="rec-press-headline">"A composer who bridges the gap between classical India and modern London"</div>
+          </div>
+          <div class="rec-press-card">
+            <div class="rec-pub-name">Times of India</div>
+            <div class="rec-press-headline">"Arjuna Harjai is quietly redefining what Indian music sounds like abroad"</div>
+          </div>
+          <div class="rec-press-card">
+            <div class="rec-pub-name">Eastern Eye</div>
+            <div class="rec-press-headline">"The One Minute Composer is one of the most exciting music projects in the UK South Asian scene"</div>
+          </div>
+          <div class="rec-press-card">
+            <div class="rec-pub-name">Bold Outline</div>
+            <div class="rec-press-headline">"A prolific creator whose daily discipline has produced an extraordinary body of work"</div>
+          </div>
+        </div>
+        <div class="rec-chart-block">
+          <div class="rec-chart-label">Chart Achievement · 2024</div>
+          <div class="rec-chart-title">Spotify Viral 50 — India &amp; Pakistan</div>
+          <div class="rec-chart-detail">"Winter Ayun Waliye" debuted simultaneously in two countries as an independent UK artist — a first for Aart Sense Records.</div>
+        </div>
       </div>
-    </div>
-    <div class="dc-card">
-      <div class="dcc-bg" style="background:linear-gradient(135deg,#2e1a0a,#1a0a00)"></div>
-    </div>
-    <div class="dc-card">
-      <div class="dcc-bg" style="background:linear-gradient(135deg,#0a1a2e,#00050d)"></div>
-      <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.3),transparent);display:flex;align-items:flex-end;padding:10px">
-        <span style="font-size:13px;font-weight:900;color:rgba(255,255,255,.5);letter-spacing:1px">DEEP</span>
-      </div>
+
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════
-     SECTION 17 — FOOTER
-════════════════════════════════════════ -->
+
+<!-- ═══════════════════════════════════════════
+  SECTION 7: OUR IPs — THE ONE MINUTE COMPOSER
+═══════════════════════════════════════════ -->
+<section class="omc-section">
+  <div class="omc-inner">
+
+    <div class="omc-visual">
+      <div class="omc-visual-glow"></div>
+      <div class="omc-logo-block">
+        <div class="omc-logo-label">Our IP</div>
+        <div class="omc-logo-text">The One<br>Minute<br>Composer</div>
+        <div class="omc-logo-sub">Daily Original Music</div>
+        <div class="omc-badges">
+          <span class="omc-badge">BBC Featured</span>
+          <span class="omc-badge">Spotify Viral 50</span>
+          <span class="omc-badge">365+ Releases</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="omc-content">
+      <p class="section-label">Our IPs</p>
+      <h2>The One Minute<br>Composer</h2>
+      <p>A radical creative commitment — one original composition, every single day. Launched by Arjuna Harjai in London, The One Minute Composer is a daily discipline, a creative IP, and a living archive of musical diversity that has captured audiences across India, Pakistan, and the UK.</p>
+      <div class="omc-stats">
+        <div class="omc-stat">
+          <div class="omc-stat-num">365+</div>
+          <div class="omc-stat-label">Original Works</div>
+        </div>
+        <div class="omc-stat">
+          <div class="omc-stat-num">2</div>
+          <div class="omc-stat-label">Viral 50 Countries</div>
+        </div>
+        <div class="omc-stat">
+          <div class="omc-stat-num">BBC</div>
+          <div class="omc-stat-label">Artist of the Week</div>
+        </div>
+      </div>
+      <ul class="omc-features">
+        <li>One original composition released every single day</li>
+        <li>Multi-genre — folk, classical, pop, world, ambient</li>
+        <li>Distributed across all major streaming platforms globally</li>
+        <li>BBC Asian Network's Introducing Artist of the Week, 2024</li>
+        <li>"Winter Ayun Waliye" — Spotify Viral 50, India &amp; Pakistan</li>
+        <li>Growing archive available for sync licensing</li>
+        <li>Platform for emerging vocalists &amp; session musicians</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- CTA STRIP -->
+<div class="cta-strip">
+  <h2>Collaborate with Arjuna.</h2>
+  <p>Whether you're an artist seeking a creative partner, a label exploring distribution, or a brand in need of original music — the conversation starts here.</p>
+  <div class="cta-strip-btns">
+    <button class="btn-outline-white" onclick="location.href='contact.html'">Start a Conversation</button>
+    <button class="btn-white" onclick="location.href='services.html'">View Services</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
 <footer class="footer">
   <div class="footer-top">
-    <!-- Brand + CTA -->
     <div class="footer-cta">
       <div class="footer-logo">AART SENSE</div>
       <p class="footer-tagline">Award-winning composer, producer &amp; studio.<br>London, United Kingdom.</p>
       <a href="contact.html" class="btn-white" style="display:inline-block;margin-top:16px;">Get in Touch</a>
     </div>
-
-    <!-- Navigate — all pages -->
     <div class="footer-col">
       <h4>Navigate</h4>
       <ul>
@@ -2552,8 +2108,6 @@
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
-
-    <!-- Services -->
     <div class="footer-col">
       <h4>Services</h4>
       <ul>
@@ -2564,8 +2118,6 @@
         <li><a href="services.html">Custom Composition</a></li>
       </ul>
     </div>
-
-    <!-- Help & Contact -->
     <div class="footer-col">
       <h4>Help &amp; Contact</h4>
       <ul>
@@ -2591,7 +2143,6 @@
       </div>
     </div>
   </div>
-
   <div class="footer-bottom">
     <div class="footer-links">
       <span>©2026 Aart Sense Studios Ltd.</span>
@@ -2617,467 +2168,65 @@
   </div>
 </footer>
 
-<!-- Chat bubble -->
 <div class="chat-bubble" title="Chat with us">
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-  </svg>
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
 </div>
 
+<script src="animations.js" defer></script>
 <script>
 (function () {
-  'use strict';
-  const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var slides   = document.querySelectorAll('#asTrack .as-slide');
+  var dots     = document.querySelectorAll('#asDots .as-dot');
+  var fill     = document.getElementById('asProgressFill');
+  var current  = 0;
+  var total    = slides.length;
+  var autoTimer, fillTimer;
+  var DURATION = 5000; // ms per slide
 
-  /* ══════════════════════════════════════════════════
-     WAVEFORM BARS — generate + pulse
-  ══════════════════════════════════════════════════ */
-  function makeWaveform(id, count, maxH, color, activeColor, activeUpto) {
-    const el = document.getElementById(id);
-    if (!el) return;
-    for (let i = 0; i < count; i++) {
-      const h = 4 + Math.random() * (maxH - 4);
-      const bar = document.createElement('div');
-      bar.dataset.base = h;
-      bar.style.cssText = `width:2px;border-radius:1px;height:${h}px;background:${i < activeUpto ? activeColor : color};transition:height .18s ease;flex-shrink:0`;
-      el.appendChild(bar);
-    }
-    return el;
+  function goTo(n) {
+    slides[current].classList.remove('as-active');
+    dots[current].classList.remove('as-dot-active');
+    current = ((n % total) + total) % total;
+    slides[current].classList.add('as-active');
+    dots[current].classList.add('as-dot-active');
+    startProgress();
   }
 
-  // Music UI waveforms (section 6 mockup, still using fake waveform IDs)
-  ['wf1','wf2','wf3','wf4'].forEach(id => makeWaveform(id, 22, 16, '#444', '#888', 0));
-
-  /* ── Spotify track selector (Section 5) ───────────────────────── */
-  const spotifyFrame = document.getElementById('spotify-frame');
-  document.querySelectorAll('.app-track').forEach(track => {
-    track.addEventListener('click', () => {
-      document.querySelectorAll('.app-track').forEach(t => t.classList.remove('active'));
-      track.classList.add('active');
-      if (spotifyFrame && track.dataset.track) {
-        // autoplay=1 works because this fires on a direct user gesture (click)
-        spotifyFrame.src =
-          'https://open.spotify.com/embed/track/' + track.dataset.track +
-          '?utm_source=generator&theme=0&autoplay=1';
-      }
-    });
-  });
-
-  // Search UI waveforms
-  makeWaveform('suf-wf1', 36, 22, '#d0d0d0', '#111', 0);
-  makeWaveform('suf-wf2', 36, 22, '#d0d0d0', '#111', 0);
-  makeWaveform('suf-wf3', 36, 22, '#d0d0d0', '#111', 14);
-
-  // Animate suf-wf3 (the "active" one) to pulse like it's playing
-  if (!REDUCED) {
-    const activeWf = document.getElementById('suf-wf3');
-    if (activeWf) {
-      setInterval(() => {
-        activeWf.querySelectorAll('div').forEach(bar => {
-          const base = parseFloat(bar.dataset.base);
-          const jitter = (Math.random() - 0.5) * 8;
-          bar.style.height = Math.max(3, Math.min(22, base + jitter)) + 'px';
-        });
-      }, 180);
-    }
-    // Also pulse wf1 subtly
-    const wf1 = document.getElementById('wf1');
-    if (wf1) {
-      setInterval(() => {
-        wf1.querySelectorAll('div').forEach(bar => {
-          const base = parseFloat(bar.dataset.base);
-          bar.style.height = Math.max(3, base + (Math.random() - 0.5) * 6) + 'px';
-        });
-      }, 220);
-    }
+  function startProgress() {
+    clearTimeout(autoTimer);
+    // Reset bar instantly
+    fill.style.transition = 'none';
+    fill.style.width = '0%';
+    // Force reflow so transition re-triggers
+    void fill.offsetWidth;
+    fill.style.transition = 'width ' + (DURATION / 1000) + 's linear';
+    fill.style.width = '100%';
+    autoTimer = setTimeout(function () { goTo(current + 1); }, DURATION);
   }
 
-  /* ══════════════════════════════════════════════════
-     NAVBAR — scroll shadow + id for animations.js compat
-  ══════════════════════════════════════════════════ */
-  const navbar = document.querySelector('.navbar');
-  if (navbar) navbar.id = 'navbar'; // animations.js looks for id="navbar"
-  window.addEventListener('scroll', () => {
-    if (navbar) navbar.style.boxShadow = window.scrollY > 8
-      ? '0 2px 16px rgba(0,0,0,.1)' : 'none';
-  }, { passive: true });
-
-  /* ══════════════════════════════════════════════════
-     CURSOR on interactive tiles
-  ══════════════════════════════════════════════════ */
-  document.querySelectorAll('.pl-tile, .artist-tile, .bg-cell').forEach(el => {
-    el.style.cursor = 'pointer';
+  document.getElementById('asNext').addEventListener('click', function () { goTo(current + 1); });
+  document.getElementById('asPrev').addEventListener('click', function () { goTo(current - 1); });
+  dots.forEach(function (dot, i) {
+    dot.addEventListener('click', function () { goTo(i); });
   });
 
-  /* ══════════════════════════════════════════════════
-     NOW-PLAYING bar — play toggle + progress animation
-  ══════════════════════════════════════════════════ */
-  const npPlay = document.querySelector('.np-btn:nth-child(2)');
-  let playing = true;
-  let progressW = 45;
-  const progressFill = document.querySelector('.np-progress-fill');
-
-  if (npPlay) {
-    npPlay.addEventListener('click', () => {
-      playing = !playing;
-      npPlay.textContent = playing ? '⏸' : '▶';
-    });
-  }
-
-  // Slowly advance progress while "playing"
-  if (!REDUCED && progressFill) {
-    setInterval(() => {
-      if (!playing) return;
-      progressW = Math.min(progressW + 0.08, 100);
-      progressFill.style.width = progressW + '%';
-      if (progressW >= 100) progressW = 0;
-    }, 100);
-  }
-
-  /* ══════════════════════════════════════════════════
-     HERO ENTRANCE — staggered fade + slide up
-  ══════════════════════════════════════════════════ */
-  if (!REDUCED) {
-    // Hero text children
-    const heroText = document.querySelector('.hero-text');
-    if (heroText) {
-      Array.from(heroText.children).forEach((el, i) => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(28px)';
-        el.style.transition = `opacity .7s ease ${0.1 + i * 0.14}s, transform .7s cubic-bezier(.22,.68,0,1.1) ${0.1 + i * 0.14}s`;
-      });
-    }
-    // CTA block
-    const heroCta = document.querySelector('.hero-cta-block');
-    if (heroCta) {
-      heroCta.style.opacity = '0';
-      heroCta.style.transform = 'translateY(22px)';
-      heroCta.style.transition = 'opacity .65s ease .52s, transform .65s cubic-bezier(.22,.68,0,1.1) .52s';
-    }
-    // Brand logos marquee — fade in the container
-    const logoContainer = document.querySelector('.brand-logos');
-    if (logoContainer) {
-      logoContainer.style.opacity = '0';
-      logoContainer.style.transition = 'opacity .7s ease .55s';
-    }
-    // Dark banner silhouettes
-    const banner = document.querySelector('.hero-dark-banner');
-    if (banner) {
-      banner.style.opacity = '0';
-      banner.style.transform = 'translateY(18px)';
-      banner.style.transition = 'opacity .8s ease .9s, transform .8s ease .9s';
-    }
-
-    // Trigger
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        if (heroText) Array.from(heroText.children).forEach(el => {
-          el.style.opacity = '1';
-          el.style.transform = 'none';
-        });
-        if (heroCta) { heroCta.style.opacity = '1'; heroCta.style.transform = 'none'; }
-        if (logoContainer) logoContainer.style.opacity = '1';
-        if (banner) { banner.style.opacity = '1'; banner.style.transform = 'none'; }
-      });
-    });
-
-    /* ══════════════════════════════════════════════════
-       SILHOUETTE BOB — subtle float on the concert visual
-    ══════════════════════════════════════════════════ */
-    const silhouettes = document.querySelectorAll('.sil');
-    silhouettes.forEach((sil, i) => {
-      const dur = 2800 + i * 400;
-      const delay = i * 320;
-      sil.style.animation = `silBob ${dur}ms ease-in-out ${delay}ms infinite alternate`;
-    });
-  }
-
-  /* ══════════════════════════════════════════════════
-     SCROLL ANIMATIONS — IntersectionObserver
-  ══════════════════════════════════════════════════ */
-  if (REDUCED) return;
-
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(({ isIntersecting, target }) => {
-      if (!isIntersecting) return;
-      target.style.opacity = '1';
-      target.style.transform = 'none';
-      obs.unobserve(target);
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -24px 0px' });
-
-  function reveal(el, delay, fromX) {
-    if (!el || el._ix) return;
-    el._ix = true;
-    el.style.opacity = '0';
-    el.style.transform = fromX ? `translateX(${fromX}px)` : 'translateY(28px)';
-    el.style.transition = `opacity .62s ease ${delay}ms, transform .62s cubic-bezier(.22,.68,0,1.1) ${delay}ms`;
-    el.style.willChange = 'opacity, transform';
-    obs.observe(el);
-  }
-
-  // — Split rows: text slides from left, visual from right
-  document.querySelectorAll('.split-row').forEach(row => {
-    const isRev = row.classList.contains('rev');
-    const text = row.querySelector('.split-text');
-    const visual = row.querySelector('.split-visuals');
-    if (text) reveal(text, 0, isRev ? 40 : -40);
-    if (visual) reveal(visual, 80, isRev ? -40 : 40);
+  // Keyboard navigation
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') goTo(current + 1);
+    if (e.key === 'ArrowLeft')  goTo(current - 1);
   });
 
-  // — Section headings not covered by animations.js
-  document.querySelectorAll(
-    '.section-centered h2, .section-centered p, .section-centered button,' +
-    '.vibe-section h2, .vibe-section p, .vibe-section button,' +
-    '.enterprise-section h2, .enterprise-section p,' +
-    '.features-header h2, .features-header p,' +
-    '.test-header h2, .testimonials-section .trustpilot,' +
-    '.playlists-header h2,' +
-    '.ai-banner-left h2, .ai-banner-left .ai-badge,' +
-    '.genre-heading, .artists-sub'
-  ).forEach((el, i) => reveal(el, i * 80));
-
-  // — Amplify left content
-  document.querySelectorAll('.amplify-left > *').forEach((el, i) => reveal(el, i * 90));
-  document.querySelectorAll('.amplify-right > *').forEach((el, i) => reveal(el, 120 + i * 90, 30));
-
-  // — Stat rows in amplify (counter animation)
-  const statObs = new IntersectionObserver((entries) => {
-    entries.forEach(({ isIntersecting, target }) => {
-      if (!isIntersecting) return;
-      const full = target.textContent;
-      const numMatch = full.match(/[\d,]+/);
-      if (!numMatch) return;
-      const target_n = parseInt(numMatch[0].replace(/,/g, ''), 10);
-      const suffix = full.replace(/[\d,]/, '').replace(numMatch[0], '');
-      const prefix = full.slice(0, full.indexOf(numMatch[0]));
-      const em = target.querySelector('em');
-      const emText = em ? em.textContent : '';
-      if (em) em.textContent = '';
-      const t0 = performance.now();
-      function tick(now) {
-        const p = Math.min((now - t0) / 1000, 1);
-        const val = Math.round((1 - Math.pow(2, -10 * p)) * target_n);
-        const fmt = val >= 1000 ? val.toLocaleString('en-GB') : val;
-        target.textContent = prefix + fmt + '+';
-        if (em) { target.appendChild(document.createTextNode(' ')); const e2 = em.cloneNode(); e2.textContent = emText; target.appendChild(e2); }
-        if (p < 1) requestAnimationFrame(tick);
-        else target.innerHTML = full;
-      }
-      requestAnimationFrame(tick);
-      statObs.unobserve(target);
-    });
-  }, { threshold: 0.7 });
-  document.querySelectorAll('.stat-row').forEach(el => statObs.observe(el));
-
-  // — Enterprise grid items stagger
-  document.querySelectorAll('.ent-item').forEach((el, i) => {
-    if (el._ix) return;
-    reveal(el, i * 75);
+  // Pause on hover
+  var section = document.getElementById('artistSlider');
+  section.addEventListener('mouseenter', function () {
+    clearTimeout(autoTimer);
+    fill.style.transition = 'none';
   });
+  section.addEventListener('mouseleave', function () { startProgress(); });
 
-  // — Dark CTA section
-  const dcH2 = document.querySelector('.dark-cta h2');
-  const dcP = document.querySelector('.dark-cta p');
-  const dcBtn = document.querySelector('.dark-cta button');
-  const dcCards = document.querySelectorAll('.dc-card');
-  [dcH2, dcP, dcBtn].forEach((el, i) => el && reveal(el, i * 100));
-  dcCards.forEach((el, i) => reveal(el, 200 + i * 100, 0));
-
-  // — AI banner right visual
-  const aiBannerRight = document.querySelector('.ai-banner-right');
-  if (aiBannerRight) reveal(aiBannerRight, 180, 30);
-
-  // — Search UI frame
-  const sufFrame = document.querySelector('.search-ui-frame');
-  if (sufFrame) reveal(sufFrame, 0);
-
-  /* ══════════════════════════════════════════════════
-     PARALLAX — amplify road element on scroll
-  ══════════════════════════════════════════════════ */
-  const road = document.querySelector('.amplify-road');
-  if (road) {
-    window.addEventListener('scroll', () => {
-      const section = road.closest('section, .section-amplify') || road.parentElement;
-      const rect = section.getBoundingClientRect();
-      if (rect.bottom < 0 || rect.top > window.innerHeight) return;
-      const pct = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
-      road.style.transform = `translateY(${(pct - 0.5) * 40}px)`;
-    }, { passive: true });
-  }
-
-  /* ══════════════════════════════════════════════════
-     BRAND GRID CELLS — scale reveal on scroll
-  ══════════════════════════════════════════════════ */
-  const bgCells = document.querySelectorAll('.bg-cell');
-  if (bgCells.length) {
-    const bgObs = new IntersectionObserver((entries) => {
-      entries.forEach(({ isIntersecting, target }) => {
-        if (!isIntersecting) return;
-        target.style.opacity = '1';
-        target.style.transform = 'scale(1)';
-        bgObs.unobserve(target);
-      });
-    }, { threshold: 0.1 });
-
-    bgCells.forEach((cell, i) => {
-      if (cell._ix) return; // skip if animations.js already set up
-      cell.style.opacity = '0';
-      cell.style.transform = 'scale(.94)';
-      cell.style.transition = `opacity .55s ease ${i * 60}ms, transform .55s cubic-bezier(.22,.68,0,1.1) ${i * 60}ms`;
-      cell._ix = true;
-      bgObs.observe(cell);
-    });
-  }
-
-  /* ══════════════════════════════════════════════════
-     BRAND GRID — 2-row pagination
-  ══════════════════════════════════════════════════ */
-  (function () {
-    const viewport = document.querySelector('.brand-grid-viewport');
-    const grid     = document.querySelector('.brand-grid');
-    const prevBtn  = document.getElementById('bgPrev');
-    const nextBtn  = document.getElementById('bgNext');
-    const dotsEl   = document.getElementById('bgDots');
-    const navRow   = document.getElementById('bgNavRow');
-    if (!viewport || !grid || !prevBtn) return;
-
-    const COLS          = 4;
-    const ROWS_PER_PAGE = 2;
-    const GAP           = 6;
-    const cells         = Array.from(grid.children);
-    const totalRows     = Math.ceil(cells.length / COLS);
-    const totalPages    = Math.ceil(totalRows / ROWS_PER_PAGE);
-
-    // Hide nav if everything fits in 2 rows
-    if (cells.length <= COLS * ROWS_PER_PAGE) {
-      navRow.style.display = 'none';
-      return;
-    }
-
-    let page = 0;
-
-    // Build dots
-    for (let i = 0; i < totalPages; i++) {
-      const dot = document.createElement('button');
-      dot.className = 'bg-dot' + (i === 0 ? ' active' : '');
-      dot.setAttribute('aria-label', 'Page ' + (i + 1));
-      dot.addEventListener('click', () => goTo(i));
-      dotsEl.appendChild(dot);
-    }
-
-    function rowHeight() {
-      return cells[0] ? cells[0].getBoundingClientRect().height : 0;
-    }
-
-    function setViewportHeight() {
-      const rh = rowHeight();
-      viewport.style.height = (rh * ROWS_PER_PAGE + GAP * (ROWS_PER_PAGE - 1)) + 'px';
-    }
-
-    function goTo(p) {
-      page = Math.max(0, Math.min(p, totalPages - 1));
-      const offset = page * ROWS_PER_PAGE * (rowHeight() + GAP);
-      grid.style.transform = 'translateY(-' + offset + 'px)';
-      dotsEl.querySelectorAll('.bg-dot').forEach((d, i) => d.classList.toggle('active', i === page));
-      prevBtn.disabled = page === 0;
-      nextBtn.disabled = page === totalPages - 1;
-    }
-
-    prevBtn.addEventListener('click', () => goTo(page - 1));
-    nextBtn.addEventListener('click', () => goTo(page + 1));
-
-    setViewportHeight();
-    goTo(0);
-    window.addEventListener('resize', () => { setViewportHeight(); goTo(page); });
-  })();
-
-  /* ══════════════════════════════════════════════════
-     ARTISTS ROW — horizontal scroll with arrows if > 4 tiles
-  ══════════════════════════════════════════════════ */
-  (function () {
-    const wrap  = document.querySelector('.artists-scroll-wrap');
-    const row   = document.querySelector('.artists-row');
-    if (!wrap || !row) return;
-    if (row.children.length <= 4) return;  // nothing to do
-
-    const prevBtn = document.createElement('button');
-    const nextBtn = document.createElement('button');
-    prevBtn.className = 'artists-scroll-btn asc-prev';
-    nextBtn.className = 'artists-scroll-btn asc-next';
-    prevBtn.setAttribute('aria-label', 'Scroll left');
-    nextBtn.setAttribute('aria-label', 'Scroll right');
-    prevBtn.innerHTML = '&#8592;';
-    nextBtn.innerHTML = '&#8594;';
-    wrap.appendChild(prevBtn);
-    wrap.appendChild(nextBtn);
-
-    function tileWidth() {
-      const t = row.children[0];
-      return t ? t.getBoundingClientRect().width + 8 : 280;
-    }
-
-    function updateButtons() {
-      prevBtn.disabled = row.scrollLeft < 4;
-      nextBtn.disabled = row.scrollLeft + row.clientWidth >= row.scrollWidth - 4;
-    }
-
-    prevBtn.addEventListener('click', () => { row.scrollBy({ left: -tileWidth() * 4, behavior: 'smooth' }); });
-    nextBtn.addEventListener('click', () => { row.scrollBy({ left:  tileWidth() * 4, behavior: 'smooth' }); });
-    row.addEventListener('scroll', updateButtons, { passive: true });
-    updateButtons();
-  })();
-
-  /* ══════════════════════════════════════════════════
-     ARTIST TILES — stagger scale + slide up
-  ══════════════════════════════════════════════════ */
-  document.querySelectorAll('.artist-tile').forEach((el, i) => {
-    if (el._ix) return;
-    el._ix = true;
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(22px) scale(.97)';
-    el.style.transition = `opacity .55s ease ${i * 90}ms, transform .55s cubic-bezier(.22,.68,0,1.1) ${i * 90}ms`;
-    obs.observe(el);
-  });
-
-  /* ══════════════════════════════════════════════════
-     PLAYLIST TILES — wave stagger
-  ══════════════════════════════════════════════════ */
-  document.querySelectorAll('.pl-tile').forEach((el, i) => {
-    if (el._ix) return;
-    el._ix = true;
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = `opacity .5s ease ${i * 50}ms, transform .5s cubic-bezier(.22,.68,0,1.1) ${i * 50}ms`;
-    obs.observe(el);
-  });
-
-  /* ══════════════════════════════════════════════════
-     FEAT CARDS — stagger
-  ══════════════════════════════════════════════════ */
-  document.querySelectorAll('.feat-card').forEach((el, i) => {
-    if (el._ix) return;
-    el._ix = true;
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(24px)';
-    el.style.transition = `opacity .55s ease ${i * 90}ms, transform .55s cubic-bezier(.22,.68,0,1.1) ${i * 90}ms`;
-    obs.observe(el);
-  });
-
-  /* ══════════════════════════════════════════════════
-     TEST CARDS — stagger
-  ══════════════════════════════════════════════════ */
-  document.querySelectorAll('.test-card').forEach((el, i) => {
-    if (el._ix) return;
-    el._ix = true;
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(22px)';
-    el.style.transition = `opacity .55s ease ${i * 80}ms, transform .55s cubic-bezier(.22,.68,0,1.1) ${i * 80}ms`;
-    obs.observe(el);
-  });
-
+  // Start
+  startProgress();
 })();
 </script>
-<script src="animations.js" defer></script>
 </body>
 </html>

@@ -164,7 +164,42 @@
   });
 
   /* ══════════════════════════════════════════════════════
-     5. COUNTER ANIMATION — animated number roll-up
+     5. HAMBURGER MENU — mobile nav drawer toggle
+  ══════════════════════════════════════════════════════ */
+  (function () {
+    var btn     = document.getElementById('navHamburger');
+    var menu    = document.getElementById('mobileMenu');
+    var overlay = document.getElementById('mobileMenuOverlay');
+    var close   = document.getElementById('mobileMenuClose');
+    if (!btn || !menu) return;
+
+    function openMenu() {
+      btn.classList.add('open');
+      menu.classList.add('open');
+      if (overlay) overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+      btn.classList.remove('open');
+      menu.classList.remove('open');
+      if (overlay) overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    btn.addEventListener('click', function () {
+      menu.classList.contains('open') ? closeMenu() : openMenu();
+    });
+    if (close) close.addEventListener('click', closeMenu);
+    if (overlay) overlay.addEventListener('click', closeMenu);
+
+    // Close on Escape key
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeMenu();
+    });
+  })();
+
+  /* ══════════════════════════════════════════════════════
+     6. COUNTER ANIMATION — animated number roll-up
   ══════════════════════════════════════════════════════ */
 
   function parseNum(text) {
