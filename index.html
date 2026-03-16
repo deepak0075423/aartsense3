@@ -1027,6 +1027,309 @@
     .omc-features li:last-child { border-bottom: none; }
 
     /* ══════════════════════════════════════
+       COMPANY BANNER
+    ══════════════════════════════════════ */
+    .company-banner {
+      background: #000;
+      padding: 80px 40px;
+      overflow: hidden;
+      position: relative;
+    }
+    .company-banner::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        -45deg, transparent 0, transparent 40px,
+        rgba(255,255,255,.018) 40px, rgba(255,255,255,.018) 41px
+      );
+      pointer-events: none;
+    }
+    .cb-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.2fr 1fr;
+      gap: 80px; align-items: center;
+      position: relative; z-index: 1;
+    }
+    .cb-overline {
+      font-size: 10px; font-weight: 800;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: rgba(255,255,255,.3); margin-bottom: 20px;
+    }
+    .cb-heading {
+      font-size: 70px; font-weight: 900;
+      color: #fff; letter-spacing: -4px;
+      line-height: .92; margin-bottom: 22px;
+    }
+    .cb-sub {
+      font-size: 14.5px; color: rgba(255,255,255,.5);
+      line-height: 1.75; max-width: 420px; margin-bottom: 32px;
+    }
+    .cb-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .cb-stats {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1px; background: rgba(255,255,255,.08);
+      border-radius: 10px; overflow: hidden;
+    }
+    .cb-stat { background: rgba(255,255,255,.04); padding: 32px 28px; }
+    .cb-stat-num {
+      font-size: 44px; font-weight: 900;
+      color: #fff; letter-spacing: -2px;
+      line-height: 1; margin-bottom: 6px;
+    }
+    .cb-stat-label {
+      font-size: 11px; color: rgba(255,255,255,.4);
+      font-weight: 600; letter-spacing: .4px; text-transform: uppercase;
+    }
+
+    /* ══════════════════════════════════════
+       ARTIST CARDS SECTION
+    ══════════════════════════════════════ */
+    .ac-section {
+      padding: 88px 40px;
+      background: #fff;
+      border-top: 1px solid #e8e8e8;
+    }
+    .ac-section-head {
+      max-width: 1200px; margin: 0 auto 52px;
+      display: flex; align-items: flex-end;
+      justify-content: space-between; gap: 24px;
+    }
+    .ac-section-head h2 {
+      font-size: 48px; font-weight: 900;
+      letter-spacing: -2px; line-height: 1;
+    }
+    .ac-section-head p {
+      font-size: 14px; color: #666;
+      max-width: 300px; line-height: 1.65; text-align: right;
+    }
+    .ac-grid {
+      max-width: 1200px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 14px;
+    }
+    .ac-card:nth-child(1) { grid-column: 1 / 3; }
+    .ac-card:nth-child(2) { grid-column: 3 / 5; }
+    .ac-card:nth-child(3) { grid-column: 5 / 7; }
+    .ac-card:nth-child(4) { grid-column: 7 / 9; }
+    .ac-card:nth-child(5) { grid-column: 2 / 4; }
+    .ac-card:nth-child(6) { grid-column: 4 / 6; }
+    .ac-card:nth-child(7) { grid-column: 6 / 8; }
+    .ac-card {
+      position: relative; border-radius: 12px;
+      overflow: hidden; cursor: pointer;
+      aspect-ratio: 2/3; background: #111;
+    }
+    .ac-photo {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: top center;
+      transition: transform .6s cubic-bezier(.22,.68,0,1.1);
+    }
+    .ac-card:hover .ac-photo { transform: scale(1.07); }
+    .ac-name-strip {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.82) 0%, transparent 100%);
+      padding: 52px 16px 16px; z-index: 2;
+    }
+    .ac-strip-name {
+      font-size: 16px; font-weight: 900;
+      color: #fff; letter-spacing: -.3px; line-height: 1.1;
+    }
+    .ac-strip-role {
+      font-size: 10px; color: rgba(255,255,255,.5);
+      font-weight: 500; margin-top: 2px;
+    }
+    .ac-hover {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.97) 0%, rgba(0,0,0,.82) 45%, rgba(0,0,0,.25) 100%);
+      padding: 20px;
+      display: flex; flex-direction: column;
+      justify-content: flex-end;
+      z-index: 3;
+      opacity: 0; transform: translateY(6px);
+      transition: opacity .28s ease, transform .28s ease;
+    }
+    .ac-card:hover .ac-hover { opacity: 1; transform: translateY(0); }
+    .ac-hover-tag {
+      font-size: 8.5px; font-weight: 800;
+      letter-spacing: 1.2px; text-transform: uppercase;
+      color: rgba(255,255,255,.5);
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.14);
+      padding: 3px 8px; border-radius: 2px;
+      display: inline-block; margin-bottom: 8px; width: fit-content;
+    }
+    .ac-hover-name {
+      font-size: 21px; font-weight: 900;
+      color: #fff; letter-spacing: -.6px;
+      line-height: 1.05; margin-bottom: 7px;
+    }
+    .ac-hover-bio {
+      font-size: 11px; color: rgba(255,255,255,.5);
+      line-height: 1.55; margin-bottom: 12px;
+    }
+    .ac-hover-songs { display: flex; flex-direction: column; gap: 3px; margin-bottom: 12px; }
+    .ac-hover-song {
+      font-size: 10.5px; color: rgba(255,255,255,.7); font-weight: 600;
+      display: flex; align-items: flex-start; gap: 5px;
+    }
+    .ac-hover-song::before { content: '→'; color: rgba(255,255,255,.3); font-size: 9px; flex-shrink: 0; margin-top: 1px; }
+    .ac-hover-cta {
+      display: flex; align-items: center; gap: 5px;
+      font-size: 9.5px; font-weight: 800;
+      letter-spacing: 1px; text-transform: uppercase;
+      color: rgba(255,255,255,.4);
+      padding-top: 10px;
+      border-top: 1px solid rgba(255,255,255,.1);
+    }
+    .ac-hover-cta::after { content: '↗'; transition: transform .2s; }
+    .ac-card:hover .ac-hover-cta::after { transform: translate(2px, -2px); }
+
+    /* ══════════════════════════════════════
+       ARTIST MODAL
+    ══════════════════════════════════════ */
+    @keyframes acBgIn {
+      from { opacity: 0; backdrop-filter: blur(0px); }
+      to   { opacity: 1; backdrop-filter: blur(8px); }
+    }
+    @keyframes acModalIn {
+      from { opacity: 0; transform: scale(.88) translateY(36px); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    @keyframes acModalOut {
+      from { opacity: 1; transform: scale(1) translateY(0); }
+      to   { opacity: 0; transform: scale(.9) translateY(24px); }
+    }
+    @keyframes acPhotoIn {
+      from { opacity: 0; transform: scale(1.12) translateX(-18px); }
+      to   { opacity: 1; transform: scale(1.04) translateX(0); }
+    }
+    @keyframes acFadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .ac-modal-bg {
+      position: fixed; inset: 0; z-index: 2000;
+      background: rgba(0,0,0,.88);
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px;
+      opacity: 0; pointer-events: none;
+      backdrop-filter: blur(8px);
+    }
+    .ac-modal-bg.open {
+      opacity: 1; pointer-events: auto;
+      animation: acBgIn .3s ease both;
+    }
+    .ac-modal {
+      background: #0d0d0d;
+      border-radius: 16px; overflow: hidden;
+      max-width: 860px; width: 100%; max-height: 90vh;
+      display: grid; grid-template-columns: .85fr 1.15fr;
+      position: relative;
+      opacity: 0;
+      box-shadow: 0 40px 120px rgba(0,0,0,.9);
+    }
+    .ac-modal-bg.open .ac-modal {
+      animation: acModalIn .42s cubic-bezier(.22,.68,0,1.15) both;
+    }
+    .ac-modal-bg.closing .ac-modal {
+      animation: acModalOut .28s cubic-bezier(.55,0,1,.45) both;
+    }
+    .ac-modal-bg.closing {
+      animation: acBgIn .28s ease reverse both;
+    }
+    .ac-modal-photo-side {
+      position: relative; overflow: hidden; min-height: 520px;
+    }
+    .ac-modal-photo-bg {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: top center;
+    }
+    .ac-modal-bg.open .ac-modal-photo-bg {
+      animation: acPhotoIn .6s cubic-bezier(.22,.68,0,1.1) .08s both;
+    }
+    .ac-modal-photo-fade {
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, transparent 50%, #0d0d0d 100%),
+                  linear-gradient(to top, rgba(0,0,0,.4) 0%, transparent 40%);
+    }
+    .ac-modal-body {
+      padding: 40px 36px 40px 24px;
+      overflow-y: auto; display: flex; flex-direction: column;
+    }
+    .ac-modal-close {
+      position: absolute; top: 14px; right: 14px;
+      width: 34px; height: 34px;
+      background: rgba(255,255,255,.1); border: none;
+      border-radius: 50%; color: rgba(255,255,255,.8);
+      font-size: 17px; cursor: pointer; z-index: 10;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .15s;
+    }
+    .ac-modal-close:hover { background: rgba(255,255,255,.22); }
+    .ac-modal-tag {
+      font-size: 9px; font-weight: 800;
+      letter-spacing: 1.2px; text-transform: uppercase;
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15);
+      color: rgba(255,255,255,.6);
+      padding: 4px 10px; border-radius: 2px;
+      display: inline-block; margin-bottom: 14px; width: fit-content;
+    }
+    .ac-modal-name {
+      font-size: 38px; font-weight: 900;
+      color: #fff; letter-spacing: -1.5px;
+      line-height: 1.0; margin-bottom: 14px;
+    }
+    .ac-modal-bio {
+      font-size: 12.5px; color: rgba(255,255,255,.48);
+      line-height: 1.72; margin-bottom: 28px;
+    }
+    .ac-modal-songs-hd {
+      font-size: 9.5px; font-weight: 800;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: rgba(255,255,255,.3);
+      margin-bottom: 12px; padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+    .ac-modal-songs { list-style: none; flex: 1; }
+    .ac-modal-song {
+      display: flex; align-items: center; gap: 12px;
+      padding: 11px 0;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .ac-modal-song:last-child { border-bottom: none; }
+    .ac-modal-snum {
+      font-size: 10px; font-weight: 700;
+      color: rgba(255,255,255,.2);
+      width: 18px; flex-shrink: 0; text-align: right;
+    }
+    .ac-modal-sinfo { flex: 1; min-width: 0; }
+    .ac-modal-stitle {
+      font-size: 13px; font-weight: 700;
+      color: rgba(255,255,255,.85); line-height: 1.2;
+    }
+    .ac-modal-ssub { font-size: 11px; color: rgba(255,255,255,.35); margin-top: 2px; }
+    .ac-modal-sbadge {
+      font-size: 8.5px; font-weight: 800;
+      letter-spacing: .8px; text-transform: uppercase;
+      padding: 3px 7px; border-radius: 2px; flex-shrink: 0;
+      background: rgba(255,255,255,.07);
+      color: rgba(255,255,255,.4);
+      border: 1px solid rgba(255,255,255,.1);
+    }
+    .ac-modal-sbadge.gold { background: rgba(184,134,11,.25); color: #e8b84b; border-color: rgba(184,134,11,.35); }
+    .ac-modal-sbadge.viral { background: rgba(30,180,80,.2); color: #4dd884; border-color: rgba(30,180,80,.3); }
+    .ac-modal-sbadge.award { background: rgba(30,100,180,.2); color: #5aabf0; border-color: rgba(30,100,180,.3); }
+    .ac-modal-pills { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 22px; }
+    .ac-modal-pill {
+      font-size: 9.5px; font-weight: 700;
+      letter-spacing: .6px; text-transform: uppercase;
+      background: rgba(255,255,255,.06);
+      color: rgba(255,255,255,.4);
+      padding: 4px 10px; border-radius: 2px;
+      border: 1px solid rgba(255,255,255,.1);
+    }
+
+    /* ══════════════════════════════════════
        RESPONSIVE
     ══════════════════════════════════════ */
     @media (max-width: 960px) {
@@ -1055,6 +1358,20 @@
       .omc-inner { grid-template-columns: 1fr; }
       .omc-visual { min-height: 280px; }
       .omc-content { padding: 48px 32px; }
+      .cb-inner { grid-template-columns: 1fr; gap: 40px; }
+      .cb-heading { font-size: 48px; letter-spacing: -2.5px; }
+      .ac-section { padding: 64px 20px; }
+      .ac-section-head { flex-direction: column; align-items: flex-start; }
+      .ac-section-head p { text-align: left; }
+      .ac-grid { grid-template-columns: repeat(4, 1fr); gap: 12px; }
+      .ac-card:nth-child(1), .ac-card:nth-child(2), .ac-card:nth-child(3),
+      .ac-card:nth-child(4), .ac-card:nth-child(5), .ac-card:nth-child(6),
+      .ac-card:nth-child(7) { grid-column: span 1; }
+      .ac-modal { grid-template-columns: 1fr; max-height: 92vh; }
+      .ac-modal-photo-side { min-height: 260px; }
+      .ac-modal-photo-fade { background: linear-gradient(to bottom, transparent 60%, #0d0d0d 100%); }
+      .ac-modal-body { padding: 28px 24px 32px; }
+      .ac-modal-name { font-size: 28px; }
     }
     @media (max-width: 600px) {
       .as-left { height: 38vh; min-height: 200px; }
@@ -1082,6 +1399,17 @@
       .omc-content { padding: 36px 16px; }
       .omc-logo-text { font-size: 30px; }
       .rec-press-grid { grid-template-columns: 1fr; }
+      .company-banner { padding: 52px 16px; }
+      .cb-heading { font-size: 38px; letter-spacing: -2px; }
+      .cb-stats { grid-template-columns: 1fr 1fr; }
+      .cb-stat { padding: 20px 16px; }
+      .cb-stat-num { font-size: 32px; }
+      .ac-section { padding: 52px 16px; }
+      .ac-section-head h2 { font-size: 32px; }
+      .ac-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .ac-card:nth-child(1), .ac-card:nth-child(2), .ac-card:nth-child(3),
+      .ac-card:nth-child(4), .ac-card:nth-child(5), .ac-card:nth-child(6),
+      .ac-card:nth-child(7) { grid-column: span 1; }
     }
   </style>
 </head>
@@ -1138,16 +1466,50 @@
 </div>
 <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
 
+<!-- ═══════════════════════════════════════════
+  COMPANY BANNER
+═══════════════════════════════════════════ -->
+<section class="company-banner">
+  <div class="cb-inner">
+    <div>
+      <p class="cb-overline">Award-Winning Music Studio &nbsp;·&nbsp; London, UK</p>
+      <h1 class="cb-heading">AART<br>SENSE</h1>
+      <p class="cb-sub">Founded by composer Arjuna Harjai — 20+ years of crafting iconic music for India's biggest brands, Bollywood films, and a new generation of original artists. Where Hindustani classical meets contemporary soul.</p>
+      <div class="cb-actions">
+        <button class="btn-white">Listen Now</button>
+        <button class="btn-outline-white">Book a Session</button>
+      </div>
+    </div>
+    <div class="cb-stats">
+      <div class="cb-stat">
+        <div class="cb-stat-num">1,000+</div>
+        <div class="cb-stat-label">Ad Jingles</div>
+      </div>
+      <div class="cb-stat">
+        <div class="cb-stat-num">20+</div>
+        <div class="cb-stat-label">Years Active</div>
+      </div>
+      <div class="cb-stat">
+        <div class="cb-stat-num">12+</div>
+        <div class="cb-stat-label">Feature Films</div>
+      </div>
+      <div class="cb-stat">
+        <div class="cb-stat-num">4</div>
+        <div class="cb-stat-label">Awards Won</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <!-- ═══════════════════════════════════════════
   SECTION 1: ARTISTS & COLLABORATIONS SLIDER
 ═══════════════════════════════════════════ -->
-<section class="as-section" id="artistSlider">
+<!-- <section class="as-section" id="artistSlider">
   <span class="as-vert-label">Artists &amp; Collaborations</span>
 
   <div class="as-track" id="asTrack">
 
-    <!-- ── SLIDE 1: ARIJIT SINGH ── -->
     <div class="as-slide as-active">
       <div class="as-left">
         <div class="as-portrait" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/0/0f/Arijit_5th_GiMA_Awards.jpg'); background-color:#111;"></div>
@@ -1181,7 +1543,6 @@
       </div>
     </div>
 
-    <!-- ── SLIDE 2: JONITA GANDHI ── -->
     <div class="as-slide">
       <div class="as-left">
         <div class="as-portrait" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/9/96/Jonita_at_IIFA_2017_Green_Carpet_%28cropped%29.jpg'); background-color:#111;"></div>
@@ -1215,7 +1576,6 @@
       </div>
     </div>
 
-    <!-- ── SLIDE 3: RASHMEET KAUR ── -->
     <div class="as-slide">
       <div class="as-left">
         <div class="as-portrait" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/0/07/Rashmeet_K._%28cropped%29.jpg'); background-color:#111;"></div>
@@ -1249,7 +1609,6 @@
       </div>
     </div>
 
-    <!-- ── SLIDE 4: ARJUNA HARJAI (ME) ── -->
     <div class="as-slide">
       <div class="as-left">
         <div class="as-portrait" style="background-image: url('https://www.musiculture.in/wp-content/uploads/2023/06/AH7-804x800.jpg'); background-color:#111;"></div>
@@ -1283,7 +1642,6 @@
       </div>
     </div>
 
-    <!-- ── SLIDE 5: Surabhi Dashputra ── -->
     <div class="as-slide">
       <div class="as-left">
         <div class="as-portrait" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIHNU9mZShufq8QjN92XuM0mEXZPmKKb-fYA&s'); background-color:#111;"></div>
@@ -1317,7 +1675,6 @@
       </div>
     </div>
 
-    <!-- ── SLIDE 6: JYOTICA TANGRI ── -->
     <div class="as-slide">
       <div class="as-left">
         <div class="as-portrait" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/4/40/JT_pic.jpg'); background-color:#111;"></div>
@@ -1351,7 +1708,6 @@
       </div>
     </div>
 
-    <!-- ── SLIDE 7: NATASHA NOORANI ── -->
     <div class="as-slide">
       <div class="as-left">
         <div class="as-portrait" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTqMypWyH98yyxxGQtFtZO-6OsBvmqabnBEg&s'); background-color:#111;"></div>
@@ -1387,7 +1743,6 @@
 
   </div>
 
-  <!-- Navigation -->
   <div class="as-nav" id="asNav">
     <button class="as-nav-btn" id="asPrev" aria-label="Previous artist">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
@@ -1407,6 +1762,159 @@
   </div>
 
   <div class="as-progress"><div class="as-progress-fill" id="asProgressFill"></div></div>
+</section> -->
+
+<!-- ═══════════════════════════════════════════
+  ARTISTS & COLLABORATIONS — INTERACTIVE CARDS
+═══════════════════════════════════════════ -->
+<section class="ac-section">
+  <div class="ac-section-head">
+    <h2>Artists &amp;<br>Collaborations</h2>
+    <p>Seven extraordinary voices. One creative force. Arjuna Harjai and the artists who define the Aart Sense sound.</p>
+  </div>
+  <div class="ac-grid">
+
+    <!-- 1. Arijit Singh -->
+    <div class="ac-card" data-artist="0">
+      <div class="ac-photo" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/0/0f/Arijit_5th_GiMA_Awards.jpg')"></div>
+      <div class="ac-name-strip">
+        <div class="ac-strip-name">Arijit Singh</div>
+        <div class="ac-strip-role">Singer · Bollywood</div>
+      </div>
+      <div class="ac-hover">
+        <div class="ac-hover-tag">National Award · India's #1</div>
+        <div class="ac-hover-name">Arijit Singh</div>
+        <div class="ac-hover-bio">India's most-streamed vocalist. A defining voice of a generation of Bollywood music.</div>
+        <div class="ac-hover-songs">
+          <div class="ac-hover-song">Original Composition — Studio Sessions</div>
+          <div class="ac-hover-song">Vocal Recording — Arjuna's Production</div>
+          <div class="ac-hover-song">Music Direction Collaboration</div>
+        </div>
+        <div class="ac-hover-cta">View Full Collaboration</div>
+      </div>
+    </div>
+
+    <!-- 2. Jonita Gandhi -->
+    <div class="ac-card" data-artist="1">
+      <div class="ac-photo" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/9/96/Jonita_at_IIFA_2017_Green_Carpet_%28cropped%29.jpg')"></div>
+      <div class="ac-name-strip">
+        <div class="ac-strip-name">Jonita Gandhi</div>
+        <div class="ac-strip-role">Singer · Multilingual</div>
+      </div>
+      <div class="ac-hover">
+        <div class="ac-hover-tag">Canada · Hindi · Tamil · English</div>
+        <div class="ac-hover-name">Jonita Gandhi</div>
+        <div class="ac-hover-bio">Canadian-Indian playback singer with remarkable multilingual range and crystalline voice.</div>
+        <div class="ac-hover-songs">
+          <div class="ac-hover-song">Vocal Feature — Original Song</div>
+          <div class="ac-hover-song">Studio Recording — Arjuna's Production</div>
+          <div class="ac-hover-song">Advertising Jingle — Brand Campaign</div>
+        </div>
+        <div class="ac-hover-cta">View Full Collaboration</div>
+      </div>
+    </div>
+
+    <!-- 3. Rashmeet Kaur -->
+    <div class="ac-card" data-artist="2">
+      <div class="ac-photo" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/0/07/Rashmeet_K._%28cropped%29.jpg')"></div>
+      <div class="ac-name-strip">
+        <div class="ac-strip-name">Rashmeet Kaur</div>
+        <div class="ac-strip-role">Singer · Folk · Punjabi</div>
+      </div>
+      <div class="ac-hover">
+        <div class="ac-hover-tag">Folk · Independent · Punjabi</div>
+        <div class="ac-hover-name">Rashmeet Kaur</div>
+        <div class="ac-hover-bio">Folk-rooted Punjabi artist bridging classical Indian tradition with contemporary indie music.</div>
+        <div class="ac-hover-songs">
+          <div class="ac-hover-song">Punjabi Folk Original — One Minute Composer</div>
+          <div class="ac-hover-song">Vocal Collaboration — Studio Recording</div>
+          <div class="ac-hover-song">Original Song — UK &amp; India Release</div>
+        </div>
+        <div class="ac-hover-cta">View Full Collaboration</div>
+      </div>
+    </div>
+
+    <!-- 4. Arjuna Harjai -->
+    <div class="ac-card" data-artist="3">
+      <div class="ac-photo" style="background-image:url('https://www.musiculture.in/wp-content/uploads/2023/06/AH7-804x800.jpg')"></div>
+      <div class="ac-name-strip">
+        <div class="ac-strip-name">Arjuna Harjai</div>
+        <div class="ac-strip-role">Composer · Aart Sense</div>
+      </div>
+      <div class="ac-hover">
+        <div class="ac-hover-tag">Founder · Composer · Producer</div>
+        <div class="ac-hover-name">Arjuna Harjai</div>
+        <div class="ac-hover-bio">The creative force behind Aart Sense. Award-winning composer trained in Hindustani classical from age two.</div>
+        <div class="ac-hover-songs">
+          <div class="ac-hover-song">Winter Ayun Waliye — Spotify Viral 50</div>
+          <div class="ac-hover-song">Rab Ki Baatein — ABBY Gold Score</div>
+          <div class="ac-hover-song">1,000+ Jingles · 12+ Feature Films</div>
+        </div>
+        <div class="ac-hover-cta">View Full Portfolio</div>
+      </div>
+    </div>
+
+    <!-- 5. Surabhi Dashputra -->
+    <div class="ac-card" data-artist="4">
+      <div class="ac-photo" style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIHNU9mZShufq8QjN92XuM0mEXZPmKKb-fYA&s')"></div>
+      <div class="ac-name-strip">
+        <div class="ac-strip-name">Surabhi Dashputra</div>
+        <div class="ac-strip-role">Artist · Vocalist</div>
+      </div>
+      <div class="ac-hover">
+        <div class="ac-hover-tag">Vocalist · Collaborator</div>
+        <div class="ac-hover-name">Surabhi Dashputra</div>
+        <div class="ac-hover-bio">A distinctive voice whose artistry added a unique sonic layer to Arjuna's compositions.</div>
+        <div class="ac-hover-songs">
+          <div class="ac-hover-song">Original Collaboration — Studio</div>
+          <div class="ac-hover-song">Vocal Feature — Original Song</div>
+          <div class="ac-hover-song">Music Direction &amp; Arrangement</div>
+        </div>
+        <div class="ac-hover-cta">View Full Collaboration</div>
+      </div>
+    </div>
+
+    <!-- 6. Jyotica Tangri -->
+    <div class="ac-card" data-artist="5">
+      <div class="ac-photo" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/4/40/JT_pic.jpg')"></div>
+      <div class="ac-name-strip">
+        <div class="ac-strip-name">Jyotica Tangri</div>
+        <div class="ac-strip-role">Singer · Playback</div>
+      </div>
+      <div class="ac-hover">
+        <div class="ac-hover-tag">Bollywood · Playback · Advertising</div>
+        <div class="ac-hover-name">Jyotica Tangri</div>
+        <div class="ac-hover-bio">Known for her warm, expressive voice spanning Bollywood, independent music, and advertising.</div>
+        <div class="ac-hover-songs">
+          <div class="ac-hover-song">Original Song — Arjuna's Production</div>
+          <div class="ac-hover-song">Advertising Vocal Feature — National</div>
+          <div class="ac-hover-song">Independent Music Collaboration</div>
+        </div>
+        <div class="ac-hover-cta">View Full Collaboration</div>
+      </div>
+    </div>
+
+    <!-- 7. Natasha Noorani -->
+    <div class="ac-card" data-artist="6">
+      <div class="ac-photo" style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTqMypWyH98yyxxGQtFtZO-6OsBvmqabnBEg&s')"></div>
+      <div class="ac-name-strip">
+        <div class="ac-strip-name">Natasha Noorani</div>
+        <div class="ac-strip-role">Singer · Pakistan · Alternative</div>
+      </div>
+      <div class="ac-hover">
+        <div class="ac-hover-tag">Pakistan · Alternative · Urdu</div>
+        <div class="ac-hover-name">Natasha Noorani</div>
+        <div class="ac-hover-bio">One of Pakistan's most exciting independent voices — Urdu poetry meets alternative electronic pop.</div>
+        <div class="ac-hover-songs">
+          <div class="ac-hover-song">Cross-Border Original — India–Pakistan</div>
+          <div class="ac-hover-song">Urdu–Hindi Composition — Vocal Feature</div>
+          <div class="ac-hover-song">Original Song — UK &amp; South Asia</div>
+        </div>
+        <div class="ac-hover-cta">View Full Collaboration</div>
+      </div>
+    </div>
+
+  </div>
 </section>
 
 <!-- COLLABORATION CARDS -->
@@ -2172,6 +2680,25 @@
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
 </div>
 
+<!-- ARTIST DETAIL MODAL -->
+<div class="ac-modal-bg" id="acModalBg" role="dialog" aria-modal="true" aria-labelledby="acModalName">
+  <div class="ac-modal" id="acModal">
+    <div class="ac-modal-photo-side">
+      <div class="ac-modal-photo-bg" id="acModalPhoto"></div>
+      <div class="ac-modal-photo-fade"></div>
+    </div>
+    <div class="ac-modal-body">
+      <div class="ac-modal-tag" id="acModalTag"></div>
+      <div class="ac-modal-name" id="acModalName"></div>
+      <p class="ac-modal-bio" id="acModalBio"></p>
+      <div class="ac-modal-songs-hd">Songs &amp; Works with Aart Sense</div>
+      <ul class="ac-modal-songs" id="acModalSongs"></ul>
+      <div class="ac-modal-pills" id="acModalPills"></div>
+    </div>
+    <button class="ac-modal-close" id="acModalClose" aria-label="Close modal">&#10005;</button>
+  </div>
+</div>
+
 <script src="animations.js" defer></script>
 <script>
 (function () {
@@ -2226,6 +2753,190 @@
 
   // Start
   startProgress();
+})();
+</script>
+
+<script>
+/* ══════════════════════════════════════════════════
+   ARTIST CARDS — hover is CSS. This handles the modal.
+══════════════════════════════════════════════════ */
+(function () {
+  var ARTISTS = [
+    {
+      name: 'Arijit Singh',
+      tag: 'Singer · Bollywood · National Award',
+      photo: 'https://upload.wikimedia.org/wikipedia/commons/0/0f/Arijit_5th_GiMA_Awards.jpg',
+      bio: "India's most-streamed vocalist and National Award-winning singer. A voice that defines a generation of Bollywood music. Arjuna collaborated with Arijit on original compositions and studio recordings that blend soulful melody with world-class contemporary production.",
+      songs: [
+        { title: 'Original Composition — Studio Sessions', sub: 'Bollywood & independent music · Arjuna Harjai Production', badge: '', badgeClass: '' },
+        { title: 'Vocal Recording — Arjuna\'s Production', sub: 'Feature release · Original score', badge: 'Production', badgeClass: '' },
+        { title: 'Music Direction Collaboration', sub: 'Background score & original songs', badge: 'Film', badgeClass: 'award' }
+      ],
+      pills: ['Bollywood', 'Original Score', 'Studio', 'National Award']
+    },
+    {
+      name: 'Jonita Gandhi',
+      tag: 'Singer · Canada · Multilingual',
+      photo: 'https://upload.wikimedia.org/wikipedia/commons/9/96/Jonita_at_IIFA_2017_Green_Carpet_%28cropped%29.jpg',
+      bio: "Canadian-Indian playback singer with a remarkable multilingual range — from Hindi and Tamil to English. Her crystalline voice and effortless versatility brought a contemporary international dimension to Arjuna's compositions at Aart Sense.",
+      songs: [
+        { title: 'Vocal Feature — Original Song', sub: 'Contemporary pop · Hindi & English', badge: 'Pop', badgeClass: '' },
+        { title: 'Studio Recording — Arjuna\'s Production', sub: 'Multilingual composition · Original music', badge: 'Production', badgeClass: '' },
+        { title: 'Advertising Jingle — Brand Campaign', sub: 'National broadcast · Original composition', badge: 'Advertising', badgeClass: 'award' }
+      ],
+      pills: ['Pop', 'Advertising', 'Multilingual', 'Playback']
+    },
+    {
+      name: 'Rashmeet Kaur',
+      tag: 'Singer · Folk · Punjabi · Independent',
+      photo: 'https://upload.wikimedia.org/wikipedia/commons/0/07/Rashmeet_K._%28cropped%29.jpg',
+      bio: "Known for her distinctive folk-rooted Punjabi sound, Rashmeet brought raw authenticity and emotional depth to Arjuna's compositions. Her voice bridges classical Indian tradition with the energy of contemporary independent music.",
+      songs: [
+        { title: 'Punjabi Folk Original', sub: 'The One Minute Composer · Independent release', badge: 'Folk', badgeClass: 'viral' },
+        { title: 'Vocal Collaboration — Studio Recording', sub: 'Arjuna Harjai Production · Original composition', badge: 'Production', badgeClass: '' },
+        { title: 'Original Song — UK & India Release', sub: 'Streaming platforms · Independent music', badge: 'Release', badgeClass: '' }
+      ],
+      pills: ['Folk', 'Punjabi', 'Independent', 'One Minute Composer']
+    },
+    {
+      name: 'Arjuna Harjai',
+      tag: 'Founder · Composer · Producer · Aart Sense',
+      photo: 'https://www.musiculture.in/wp-content/uploads/2023/06/AH7-804x800.jpg',
+      bio: "The creative force behind Aart Sense. Award-winning music director, singer-songwriter, and producer — trained in Hindustani classical music from age two. Every collaboration, every score, every original composition flows through Arjuna's singular artistic vision.",
+      songs: [
+        { title: 'Winter Ayun Waliye', sub: 'The One Minute Composer · Spotify Viral 50 — India & Pakistan', badge: 'Viral 50', badgeClass: 'viral' },
+        { title: 'Rab Ki Baatein — P.O.W. Bandi Yuddh Ke', sub: 'ABBY Gold · Original Background Score · Star Plus / ALTBalaji', badge: 'ABBY Gold', badgeClass: 'gold' },
+        { title: '1,000+ Ad Jingles · 12+ Feature Films', sub: 'Dettol · Amazon · Cadbury · Flipkart · And more', badge: 'Portfolio', badgeClass: 'award' }
+      ],
+      pills: ['Composer', 'Producer', 'Film Score', 'Advertising', 'Hindustani Classical']
+    },
+    {
+      name: 'Surabhi Dashputra',
+      tag: 'Artist · Vocalist · Collaborator',
+      photo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIHNU9mZShufq8QjN92XuM0mEXZPmKKb-fYA&s',
+      bio: "A distinctive voice and creative collaborator whose artistry added a unique sonic layer to Arjuna's compositions. Their partnership blends genres and defies expectations — producing music that resonates across cultures and audiences.",
+      songs: [
+        { title: 'Original Collaboration — Studio', sub: 'Arjuna Harjai Production · Original music', badge: 'Collaboration', badgeClass: '' },
+        { title: 'Vocal Feature — Original Song', sub: 'Independent release · UK & India', badge: 'Original', badgeClass: '' },
+        { title: 'Music Direction & Arrangement', sub: 'Score & production · Original composition', badge: 'Production', badgeClass: 'award' }
+      ],
+      pills: ['Independent', 'Original', 'Cross-genre', 'Studio']
+    },
+    {
+      name: 'Jyotica Tangri',
+      tag: 'Singer · Playback · Bollywood',
+      photo: 'https://upload.wikimedia.org/wikipedia/commons/4/40/JT_pic.jpg',
+      bio: "Known for her warm, expressive voice and soulful renditions, Jyotica Tangri brought emotional authenticity to Arjuna's compositions. Her playback work spans Bollywood, independent music, and advertising — a natural creative partner at Aart Sense.",
+      songs: [
+        { title: 'Original Song — Arjuna\'s Production', sub: 'Playback composition · Studio recording', badge: 'Playback', badgeClass: '' },
+        { title: 'Advertising Vocal Feature', sub: 'Brand campaign · National broadcast · Original composition', badge: 'Advertising', badgeClass: 'gold' },
+        { title: 'Independent Music Collaboration', sub: 'Original composition · Streaming release', badge: 'Original', badgeClass: '' }
+      ],
+      pills: ['Bollywood', 'Playback', 'Advertising', 'Independent']
+    },
+    {
+      name: 'Natasha Noorani',
+      tag: 'Singer · Pakistan · Alternative',
+      photo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTqMypWyH98yyxxGQtFtZO-6OsBvmqabnBEg&s',
+      bio: "One of Pakistan's most exciting independent voices — known for blending Urdu poetry with alternative electronic and pop production. Her collaboration with Arjuna bridged the India-Pakistan musical connection, creating work that resonates across borders.",
+      songs: [
+        { title: 'Cross-Border Original', sub: 'India–Pakistan collaboration · Arjuna Harjai Production', badge: 'Independent', badgeClass: 'viral' },
+        { title: 'Urdu–Hindi Composition', sub: 'Vocal feature · Alternative pop · Original music', badge: 'Alternative', badgeClass: '' },
+        { title: 'Original Song — Studio Recording', sub: 'Streaming release · UK & South Asia', badge: 'Release', badgeClass: '' }
+      ],
+      pills: ['Pakistan', 'Alternative', 'Urdu', 'Cross-border', 'Independent']
+    }
+  ];
+
+  var bg    = document.getElementById('acModalBg');
+  var photo = document.getElementById('acModalPhoto');
+  var tag   = document.getElementById('acModalTag');
+  var name  = document.getElementById('acModalName');
+  var bio   = document.getElementById('acModalBio');
+  var songs = document.getElementById('acModalSongs');
+  var pills = document.getElementById('acModalPills');
+  var closeBtn = document.getElementById('acModalClose');
+
+  function openModal(idx) {
+    var a = ARTISTS[idx];
+    if (!a) return;
+
+    // Populate content
+    photo.style.backgroundImage = "url('" + a.photo + "')";
+    tag.textContent  = a.tag;
+    name.textContent = a.name;
+    bio.textContent  = a.bio;
+
+    songs.innerHTML = '';
+    a.songs.forEach(function (s, i) {
+      var li = document.createElement('li');
+      li.className = 'ac-modal-song';
+      li.innerHTML =
+        '<span class="ac-modal-snum">0' + (i + 1) + '</span>' +
+        '<div class="ac-modal-sinfo">' +
+          '<div class="ac-modal-stitle">' + s.title + '</div>' +
+          '<div class="ac-modal-ssub">' + s.sub + '</div>' +
+        '</div>' +
+        (s.badge ? '<span class="ac-modal-sbadge ' + s.badgeClass + '">' + s.badge + '</span>' : '');
+      songs.appendChild(li);
+    });
+
+    pills.innerHTML = '';
+    a.pills.forEach(function (p) {
+      var span = document.createElement('span');
+      span.className = 'ac-modal-pill';
+      span.textContent = p;
+      pills.appendChild(span);
+    });
+
+    // Remove closing state, open modal
+    bg.classList.remove('closing');
+    bg.classList.add('open');
+    document.body.style.overflow = 'hidden';
+
+    // Stagger content elements in with acFadeUp animation
+    var songsHd = document.querySelector('.ac-modal-songs-hd');
+    var staggerEls = [tag, name, bio];
+    if (songsHd) staggerEls.push(songsHd);
+    songs.querySelectorAll('.ac-modal-song').forEach(function (el) { staggerEls.push(el); });
+    pills.querySelectorAll('.ac-modal-pill').forEach(function (el) { staggerEls.push(el); });
+
+    staggerEls.forEach(function (el, i) {
+      el.style.animation = 'none';
+      el.style.opacity   = '0';
+    });
+
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        staggerEls.forEach(function (el, i) {
+          var delay = (0.12 + i * 0.06).toFixed(2);
+          el.style.animation = 'acFadeUp .38s cubic-bezier(.22,.68,0,1.1) ' + delay + 's both';
+        });
+      });
+    });
+  }
+
+  function closeModal() {
+    bg.classList.add('closing');
+    setTimeout(function () {
+      bg.classList.remove('open', 'closing');
+      document.body.style.overflow = '';
+    }, 260);
+  }
+
+  document.querySelectorAll('.ac-card').forEach(function (card) {
+    card.addEventListener('click', function () {
+      openModal(parseInt(card.dataset.artist, 10));
+    });
+  });
+
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  bg.addEventListener('click', function (e) {
+    if (e.target === bg) closeModal();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeModal();
+  });
 })();
 </script>
 </body>
