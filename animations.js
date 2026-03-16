@@ -1,5 +1,6 @@
 /**
- * AART SENSE STUDIOS — animations.js
+ * AART SENSE RECORDS
+ STUDIOS — animations.js
  * Scroll-triggered reveals, counters, hero entrance, stagger grids.
  * Drop <script src="animations.js" defer></script> into any page — no HTML changes needed.
  */
